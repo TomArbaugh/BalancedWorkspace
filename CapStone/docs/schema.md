@@ -22,6 +22,7 @@ Table tickets {
   Assignee varchar [not null]
   type select [not null]
   priority select [not null]
+  type select [not null]
   apply_macro select [not null, ref: < macros.id] 
 }
 

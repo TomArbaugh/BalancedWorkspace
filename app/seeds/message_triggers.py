@@ -5,11 +5,10 @@ from sqlalchemy.sql import text
 # Adds a demo user, you can add other users here if you want
 def seed_message_triggers():
     demo = MessageTrigger(
-        username='Demo', email='demo@aa.io', password='password')
+        user_id='Demo', title='demo@aa.io', description='password', active='', run_trigger='', conditions='', actions='')
     
 
-    db.session.add()
-    db.session.add()
+
     db.session.add()
     db.session.commit()
 

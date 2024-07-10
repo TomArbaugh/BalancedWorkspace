@@ -4,11 +4,48 @@ from app.models import db, Customer, environment, SCHEMA
 # Adds a demo user, you can add other users here if you want
 def seed_customers():
     demo = Customer(
-        username='Demo', email='demo@aa.io', password='password')
+        user_id='Demo', name='demo@aa.io', email='password')
+    demo = Customer(
+        user_id='Demo', name='demo@aa.io', email='password')
+    demo = Customer(
+        user_id='Demo', name='demo@aa.io', email='password')
+    demo = Customer(
+        user_id='Demo', name='demo@aa.io', email='password')
+    demo = Customer(
+        user_id='Demo', name='demo@aa.io', email='password')
+    demo = Customer(
+        user_id='Demo', name='demo@aa.io', email='password')
+    demo = Customer(
+        user_id='Demo', name='demo@aa.io', email='password')
+    demo = Customer(
+        user_id='Demo', name='demo@aa.io', email='password')
+    demo = Customer(
+        user_id='Demo', name='demo@aa.io', email='password')
+    demo = Customer(
+        user_id='Demo', name='demo@aa.io', email='password')
+    demo = Customer(
+        user_id='Demo', name='demo@aa.io', email='password')
+    demo = Customer(
+        user_id='Demo', name='demo@aa.io', email='password')
+    demo = Customer(
+        user_id='Demo', name='demo@aa.io', email='password')
+    demo = Customer(
+        user_id='Demo', name='demo@aa.io', email='password')
+    demo = Customer(
+        user_id='Demo', name='demo@aa.io', email='password')
+    demo = Customer(
+        user_id='Demo', name='demo@aa.io', email='password')
+    demo = Customer(
+        user_id='Demo', name='demo@aa.io', email='password')
+    demo = Customer(
+        user_id='Demo', name='demo@aa.io', email='password')
+    demo = Customer(
+        user_id='Demo', name='demo@aa.io', email='password')
+    demo = Customer(
+        user_id='Demo', name='demo@aa.io', email='password')
 
 
-    db.session.add()
-    db.session.add()
+    
     db.session.add()
     db.session.commit()
 

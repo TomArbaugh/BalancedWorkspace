@@ -18,17 +18,17 @@ class Ticket(db.Model):
     apply_macro = db.Column(db.Select, nullable=False, db.ForeignKey(add_prefix_for_prod("macros.id")))
 
     tickets_user = db.relationship(
-        "tickets_user",
+        "User",
         back_populates = "users_tickets"
     )
 
     tickets_customer = db.relationship(
-        "tickets_customer",
+        "Customer",
         back_populates = "customers_tickets"
     )
 
     tickets_macros = db.relationship(
-        "tickets_macros",
+        "Macro",
         back_populates = "macros_ticket"
     )
 

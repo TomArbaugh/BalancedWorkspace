@@ -15,12 +15,12 @@ class Macro(db.Model):
     actions = db.Column(db.Select, nullable=False)
 
     macros_user = db.relationship(
-        "macros_user",
+        "User",
         back_populates = "users_macros"
     )
 
     macros_ticket = db.relationship(
-        "macros_ticket",
+        "Ticket",
         back_populates = "tickets_macros"
     )
 

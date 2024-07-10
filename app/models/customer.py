@@ -13,12 +13,12 @@ class Customer(db.Model):
     email = db.Column(db.string(50), nullable=False)
 
     customers_user = db.relationship(
-        "customers_user",
+        "User",
         back_populates = "users_customers"
     )
 
     customers_tickets = db.relationship(
-        "customers_tickets",
+        "Ticket",
         back_populates = "tickets_customer",
         cascade="delete"
     )

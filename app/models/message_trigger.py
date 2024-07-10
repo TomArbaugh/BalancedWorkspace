@@ -17,7 +17,7 @@ class MessageTrigger(db.Model):
     actions = db.Column(db.Select, nullable=False)
 
     message_triggers_user = db.relationship(
-        "message_triggers_user",
+        "User,
         back_populates = "users_message_triggers"
     )
 

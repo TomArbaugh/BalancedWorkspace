@@ -5,7 +5,45 @@ from sqlalchemy.sql import text
 # Adds a demo user, you can add other users here if you want
 def seed_macros():
     demo = Macro(
-        username='Demo', email='demo@aa.io', password='password')
+        user_id='Demo', name='demo@aa.io', description='password', available_for='', actions='')
+    demo = Macro(
+        user_id='Demo', name='demo@aa.io', description='password', available_for='', actions='')
+    demo = Macro(
+        user_id='Demo', name='demo@aa.io', description='password', available_for='', actions='')
+    demo = Macro(
+        user_id='Demo', name='demo@aa.io', description='password', available_for='', actions='')
+    demo = Macro(
+        user_id='Demo', name='demo@aa.io', description='password', available_for='', actions='')
+    demo = Macro(
+        user_id='Demo', name='demo@aa.io', description='password', available_for='', actions='')
+    demo = Macro(
+        user_id='Demo', name='demo@aa.io', description='password', available_for='', actions='')
+    demo = Macro(
+        user_id='Demo', name='demo@aa.io', description='password', available_for='', actions='')
+    demo = Macro(
+        user_id='Demo', name='demo@aa.io', description='password', available_for='', actions='')
+    demo = Macro(
+        user_id='Demo', name='demo@aa.io', description='password', available_for='', actions='')
+    demo = Macro(
+        user_id='Demo', name='demo@aa.io', description='password', available_for='', actions='')
+    demo = Macro(
+        user_id='Demo', name='demo@aa.io', description='password', available_for='', actions='')
+    demo = Macro(
+        user_id='Demo', name='demo@aa.io', description='password', available_for='', actions='')
+    demo = Macro(
+        user_id='Demo', name='demo@aa.io', description='password', available_for='', actions='')
+    demo = Macro(
+        user_id='Demo', name='demo@aa.io', description='password', available_for='', actions='')
+    demo = Macro(
+        user_id='Demo', name='demo@aa.io', description='password', available_for='', actions='')
+    demo = Macro(
+        user_id='Demo', name='demo@aa.io', description='password', available_for='', actions='')
+    demo = Macro(
+        user_id='Demo', name='demo@aa.io', description='password', available_for='', actions='')
+    demo = Macro(
+        user_id='Demo', name='demo@aa.io', description='password', available_for='', actions='')
+    demo = Macro(
+        user_id='Demo', name='demo@aa.io', description='password', available_for='', actions='')
     
 
     db.session.add()

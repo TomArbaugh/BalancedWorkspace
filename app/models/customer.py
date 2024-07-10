@@ -9,8 +9,8 @@ class Customer(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, nullable=False, db.ForeignKey(add_prefix_for_prod("user.id")))
-    name = db.Column(db.string(50), nullable=False)
-    email = db.Column(db.string(50), nullable=False)
+    name = db.Column(db.string(40), nullable=False)
+    email = db.Column(db.string(255), nullable=False, unique=True)
 
     customers_user = db.relationship(
         "User",

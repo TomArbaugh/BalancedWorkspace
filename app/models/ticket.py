@@ -10,13 +10,13 @@ class Ticket(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, nullable=False, db.ForeignKey(add_prefix_for_prod("user.id")))
     customer_id = db.Column(db.Integer, nullable=False, db.ForeignKey(add_prefix_for_prod("customer.id")))
-    title = db.Column(db.String(50), nullable=False)
+    title = db.Column(db.String(40), nullable=False)
     requester = db.Column(db.Integer, nullable=False)
     assignee = db.Column(db.Integer, nullable=False)
-    type = db.Column(db.Select, nullable=False)
-    priority = db.Column(db.Select, nullable=False)
+    type = db.Column(db.String(255), nullable=False)
+    priority = db.Column(db.String(40), nullable=False)
     photo_url = db.Column(String(2000))
-    apply_macro = db.Column(db.Select, nullable=False, db.ForeignKey(add_prefix_for_prod("macros.id")))
+    apply_macro = db.Column(db.String(2000), nullable=False, db.ForeignKey(add_prefix_for_prod("macros.id")))
 
     tickets_user = db.relationship(
         "User",
@@ -37,6 +37,7 @@ class Ticket(db.Model):
         return {
             "id": self.id, 
             "user_id": self.user_id, 
+            "customer_id": self.customer_id
             "title": self.title,
             "requester": self.requester,
             "assignee": self.assignee,

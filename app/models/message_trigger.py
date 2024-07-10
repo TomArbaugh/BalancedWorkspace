@@ -9,12 +9,12 @@ class MessageTrigger(db.Model):
     
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, nullable=False, db.ForeignKey(add_prefix_for_prod("user.id")))
-    title = db.Column(db.String(50), nullable=False)
+    title = db.Column(db.String(40), nullable=False)
     description = db.Column(db.String(2000), nullable=False)
-    active = db.Column(db.Select, nullable=False)
-    run_trigger = db.Column(db.Select, nullable=False)
-    conditions = db.Column(db.Select, nullable=False)
-    actions = db.Column(db.Select, nullable=False)
+    active = db.Column(db.String(255), nullable=False)
+    run_trigger = db.Column(db.String(255), nullable=False)
+    conditions = db.Column(db.String(255), nullable=False)
+    actions = db.Column(db.String(255), nullable=False)
 
     message_triggers_user = db.relationship(
         "User,
@@ -24,6 +24,7 @@ class MessageTrigger(db.Model):
     def to_dict(self):
         return {
             "id": self.id,
+            "user_id": self.user_id,
             "title": self.title,
             "description": self.description,
             "active": self.active, 

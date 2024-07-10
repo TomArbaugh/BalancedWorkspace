@@ -9,10 +9,10 @@ class Macro(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, nullable=False, db.ForeignKey(add_prefix_for_prod("user.id")))
-    name = db.Column(db.String(50), nullable=False)
+    name = db.Column(db.String(40), nullable=False)
     description = db.Column(db.String(2000), nullable=False)
     available_for = db.Column(db.Select, nullable=False)
-    actions = db.Column(db.Select, nullable=False)
+    actions = db.Column(db.String(255), nullable=False)
 
     macros_user = db.relationship(
         "User",
@@ -27,6 +27,7 @@ class Macro(db.Model):
     def to_dict(self):
         return {
             "id": self.id, 
+            "user_id": self.user_id,
             "name": self.name,
             "description": self.description,
             "available_for": self.available_for,

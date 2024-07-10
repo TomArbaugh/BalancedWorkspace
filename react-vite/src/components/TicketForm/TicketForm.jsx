@@ -49,15 +49,6 @@ return (
         />
     </label>
     <label>
-        Assignee
-    <select
-    value={assignee}
-    onChange={((e) => setAssignee(e.target.value))}
-    >
-        <option>No Assignees</option>
-    </select>
-    </label>
-    <label>
         Type
     <select
     value={type}
@@ -89,6 +80,15 @@ return (
         onChange={(e) => setImage(e.target.files[0])}
     />
     </lable>
+    <label>
+        Assignee
+    <select
+    value={customer.user_id}
+    onChange={((e) => setAssignee(e.target.value))}
+    >
+        <option>No Assignees</option>
+    </select>
+    </label>
     <lable>
         Apply Macro
         <select

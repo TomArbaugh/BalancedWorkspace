@@ -5,45 +5,45 @@ from sqlalchemy.sql import text
 # Adds a demo user, you can add other users here if you want
 def seed_tickets():
     demo = Ticket(
-        user_id='Demo', customer_id='', title='demo@aa.io', requester='password', assignee='', type='', priority='', photo_url='', apply_macro=0)
+        customer_id='', title='demo@aa.io', type='', priority='', assignee='', apply_macro=0)
     demo = Ticket(
-        user_id='Demo', customer_id='', title='demo@aa.io', requester='password', assignee='', type='', priority='', photo_url='', apply_macro=0)
+        customer_id='', title='demo@aa.io', type='', priority='', assignee='', apply_macro=0)
     demo = Ticket(
-        user_id='Demo', customer_id='', title='demo@aa.io', requester='password', assignee='', type='', priority='', photo_url='', apply_macro=0)
+        customer_id='', title='demo@aa.io', type='', priority='', assignee='', apply_macro=0)
     demo = Ticket(
-        user_id='Demo', customer_id='', title='demo@aa.io', requester='password', assignee='', type='', priority='', photo_url='', apply_macro=0)
+        customer_id='', title='demo@aa.io', type='', priority='', assignee='', apply_macro=0)
     demo = Ticket(
-        user_id='Demo', customer_id='', title='demo@aa.io', requester='password', assignee='', type='', priority='', photo_url='', apply_macro=0)
+        customer_id='', title='demo@aa.io', type='', priority='', assignee='', apply_macro=0)
     demo = Ticket(
-        user_id='Demo', customer_id='', title='demo@aa.io', requester='password', assignee='', type='', priority='', photo_url='', apply_macro=0)
+        customer_id='', title='demo@aa.io', type='', priority='', assignee='', apply_macro=0)
     demo = Ticket(
-        user_id='Demo', customer_id='', title='demo@aa.io', requester='password', assignee='', type='', priority='', photo_url='', apply_macro=0)
+        customer_id='', title='demo@aa.io', type='', priority='', assignee='', apply_macro=0)
     demo = Ticket(
-        user_id='Demo', customer_id='', title='demo@aa.io', requester='password', assignee='', type='', priority='', photo_url='', apply_macro=0)
+        customer_id='', title='demo@aa.io', type='', priority='', assignee='', apply_macro=0)
     demo = Ticket(
-        user_id='Demo', customer_id='', title='demo@aa.io', requester='password', assignee='', type='', priority='', photo_url='', apply_macro=0)
+        customer_id='', title='demo@aa.io', type='', priority='', assignee='', apply_macro=0)
     demo = Ticket(
-        user_id='Demo', customer_id='', title='demo@aa.io', requester='password', assignee='', type='', priority='', photo_url='', apply_macro=0)
+        customer_id='', title='demo@aa.io', type='', priority='', assignee='', apply_macro=0)
     demo = Ticket(
-        user_id='Demo', customer_id='', title='demo@aa.io', requester='password', assignee='', type='', priority='', photo_url='', apply_macro=0)
+        customer_id='', title='demo@aa.io', type='', priority='', assignee='', apply_macro=0)
     demo = Ticket(
-        user_id='Demo', customer_id='', title='demo@aa.io', requester='password', assignee='', type='', priority='', photo_url='', apply_macro=0)
+        customer_id='', title='demo@aa.io', type='', priority='', assignee='', apply_macro=0)
     demo = Ticket(
-        user_id='Demo', customer_id='', title='demo@aa.io', requester='password', assignee='', type='', priority='', photo_url='', apply_macro=0)
+        customer_id='', title='demo@aa.io', type='', priority='', assignee='', apply_macro=0)
     demo = Ticket(
-        user_id='Demo', customer_id='', title='demo@aa.io', requester='password', assignee='', type='', priority='', photo_url='', apply_macro=0)
+        customer_id='', title='demo@aa.io', type='', priority='', assignee='', apply_macro=0)
     demo = Ticket(
-        user_id='Demo', customer_id='', title='demo@aa.io', requester='password', assignee='', type='', priority='', photo_url='', apply_macro=0)
+        customer_id='', title='demo@aa.io', type='', priority='', assignee='', apply_macro=0)
     demo = Ticket(
-        user_id='Demo', customer_id='', title='demo@aa.io', requester='password', assignee='', type='', priority='', photo_url='', apply_macro=0)
+        customer_id='', title='demo@aa.io', type='', priority='', assignee='', apply_macro=0)
     demo = Ticket(
-        user_id='Demo', customer_id='', title='demo@aa.io', requester='password', assignee='', type='', priority='', photo_url='', apply_macro=0)
+        customer_id='', title='demo@aa.io', type='', priority='', assignee='', apply_macro=0)
     demo = Ticket(
-        user_id='Demo', customer_id='', title='demo@aa.io', requester='password', assignee='', type='', priority='', photo_url='', apply_macro=0)
+        customer_id='', title='demo@aa.io', type='', priority='', assignee='', apply_macro=0)
     demo = Ticket(
-        user_id='Demo', customer_id='', title='demo@aa.io', requester='password', assignee='', type='', priority='', photo_url='', apply_macro=0)
+        customer_id='', title='demo@aa.io', type='', priority='', assignee='', apply_macro=0)
     demo = Ticket(
-        user_id='Demo', customer_id='', title='demo@aa.io', requester='password', assignee='', type='', priority='', photo_url='', apply_macro=0)
+        customer_id='', title='demo@aa.io', type='', priority='', assignee='', apply_macro=0)
     
 
  

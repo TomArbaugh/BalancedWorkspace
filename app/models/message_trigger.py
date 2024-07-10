@@ -30,5 +30,6 @@ class MessageTrigger(db.Model):
             "active": self.active, 
             "run_trigger": self.run_trigger,
             "conditions": self.conditions,
-            "actions": self.actions
+            "actions": self.actions,
+            "message_triggers_user": self.message_triggers_user.to_dict()
         }

@@ -28,5 +28,7 @@ class Customer(db.Model):
             "id": self.id,
             "user_id": self.user_id,
             "name": self.name,
-            "email": self.email
+            "email": self.email,
+            "customers_user": self.customers_user.to_dict()
+            "customers_tickets": [ticket.to_dict() for ticket in self.customrers_tickets]
         }

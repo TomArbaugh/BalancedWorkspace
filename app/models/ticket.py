@@ -8,15 +8,12 @@ class Ticket(db.Model):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, nullable=False, db.ForeignKey(add_prefix_for_prod("user.id")))
     customer_id = db.Column(db.Integer, nullable=False, db.ForeignKey(add_prefix_for_prod("customer.id")))
     title = db.Column(db.String(40), nullable=False)
-    requester = db.Column(db.Integer, nullable=False)
-    assignee = db.Column(db.Integer, nullable=False)
     type = db.Column(db.String(255), nullable=False)
     priority = db.Column(db.String(40), nullable=False)
-    photo_url = db.Column(String(2000))
-    apply_macro = db.Column(db.String(2000), nullable=False, db.ForeignKey(add_prefix_for_prod("macros.id")))
+    assignee = db.Column(db.Integer, nullable=False, db.ForeignKey(add_prefix_for_prod("user.id")))
+    apply_macro = db.Column(db.String(2000), db.ForeignKey(add_prefix_for_prod("macros.id")))
 
     tickets_user = db.relationship(
         "User",
@@ -33,16 +30,19 @@ class Ticket(db.Model):
         back_populates = "macros_ticket"
     )
 
+    tickets_images = db.relationship(
+        "Image",
+        back_populates = images_ticket
+    )
+
     def to_dict(self):
         return {
-            "id": self.id, 
-            "user_id": self.user_id, 
+            "id": self.id,  
             "customer_id": self.customer_id
             "title": self.title,
-            "requester": self.requester,
-            "assignee": self.assignee,
             "type": self.type,
             "priority": self.priority,
-            "photo_url": self.photo_url,
+            "assignee": self.assignee,
+            "tickets_images": [image.to_dict() for image in self.tickets_images]
             "apply_macro": self.apply_macro
         }

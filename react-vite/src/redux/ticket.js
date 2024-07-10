@@ -9,16 +9,13 @@ const postTicket = (ticketImage, newTicket) => ({
 })
 
 export const postTicketThunk = (formData, newTicket) => async (dispatch) => {
-    const imageResponse = await fetch(`/images/new`, {
+
+    const imageResponse = await fetch(`/api/add-image`, {
         method: "POST",
-        // headers: {
-        //   'Accept': 'application/json',
-        //   "Content-Type": "application/json",
-        // },
         body: formData
       });
 
-      const ticketResponse = await fetch('/new-ticket', {
+      const ticketResponse = await fetch('/api/create-ticket', {
         method: "POST",
         headers: {
             "Content-Type": "application/json"

@@ -15,6 +15,7 @@ class Ticket(db.Model):
     assignee = db.Column(db.Integer, nullable=False)
     type = db.Column(db.Select, nullable=False)
     priority = db.Column(db.Select, nullable=False)
+    photo_url = db.Column(String(2000))
     apply_macro = db.Column(db.Select, nullable=False, db.ForeignKey(add_prefix_for_prod("macros.id")))
 
     tickets_user = db.relationship(
@@ -41,5 +42,6 @@ class Ticket(db.Model):
             "assignee": self.assignee,
             "type": self.type,
             "priority": self.priority,
+            "photo_url": self.photo_url,
             "apply_macro": self.apply_macro
         }

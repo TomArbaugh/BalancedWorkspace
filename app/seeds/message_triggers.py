@@ -6,6 +6,45 @@ from sqlalchemy.sql import text
 def seed_message_triggers():
     demo = MessageTrigger(
         user_id='Demo', title='demo@aa.io', description='password', active='', run_trigger='', conditions='', actions='')
+    demo = MessageTrigger(
+        user_id='Demo', title='demo@aa.io', description='password', active='', run_trigger='', conditions='', actions='')
+    demo = MessageTrigger(
+        user_id='Demo', title='demo@aa.io', description='password', active='', run_trigger='', conditions='', actions='')
+    demo = MessageTrigger(
+        user_id='Demo', title='demo@aa.io', description='password', active='', run_trigger='', conditions='', actions='')
+    demo = MessageTrigger(
+        user_id='Demo', title='demo@aa.io', description='password', active='', run_trigger='', conditions='', actions='')
+    demo = MessageTrigger(
+        user_id='Demo', title='demo@aa.io', description='password', active='', run_trigger='', conditions='', actions='')
+    demo = MessageTrigger(
+        user_id='Demo', title='demo@aa.io', description='password', active='', run_trigger='', conditions='', actions='')
+    demo = MessageTrigger(
+        user_id='Demo', title='demo@aa.io', description='password', active='', run_trigger='', conditions='', actions='')
+    demo = MessageTrigger(
+        user_id='Demo', title='demo@aa.io', description='password', active='', run_trigger='', conditions='', actions='')
+    demo = MessageTrigger(
+        user_id='Demo', title='demo@aa.io', description='password', active='', run_trigger='', conditions='', actions='')
+    demo = MessageTrigger(
+        user_id='Demo', title='demo@aa.io', description='password', active='', run_trigger='', conditions='', actions='')
+    demo = MessageTrigger(
+        user_id='Demo', title='demo@aa.io', description='password', active='', run_trigger='', conditions='', actions='')
+    demo = MessageTrigger(
+        user_id='Demo', title='demo@aa.io', description='password', active='', run_trigger='', conditions='', actions='')
+    demo = MessageTrigger(
+        user_id='Demo', title='demo@aa.io', description='password', active='', run_trigger='', conditions='', actions='')
+    demo = MessageTrigger(
+        user_id='Demo', title='demo@aa.io', description='password', active='', run_trigger='', conditions='', actions='')
+    demo = MessageTrigger(
+        user_id='Demo', title='demo@aa.io', description='password', active='', run_trigger='', conditions='', actions='')
+    demo = MessageTrigger(
+        user_id='Demo', title='demo@aa.io', description='password', active='', run_trigger='', conditions='', actions='')
+    demo = MessageTrigger(
+        user_id='Demo', title='demo@aa.io', description='password', active='', run_trigger='', conditions='', actions='')
+    demo = MessageTrigger(
+        user_id='Demo', title='demo@aa.io', description='password', active='', run_trigger='', conditions='', actions='')
+    demo = MessageTrigger(
+        user_id='Demo', title='demo@aa.io', description='password', active='', run_trigger='', conditions='', actions='')
+        
     
 
 

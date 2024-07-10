@@ -14,6 +14,28 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
 
+    users_message_triggers = db.relationship(
+        "users_message_triggers",
+        back_populates = 'message_triggers_user',
+        cascade="delete"
+    )
+
+    users_macros = db.relationship(
+        "users_macros",
+        back_populates = "macros_user",
+        cascade="delete"
+    )
+
+    users_tickets = db.relationship(
+        "users_tickets",
+        back_populates = "tickets_user"
+    )
+
+    users_customers = db.relationship(
+        "users_customers",
+        back_populates = "customers_user"
+    )
+
     @property
     def password(self):
         return self.hashed_password

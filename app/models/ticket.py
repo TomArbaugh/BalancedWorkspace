@@ -13,7 +13,7 @@ class Ticket(db.Model):
     priority = db.Column(db.String(40), nullable=False)
     assignee = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")),  nullable=False)
     requester = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("customers.id")), nullable=False)
-    apply_macro = db.Column(db.String(2000), db.ForeignKey(add_prefix_for_prod("macros.id")))
+    apply_macro = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("macros.id")))
     description = db.Column(db.String(2000), nullable=False)
 
     tickets_user = db.relationship(

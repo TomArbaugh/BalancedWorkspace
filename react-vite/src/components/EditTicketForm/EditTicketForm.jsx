@@ -1,12 +1,21 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { postTicketThunk } from "../../redux/ticket";
+import { getTicketIdThunk, putTicketThunk } from "../../redux/ticket";
+import { useParams } from "react-router-dom";
 
+function EditTicketForm(){
 
-function TicketForm(){
     const dispatch = useDispatch()
+    const {ticket_id} = useParams()
 
-  
+
+    useEffect(() => {
+        dispatch(getTicketIdThunk(ticket_id))
+    }, [dispatch, ticket_id])
+   // console.log(ticket_id)
+    // const ticket = useSelector((state) => state.ticket.ticketById)
+    // console.log(ticket.title)
+
     const [image, setImage] = useState(null);
     const [imageLoading, setImageLoading] = useState(false);
     const [title, setTitle] = useState()
@@ -15,8 +24,20 @@ function TicketForm(){
     const [priority, setPriority] = useState("Low")
     const [apply_macro, setApplyMacro] = useState("No Macros")
     const [description, setDescription] = useState()
-    const [requester, setRequester] = useState("No Customer")
+    const [requester] = useState("No Customer")
+  
+    // useEffect(() => {
         
+    //         setTitle(ticket.title)
+    //         setAssignee(ticket.assignee)
+    //         setType(ticket.type)
+    //         setPriority(ticket.priority)
+    //         setApplyMacro(ticket.apply_macro)
+    //         setDescription(ticket.description)
+    //         setRequester(ticket.requester)
+        
+    // }, [ticket])
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         // const formData = new FormData();
@@ -35,11 +56,13 @@ function TicketForm(){
         // aws uploads can be a bit slow—displaying
         // some sort of loading message is a good idea
         setImageLoading(true);
-        await dispatch(postTicketThunk(image, newTicket));
+        await dispatch(putTicketThunk(image, newTicket, ticket_id));
         // history.push("/images");
     }
     // ...
-    
+
+   
+
 return (
     <form 
     onSubmit={handleSubmit}
@@ -105,9 +128,9 @@ return (
         Requester
     <select
     value={requester}
-    onChange={((e) => setRequester(e.target.value))}
+    
     >
-        <option>No Customer</option>
+        <option>{requester}</option>
     </select>
     </label>
     <lable>
@@ -126,4 +149,4 @@ return (
 }
 
 
-export default TicketForm
+export default EditTicketForm

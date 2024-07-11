@@ -52,8 +52,8 @@ class User(db.Model, UserMixin):
             "id": self.id,
             "username": self.username,
             "email": self.email,
-            "users_message_triggers": [trigger.to_dict() for trigger in self.users_message_triggers],
-            "users_macros": [macro.to_dict() for macro in self.users_macros],
-            "users_tickets": [ticket.to_dict() for ticket in self.users_tickets],
-            "users_customers": [customer.to_dict() for customer in self.users_customers]
+            # "users_message_triggers": [trigger.to_dict() for trigger in self.users_message_triggers],
+            # "users_macros": [macro.to_dict() for macro in self.users_macros],
+            # "users_tickets": [ticket.to_dict() for ticket in self.users_tickets],
+            # "users_customers": [customer.to_dict() for customer in self.users_customers]
         }

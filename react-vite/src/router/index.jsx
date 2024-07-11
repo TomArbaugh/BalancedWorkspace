@@ -3,7 +3,7 @@ import LoginFormPage from '../components/LoginFormPage';
 import SignupFormPage from '../components/SignupFormPage';
 import Layout from './Layout';
 import TicketForm from '../components/TicketForm/TicketForm';
-
+import EditTicketForm from '../components/EditTicketForm/EditTicketForm';
 export const router = createBrowserRouter([
   {
     element: <Layout />,
@@ -23,6 +23,10 @@ export const router = createBrowserRouter([
       {
         path: "create/ticket",
         element: <TicketForm />
+      },
+      {
+        path: "edit/ticket/:ticket_id",
+        element: <EditTicketForm />
       }
     ],
   },

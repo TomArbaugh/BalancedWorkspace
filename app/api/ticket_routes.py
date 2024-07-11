@@ -89,6 +89,69 @@ def create_ticket():
 
     return 
 
+
+@ticket_routes.route("/<int:ticket_id>/edit", methods=["PUT"])
+@login_required
+def edit_ticket(ticket_id):
+
+    ticket = Ticket.query.get(ticket_id)
+
+    if ticket is None:
+        return {"Error": "No Such Ticket"}
+    
+    form = TicketForm()
+
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+        
+        ticket.title = form.data["title"]
+        ticket.type = form.data["type"]
+        ticket.priority = form.data["priority"]
+        ticket.assignee = form.data["assignee"]
+        ticket.apply_macro = form.data["apply_macro"]
+        ticket.requester = form.data["requester"]
+        ticket.description = form.data["description"]
+
+        db.session.commit()
+        return ticket.to_dict()
+
+    if form.errors:
+        print(form.errors)
+        return {'errors': form.errors}, 400
+
+        
+
+@ticket_routes.route("/<int:ticket_id>/edit-image", methods=["PUT"])
+@login_required
+def edit_image(ticket_id):
+#     # print("-----------------------------------------------------", ticket_id)
+    ticket = Ticket.query.get(ticket_id)
+    form = TicketImageForm()
+
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+#         print("-----------------------------------------", "form Validated") 
+        image = form.data["image"]
+        image.filename = get_unique_filename(image.filename)
+        upload = upload_file_to_s3(image)
+        print(upload)
+
+        if "url" not in upload:
+        # if the dictionary doesn't have a url key
+        # it means that there was an error when you tried to upload
+        # so you send back that error message (and you printed it above)
+            return {'errors': upload['errors']}, 400
+
+        url = upload["url"]
+        ticket.tickets_images[0].image = url
+        db.session.commit()
+        return ticket.tickets_images[0].to_dict(), 201
+
+    else:
+        return {'errors': form.errors}, 400
+
 @ticket_routes.route("/<int:id>/delete")
 @login_required
 def delete_ticket(id):

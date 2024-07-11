@@ -33,7 +33,7 @@ export const postTicketThunk = (formData, newTicket) => async (dispatch) => {
   };
 
 
-initialState = {}
+const initialState = {}
 
 
 function ticketReducer(state = initialState, action) {

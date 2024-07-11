@@ -83,7 +83,7 @@ return (
     <label>
         Assignee
     <select
-    value={customer.user_id}
+    value={assignee}
     onChange={((e) => setAssignee(e.target.value))}
     >
         <option>No Assignees</option>

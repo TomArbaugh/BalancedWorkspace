@@ -15,7 +15,7 @@ class Image(db.Model):
         back_populates = "tickets_images"
     )
 
-    def to_dict():
+    def to_dict(self):
         return {
             "ticket_id": self.ticket_id,
             "image": self.image

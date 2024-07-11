@@ -33,7 +33,8 @@ class Ticket(db.Model):
 
     tickets_images = db.relationship(
         "Image",
-        back_populates = "images_ticket"
+        back_populates = "images_ticket",
+        cascade="delete"
     )
 
     def to_dict(self):

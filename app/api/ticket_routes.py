@@ -1,22 +1,43 @@
-from app.models import Ticket, db
+from app.models import Ticket, db, Image
 from flask import Blueprint, request, jsonify
 from flask_login import current_user, login_required
+from app.forms.ticket_form import TicketForm
+from app.forms.ticket_image_form import TicketImageForm
 from app.api.aws import (
     upload_file_to_s3, get_unique_filename)
 
 
 ticket_routes = Blueprint('tickets', __name__)
 
-@ticket_routes.route("/add-image", methods=["POST"])
+@ticket_routes.route("/")
+@login_required
+def get_all_tickets():
+
+    tickets = Ticket.query.all()
+
+    return [ticket.to_dict() for ticket in tickets]
+
+@ticket_routes.route("/<int:id>")
+@login_required
+def get_ticket(id):
+
+    ticket = Ticket.query.get(id)
+
+    if ticket is None:
+        return {"message": "No Such Ticket"}, 404
+    else:
+        return ticket.to_dict()
+
+@ticket_routes.route("/<int:ticket_id>/add-image", methods=["POST"])
 @login_required
 def upload_image(ticket_id):
-
-    form = TicketForm()
+    # print("-----------------------------------------------------", ticket_id)
+    form = TicketImageForm()
 
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
-          
+        print("-----------------------------------------", "form Validated") 
         image = form.data["image"]
         image.filename = get_unique_filename(image.filename)
         upload = upload_file_to_s3(image)
@@ -32,15 +53,14 @@ def upload_image(ticket_id):
         new_image = Image(ticket_id=ticket_id, image= url)
         db.session.add(new_image)
         db.session.commit()
-        return new_image.to_dict()
+        return new_image.to_dict(), 201
 
-    if form.errors:
-        print(form.errors)
+    else:
         return {'errors': form.errors}, 400
 
-    return 
 
-@ticket_routes.route("/api/create-ticket", methods=["POST"])
+
+@ticket_routes.route("/create", methods=["POST"])
 @login_required
 def create_ticket():
     form = TicketForm()
@@ -50,12 +70,14 @@ def create_ticket():
     if form.validate_on_submit():
           
         new_ticket = Ticket(
-            customer_id = current_user.id,
+        
             title = form.data["title"],
             type = form.data["type"],
             priority = form.data["priority"],
             assignee = form.data["assignee"],
-            apply_macro = form.data["apply_macro"]
+            apply_macro = form.data["apply_macro"],
+            requester = form.data["requester"],
+            description = form.data["description"]
         )
         db.session.add(new_ticket)
         db.session.commit()
@@ -66,3 +88,18 @@ def create_ticket():
         return {'errors': form.errors}, 400
 
     return 
+
+@ticket_routes.route("/<int:id>/delete")
+@login_required
+def delete_ticket(id):
+
+    ticket = Ticket.query.get(id)
+
+    if ticket is None:
+        return {"message": "No Such Ticket"}, 404
+
+    db.session.delete(ticket)
+    db.session.commit()
+
+    return {"message": "Ticket delete successfully"}
+    

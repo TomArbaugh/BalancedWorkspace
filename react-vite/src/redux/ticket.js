@@ -8,28 +8,46 @@ const postTicket = (ticketImage, newTicket) => ({
     }
 })
 
-export const postTicketThunk = (formData, newTicket) => async (dispatch) => {
+export const postTicketThunk = (image, newTicket) => async (dispatch) => {
+  console.log("FORM DATA", image)
+  console.log("newTicket", newTicket)
 
-    const imageResponse = await fetch(`/api/add-image`, {
-        method: "POST",
-        body: formData
-      });
+  const formData = new FormData();
+  formData.append('image', image);
 
-      const ticketResponse = await fetch('/api/create-ticket', {
+
+      const ticketResponse = await fetch('/api/tickets/create', {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify(newTicket)
       })
-    
-      if (imageResponse.ok && ticketResponse.ok) {
-          const { ticketImage } = await imageResponse.json();
+      let ticket_id;
+      if (ticketResponse.ok) {
+        console.log("TICKET SENT TO ROUTES")
           const newTicket = await ticketResponse.json()
-          dispatch(postTicket(ticketImage, newTicket));
+          dispatch(postTicket(newTicket));
+          ticket_id = newTicket.id
       } else {
-          console.log("There was an error making your post!")
+          console.log("There was an error making your ticketResponse!")
       }
+
+      const imageResponse = await fetch(`/api/tickets/${ticket_id}/add-image`, {
+        method: "POST",
+        body: formData
+      });
+    
+
+      if (imageResponse.ok) {
+        console.log("IMAGE SENT TO ROUTES")
+        const ticketImage = await imageResponse.json();
+         
+        dispatch(postTicket(ticketImage, ticket_id));
+        
+    } else {
+        console.log("There was an error making your ImageResponse!")
+    }
   };
 
 

@@ -10,28 +10,33 @@ function TestForm(){
     const [image, setImage] = useState(null);
     const [imageLoading, setImageLoading] = useState(false);
     const [title, setTitle] = useState()
-    const [assignee, setAssignee] = useState()
-    const [type, setType] = useState()
-    const [priority, setPriority] = useState()
-    const [applyMacro, setApplyMacro] = useState()
+    const [assignee, setAssignee] = useState("No Assignees")
+    const [type, setType] = useState("Question")
+    const [priority, setPriority] = useState("Low")
+    const [apply_macro, setApplyMacro] = useState("No Macros")
+    const [description, setDescription] = useState()
+    const [requester, setRequester] = useState("No Customer")
         
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const formData = new FormData();
-        formData.append("image", image);
-
+        // const formData = new FormData();
+        // formData.append("image", image);
+        // console.log(image, "formData jsx")
         const newTicket = {
             title,
             assignee,
             type,
             priority,
-            applyMacro,
+            apply_macro,
+            requester,
+            description
         }
+        console.log(newTicket)
         // aws uploads can be a bit slow—displaying
         // some sort of loading message is a good idea
         setImageLoading(true);
-        await dispatch(postTicketThunk(formData, newTicket));
-        history.push("/images");
+        await dispatch(postTicketThunk(image, newTicket));
+        // history.push("/images");
     }
     // ...
     
@@ -72,6 +77,13 @@ return (
             <option>Urgent</option>
         </select>
     </lable>
+    <label>
+        Description
+        <input 
+        value={description}
+        onChange={((e) => setDescription(e.target.value))}
+        />
+    </label>
     <lable>
         Image Upload
         <input
@@ -89,10 +101,19 @@ return (
         <option>No Assignees</option>
     </select>
     </label>
+    <label>
+        Requester
+    <select
+    value={requester}
+    onChange={((e) => setRequester(e.target.value))}
+    >
+        <option>No Customer</option>
+    </select>
+    </label>
     <lable>
         Apply Macro
         <select
-        value={applyMacro}
+        value={apply_macro}
         onChange={((e) => setApplyMacro(e.target.value))}
         >
             <option>No Macros</option>

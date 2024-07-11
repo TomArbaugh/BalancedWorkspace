@@ -38,8 +38,8 @@ def seed_macros():
 # it will reset the primary keys for you as well.
 def undo_macros():
     if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.macro RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.macros RESTART IDENTITY CASCADE;")
     else:
-        db.session.execute(text("DELETE FROM macro"))
+        db.session.execute(text("DELETE FROM macros"))
         
     db.session.commit()

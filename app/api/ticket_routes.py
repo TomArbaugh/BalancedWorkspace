@@ -1,7 +1,7 @@
 from app.models import Ticket, db
 from flask import Blueprint, request, jsonify
 from flask_login import current_user, login_required
-from .aws import (
+from app.api.aws import (
     upload_file_to_s3, get_unique_filename)
 
 

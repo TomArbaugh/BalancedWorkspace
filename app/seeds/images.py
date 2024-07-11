@@ -3,45 +3,45 @@ from sqlalchemy.sql import text
 
 # Adds a demo user, you can add other users here if you want
 def seed_images():
-    image_one = Customer(
+    image_one = Image(
         ticket_id=1, image='https://balancedworkspace.s3.us-west-2.amazonaws.com/Dive+pictures+/17636766_10155282365826495_8571014394843847501_o.jpg')
-    image_two = Customer(
+    image_two = Image(
         ticket_id=2, image='https://balancedworkspace.s3.us-west-2.amazonaws.com/Dive+pictures+/17436093_10155282351821495_5402089099493990569_o.jpg')
-    image_three = Customer(
-        ticket_id=3 image='https://balancedworkspace.s3.us-west-2.amazonaws.com/Dive+pictures+/GPTempDownload+8.jpg')
-    image_four = Customer(
+    image_three = Image(
+        ticket_id=3, image='https://balancedworkspace.s3.us-west-2.amazonaws.com/Dive+pictures+/GPTempDownload+8.jpg')
+    image_four = Image(
         ticket_id=4, image='https://balancedworkspace.s3.us-west-2.amazonaws.com/Dive+pictures+/17796123_10155282344681495_6837470877082983069_n.jpg')
-    image_five = Customer(
+    image_five = Image(
         ticket_id=5, image='https://balancedworkspace.s3.us-west-2.amazonaws.com/Dive+pictures+/GPTempDownload.jpg')
-    image_six= Customer(
+    image_six= Image(
         ticket_id=6, image='https://balancedworkspace.s3.us-west-2.amazonaws.com/Dive+pictures+/17492873_10155282357376495_226287308396872968_o.jpg')
-    image_seven = Customer(
+    image_seven = Image(
         ticket_id=7, image='https://balancedworkspace.s3.us-west-2.amazonaws.com/Dive+pictures+/17620189_10155282365526495_7201474761420171703_o.jpg')
-    image_eight = Customer(
+    image_eight = Image(
         ticket_id=8, image='https://balancedworkspace.s3.us-west-2.amazonaws.com/Dive+pictures+/17795872_10155282338391495_8125173508302383704_n.jpg')
-    image_nine = Customer(
+    image_nine = Image(
         ticket_id=9, image='https://balancedworkspace.s3.us-west-2.amazonaws.com/Dive+pictures+/Screenshot+2024-07-10+at+6.12.47%E2%80%AFPM.png')
-    image_ten = Customer(
+    image_ten = Image(
         ticket_id=10, image='https://balancedworkspace.s3.us-west-2.amazonaws.com/Dive+pictures+/12489275_10153932470491495_5056287276298904428_o.jpg')
-    image_eleven = Customer(
+    image_eleven = Image(
         ticket_id=11, image='https://balancedworkspace.s3.us-west-2.amazonaws.com/Dive+pictures+/530735_10151430873726495_657095351_n.jpg')
-    image_twelve = Customer(
+    image_twelve = Image(
         ticket_id=12, image='https://balancedworkspace.s3.us-west-2.amazonaws.com/Dive+pictures+/23748_10151430868916495_439594784_n.jpg')
-    image_thirteen = Customer(
+    image_thirteen = Image(
         ticket_id=13, image='https://balancedworkspace.s3.us-west-2.amazonaws.com/Dive+pictures+/17966251_10155323631096495_3172275008512528051_o.jpg')
-    image_fourteen = Customer(
+    image_fourteen = Image(
         ticket_id=14, image='https://balancedworkspace.s3.us-west-2.amazonaws.com/Dive+pictures+/Screenshot+2024-07-10+at+6.13.58%E2%80%AFPM.png')
-    image_fifteen = Customer(
+    image_fifteen = Image(
         ticket_id=15, image='https://balancedworkspace.s3.us-west-2.amazonaws.com/Dive+pictures+/GPTempDownload+2.jpg')
-    image_sixteen = Customer(
+    image_sixteen = Image(
         ticket_id=16, image='https://balancedworkspace.s3.us-west-2.amazonaws.com/Dive+pictures+/17620222_10155282345831495_3430212171992731514_o.jpg')
-    image_seventeen = Customer(
+    image_seventeen = Image(
         ticket_id=17, image='https://balancedworkspace.s3.us-west-2.amazonaws.com/Dive+pictures+/GPTempDownload+5.jpg')
-    image_eighteen = Customer(
+    image_eighteen = Image(
         ticket_id=18, image='https://balancedworkspace.s3.us-west-2.amazonaws.com/Dive+pictures+/17855126_10155323632346495_1822373095425265915_o.jpg')
-    image_nineteen = Customer(
+    image_nineteen = Image(
         ticket_id=19, image='https://balancedworkspace.s3.us-west-2.amazonaws.com/Dive+pictures+/Screenshot+2024-07-10+at+6.12.19%E2%80%AFPM.png')
-    image_twenty = Customer(
+    image_twenty = Image(
         ticket_id=20, image='https://balancedworkspace.s3.us-west-2.amazonaws.com/Dive+pictures+/17492873_10155282357376495_226287308396872968_o.jpg')
 
     images = [image_one, image_two, image_three, image_four, image_five, image_six, image_seven, image_eight, image_nine, image_ten, image_eleven, image_twelve, image_thirteen, image_fourteen, image_fifteen, image_sixteen, image_seventeen, image_eighteen, image_nineteen, image_twenty]

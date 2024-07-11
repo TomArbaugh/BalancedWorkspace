@@ -8,7 +8,7 @@ class MessageTrigger(db.Model):
         __table_args__ = {'schema': SCHEMA}
     
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, nullable=False, db.ForeignKey(add_prefix_for_prod("user.id")))
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
     title = db.Column(db.String(40), nullable=False)
     description = db.Column(db.String(2000), nullable=False)
     active = db.Column(db.String(40), nullable=False)
@@ -17,7 +17,7 @@ class MessageTrigger(db.Model):
     actions = db.Column(db.String(255))
 
     message_triggers_user = db.relationship(
-        "User,
+        "User",
         back_populates = "users_message_triggers"
     )
 

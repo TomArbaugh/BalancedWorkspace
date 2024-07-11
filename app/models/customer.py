@@ -8,9 +8,9 @@ class Customer(db.Model):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, nullable=False, db.ForeignKey(add_prefix_for_prod("user.id")))
-    name = db.Column(db.string(40), nullable=False)
-    email = db.Column(db.string(255), nullable=False, unique=True)
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
+    name = db.Column(db.String(40), nullable=False)
+    email = db.Column(db.String(255), nullable=False, unique=True)
 
     customers_user = db.relationship(
         "User",
@@ -29,6 +29,6 @@ class Customer(db.Model):
             "user_id": self.user_id,
             "name": self.name,
             "email": self.email,
-            "customers_user": self.customers_user.to_dict()
+            "customers_user": self.customers_user.to_dict(),
             "customers_tickets": [ticket.to_dict() for ticket in self.customrers_tickets]
         }

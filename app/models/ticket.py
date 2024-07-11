@@ -11,8 +11,8 @@ class Ticket(db.Model):
     title = db.Column(db.String(40), nullable=False)
     type = db.Column(db.String(255), nullable=False)
     priority = db.Column(db.String(40), nullable=False)
-    assignee = db.Column(db.Integer, nullable=False, db.ForeignKey(add_prefix_for_prod("users.id")))
-    requester = db.Column(db.Integer, nullable=False, db.ForeignKey(add_prefix_for_prod("customers.id")))
+    assignee = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")),  nullable=False)
+    requester = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("customers.id")), nullable=False)
     apply_macro = db.Column(db.String(2000), db.ForeignKey(add_prefix_for_prod("macros.id")))
     description = db.Column(db.String(2000), nullable=False)
 
@@ -33,7 +33,7 @@ class Ticket(db.Model):
 
     tickets_images = db.relationship(
         "Image",
-        back_populates = images_ticket
+        back_populates = "images_ticket"
     )
 
     def to_dict(self):

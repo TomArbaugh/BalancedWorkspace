@@ -5,4 +5,4 @@ from .customer import Customer
 from .macro import Macro
 from .message_trigger import MessageTrigger
 from .ticket import Ticket 
-
+from .image import Image

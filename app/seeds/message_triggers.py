@@ -10,10 +10,10 @@ def seed_message_triggers():
         user_id=1, title='One Moment', description='Greet the customer right away', active='yes', run_trigger='when a customer requests a conversation', conditions='during business hours', actions="Hello, I will be right with you!")
     trigger_three = MessageTrigger(
         user_id=1, title='substance', description='permanence', active='no', run_trigger='when message is sent', conditions='customer name is Heraclitus', actions="Heraclitus, your scuba certification will remain permanently in existance, regardless of the permanents of the phrase that nothing remains permanently in existance.")
-    trigger_five = MessageTrigger(
+    trigger_four = MessageTrigger(
         user_id=1, title='Why', description='Why?', active='yes', run_trigger='when a customer requests a conversation', conditions='customer name is Socrates', actions='WHY???')
 
-    
+    triggers = [trigger_one, trigger_two, trigger_three, trigger_four]
     for trigger in triggers:
         db.session.add(trigger)
     

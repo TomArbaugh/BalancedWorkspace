@@ -11,10 +11,10 @@ class MessageTrigger(db.Model):
     user_id = db.Column(db.Integer, nullable=False, db.ForeignKey(add_prefix_for_prod("user.id")))
     title = db.Column(db.String(40), nullable=False)
     description = db.Column(db.String(2000), nullable=False)
-    active = db.Column(db.String(255), nullable=False)
+    active = db.Column(db.String(40), nullable=False)
     run_trigger = db.Column(db.String(255), nullable=False)
     conditions = db.Column(db.String(255), nullable=False)
-    actions = db.Column(db.String(255), nullable=False)
+    actions = db.Column(db.String(255))
 
     message_triggers_user = db.relationship(
         "User,

@@ -8,9 +8,10 @@ class TicketForm(FlaskForm):
     title = StringField("title", validators=[DataRequired()])
     type = SelectField("type", validators=[DataRequired()], choices=["Question", "Incident", "Problem", "Task"])
     priority = SelectField("priority", validators=[DataRequired()], choices=["Low", "Medium", "High", "Urgent"])
-    image = FileField("Image File", validators=[FileRequired(), FileAllowed(list(ALLOWED_EXTENSIONS))])
     assignee = SelectField("assignee", choices=[])
+    requester = SelectField("requester", choices=[])
     apply_macro = SelectField("apply_macro", validators=[DataRequired()], choices=[])
+    description = StringField("description", validators=[DataRequired()])
     submit = SubmitField("Submit Ticket")
 
 

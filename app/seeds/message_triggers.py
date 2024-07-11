@@ -4,51 +4,19 @@ from sqlalchemy.sql import text
 
 # Adds a demo user, you can add other users here if you want
 def seed_message_triggers():
-    demo = MessageTrigger(
-        user_id='Demo', title='demo@aa.io', description='password', active='', run_trigger='', conditions='', actions='')
-    demo = MessageTrigger(
-        user_id='Demo', title='demo@aa.io', description='password', active='', run_trigger='', conditions='', actions='')
-    demo = MessageTrigger(
-        user_id='Demo', title='demo@aa.io', description='password', active='', run_trigger='', conditions='', actions='')
-    demo = MessageTrigger(
-        user_id='Demo', title='demo@aa.io', description='password', active='', run_trigger='', conditions='', actions='')
-    demo = MessageTrigger(
-        user_id='Demo', title='demo@aa.io', description='password', active='', run_trigger='', conditions='', actions='')
-    demo = MessageTrigger(
-        user_id='Demo', title='demo@aa.io', description='password', active='', run_trigger='', conditions='', actions='')
-    demo = MessageTrigger(
-        user_id='Demo', title='demo@aa.io', description='password', active='', run_trigger='', conditions='', actions='')
-    demo = MessageTrigger(
-        user_id='Demo', title='demo@aa.io', description='password', active='', run_trigger='', conditions='', actions='')
-    demo = MessageTrigger(
-        user_id='Demo', title='demo@aa.io', description='password', active='', run_trigger='', conditions='', actions='')
-    demo = MessageTrigger(
-        user_id='Demo', title='demo@aa.io', description='password', active='', run_trigger='', conditions='', actions='')
-    demo = MessageTrigger(
-        user_id='Demo', title='demo@aa.io', description='password', active='', run_trigger='', conditions='', actions='')
-    demo = MessageTrigger(
-        user_id='Demo', title='demo@aa.io', description='password', active='', run_trigger='', conditions='', actions='')
-    demo = MessageTrigger(
-        user_id='Demo', title='demo@aa.io', description='password', active='', run_trigger='', conditions='', actions='')
-    demo = MessageTrigger(
-        user_id='Demo', title='demo@aa.io', description='password', active='', run_trigger='', conditions='', actions='')
-    demo = MessageTrigger(
-        user_id='Demo', title='demo@aa.io', description='password', active='', run_trigger='', conditions='', actions='')
-    demo = MessageTrigger(
-        user_id='Demo', title='demo@aa.io', description='password', active='', run_trigger='', conditions='', actions='')
-    demo = MessageTrigger(
-        user_id='Demo', title='demo@aa.io', description='password', active='', run_trigger='', conditions='', actions='')
-    demo = MessageTrigger(
-        user_id='Demo', title='demo@aa.io', description='password', active='', run_trigger='', conditions='', actions='')
-    demo = MessageTrigger(
-        user_id='Demo', title='demo@aa.io', description='password', active='', run_trigger='', conditions='', actions='')
-    demo = MessageTrigger(
-        user_id='Demo', title='demo@aa.io', description='password', active='', run_trigger='', conditions='', actions='')
-        
+    trigger_one = MessageTrigger(
+        user_id=1, title='Out of office', description='I will help you when I am back', active='yes', run_trigger='when a customer requests a conversation', conditions='outside of business hours', actions="Hello and thank you for your interest! I am out of the office, but will be back durring normal business hours to assist you!")
+    trigger_two = MessageTrigger(
+        user_id=1, title='One Moment', description='Greet the customer right away', active='yes', run_trigger='when a customer requests a conversation', conditions='during business hours', actions="Hello, I will be right with you!")
+    trigger_three = MessageTrigger(
+        user_id=1, title='substance', description='permanence', active='no', run_trigger='when message is sent', conditions='customer name is Heraclitus', actions="Heraclitus, your scuba certification will remain permanently in existance, regardless of the permanents of the phrase that nothing remains permanently in existance.")
+    trigger_five = MessageTrigger(
+        user_id=1, title='Why', description='Why?', active='yes', run_trigger='when a customer requests a conversation', conditions='customer name is Socrates', actions='WHY???')
+
     
-
-
-    db.session.add()
+    for trigger in triggers:
+        db.session.add(trigger)
+    
     db.session.commit()
 
 

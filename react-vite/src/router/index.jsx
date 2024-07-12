@@ -4,13 +4,14 @@ import SignupFormPage from '../components/SignupFormPage';
 import Layout from './Layout';
 import TicketForm from '../components/TicketForm/TicketForm';
 import EditTicketForm from '../components/EditTicketForm/EditTicketForm';
+import LandingPage from '../components/LandingPage/LandingPage';
 export const router = createBrowserRouter([
   {
     element: <Layout />,
     children: [
       {
         path: "/",
-        element: <h1>Welcome!</h1>,
+        element: <LandingPage />
       },
       {
         path: "login",

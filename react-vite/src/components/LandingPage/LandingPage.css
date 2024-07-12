@@ -2,6 +2,7 @@
     text-align: center;
     font-size: xx-large;
     background-color: #9be3e0;
+    padding-bottom: 100px;
     
 }
 
@@ -9,7 +10,7 @@
     margin: 0px;
     padding: 15px;
     color: #1b3c59;
-    text-shadow: 1px 1px 1px #0fa6b7;
+    text-shadow: 1px 1px .25px #00272c;
 }
 .landing-top {
     display: flex;

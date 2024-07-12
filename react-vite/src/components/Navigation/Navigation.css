@@ -1,7 +1,12 @@
 .profile-dropdown {
   position: absolute;
+  color:rgb(222, 238, 253);
+  list-style-type: none;
 }
 
+.log-in-ul {
+  color: white;
+}
 .nav-links {
   color: rgb(226, 255, 245);
   text-decoration: none;
@@ -18,7 +23,7 @@
   border: none;
   color: rgb(2, 53, 43);
   background-color: rgb(222, 238, 253);
-  box-shadow: .5px .5px 1px 1px #84a5c1;
+  box-shadow: 1px 1px 1.5px 1px #01192e;
   
 }
 
@@ -29,7 +34,8 @@
 
 .text-dec-none {
   text-decoration: none;
-  color: rgb(226, 255, 245);
+  font-size: larger;
+  color: rgb(245, 253, 249);
   
 }
 
@@ -39,12 +45,12 @@
 
 #landing-h1 {
   margin-bottom: 0px;
-  text-shadow: .75px .25px .5px #117ddb;
+  text-shadow: .1px .5px 1px #001a16;
 }
 
 #landing-h2 {
   margin-top: 0px;
-  text-shadow: .75px .25px .5px #117ddb;
+  text-shadow: 1px .5px 1px #001a16;
 }
 
 #landing-ul {

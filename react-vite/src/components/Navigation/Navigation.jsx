@@ -12,9 +12,6 @@ function Navigation() {
           <h2 id="landing-h2">workspace</h2>
           </NavLink>
       </li>
-      <div>
-        <Link className="nav-links" to="create/ticket">Create Ticket</Link>
-      </div>
       <li className="li-landing">
         <ProfileButton />
       </li>

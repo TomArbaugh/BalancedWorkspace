@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getTicketIdThunk, putTicketThunk } from "../../redux/ticket";
 import { useParams } from "react-router-dom";
 
@@ -13,7 +13,7 @@ function EditTicketForm(){
         dispatch(getTicketIdThunk(ticket_id))
     }, [dispatch, ticket_id])
    // console.log(ticket_id)
-    // const ticket = useSelector((state) => state.ticket.ticketById)
+    const ticket = useSelector((state) => state.ticket.ticketById)
     // console.log(ticket.title)
 
     const [image, setImage] = useState(null);
@@ -24,19 +24,19 @@ function EditTicketForm(){
     const [priority, setPriority] = useState("Low")
     const [apply_macro, setApplyMacro] = useState("No Macros")
     const [description, setDescription] = useState()
-    const [requester] = useState("No Customer")
+    const [requester, setRequester] = useState("No Customer")
   
-    // useEffect(() => {
-        
-    //         setTitle(ticket.title)
-    //         setAssignee(ticket.assignee)
-    //         setType(ticket.type)
-    //         setPriority(ticket.priority)
-    //         setApplyMacro(ticket.apply_macro)
-    //         setDescription(ticket.description)
-    //         setRequester(ticket.requester)
-        
-    // }, [ticket])
+    useEffect(() => {
+        if (ticket) {
+            setTitle(ticket.title)
+            setAssignee(ticket.assignee)
+            setType(ticket.type)
+            setPriority(ticket.priority)
+            setApplyMacro(ticket.apply_macro)
+            setDescription(ticket.description)
+            setRequester(ticket.requester)
+        }
+    }, [ticket])
 
     const handleSubmit = async (e) => {
         e.preventDefault();

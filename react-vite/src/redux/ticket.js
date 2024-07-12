@@ -1,6 +1,12 @@
+const GET_ALL_TICKETS = "/get/all/tickets"
 const GET_TICKET_ID = "/get/ticket/id"
 const CREATE_TICKET = "/post/ticket"
 const EDIT_TICKET = "/put/ticket"
+
+const getAllTickets = (tickets) => ({
+    type: GET_ALL_TICKETS,
+    payload: tickets
+})
 
 const getTicketId = (ticket) => ({
     type: GET_TICKET_ID,
@@ -22,6 +28,19 @@ const putTicket = (ticketImage, newTicket) => ({
     }
 })
 
+export const getAllTicketsThunk = () => async (dispatch) => {
+  
+  const response = await fetch(`/api/tickets/`)
+  if (response.ok) {
+    
+    const tickets = await response.json()
+    // console.log("TICKETS", tickets)
+    dispatch(getAllTickets(tickets))
+    
+  } else {
+    console.log("ALL TICKETS THUNK NOT OK")
+  }
+}
 export const getTicketIdThunk = (ticket_id) => async (dispatch) => {
   // console.log(ticket_id, "ticketID in thunk")
   const response = await fetch(`/api/tickets/${ticket_id}`)
@@ -121,6 +140,8 @@ const initialState = {}
 
 function ticketReducer(state = initialState, action) {
     switch (action.type) {
+      case GET_ALL_TICKETS:
+        return {...state, tickets: action.payload}
       case GET_TICKET_ID:
         return {...state, ticketById: action.payload}
       case EDIT_TICKET:

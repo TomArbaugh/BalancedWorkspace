@@ -11,6 +11,12 @@ function LoginFormModal() {
   const [errors, setErrors] = useState({});
   const { closeModal } = useModal();
 
+  const demoLogIn = () => {
+    setEmail('demo@aa.io');
+    setPassword('password');
+    return null;
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -52,7 +58,14 @@ function LoginFormModal() {
           />
         </label>
         {errors.password && <p>{errors.password}</p>}
+        <button
+
+          onClick={() => demoLogIn()}
+        >
+          Log in as Demo User
+        </button>
         <button type="submit">Log In</button>
+
       </form>
     </>
   );

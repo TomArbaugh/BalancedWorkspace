@@ -8,11 +8,13 @@ import thunk from "redux-thunk";
 import sessionReducer from "./session";
 import ticketReducer from "./ticket"
 import customerReducer from "./customer";
+import applyMacroReducer from "./macro";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   ticket: ticketReducer,
-  customer: customerReducer
+  customer: customerReducer,
+  applyMacro: applyMacroReducer
 });
 
 let enhancer;

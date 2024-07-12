@@ -31,6 +31,5 @@ class Macro(db.Model):
             "name": self.name,
             "description": self.description,
             "available_for": self.available_for,
-            "actions": self.actions,
-            "macros_user": self.macros_user.to_dict()
+            "actions": self.actions
         }

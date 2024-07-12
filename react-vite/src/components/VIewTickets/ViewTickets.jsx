@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getTicketIdThunk } from "../../redux/ticket";
 import { useParams } from "react-router-dom";
 import { getCustomerIdThunk } from "../../redux/customer";
+import { getMacroIdThunk } from "../../redux/macro";
 
 
 
@@ -20,13 +21,20 @@ function ViewTickets(){
     }, [dispatch, ticket_id])
    // console.log(ticket_id)
     // console.log(ticket.title)
+    useEffect(() => {
+        dispatch(getMacroIdThunk())
+    }, [dispatch])
     
     const customer = useSelector((state) => state.customer)
     const ticket = useSelector((state) => state.ticket.ticketById)
-    
+    const macros = useSelector((state) => state.applyMacro)
+
     let requesterId; 
     ticket ? requesterId = ticket.requester : null
 
+        useEffect(() => {
+
+        }, [macros])
 
        useEffect(() => {
 
@@ -40,6 +48,7 @@ function ViewTickets(){
 
 if (!ticket) return null
 if (!customer) return null
+if (!macros) return  null
 
 return (
     <div>

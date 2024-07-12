@@ -1,4 +1,4 @@
-import { NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import ProfileButton from "./ProfileButton";
 import { GiTightrope } from "react-icons/gi";
 import "./Navigation.css";

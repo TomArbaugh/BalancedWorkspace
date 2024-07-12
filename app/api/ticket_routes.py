@@ -14,8 +14,11 @@ ticket_routes = Blueprint('tickets', __name__)
 def get_all_tickets():
 
     tickets = Ticket.query.all()
+    if tickets is None:
+        return {"message": "No Such Ticket"}, 404
+    else:
+        return [ticket.to_dict() for ticket in tickets]
 
-    return [ticket.to_dict() for ticket in tickets]
 
 @ticket_routes.route("/<int:id>")
 @login_required

@@ -7,13 +7,13 @@ const getCustomerId = (customer) => ({
 
 export const getCustomerIdThunk = (requesterId) => async (dispatch) => {
     const response = await fetch(`/api/customers/${requesterId}`)
-    // console.log("CUSTOMER OK", response)
+    console.log("CUSTOMER OK", requesterId)
     if (response.ok) {
-        
+      console.log("customer")
         const customer = await response.json()
         
         dispatch(getCustomerId(customer))
-        // console.log("customer")
+        
     } else {
         console.log("NO SUCH CUSTOMER")
     }

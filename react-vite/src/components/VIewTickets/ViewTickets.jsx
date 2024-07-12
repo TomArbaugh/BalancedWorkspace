@@ -12,7 +12,6 @@ function ViewTickets(){
     const {ticket_id} = useParams()
     const dispatch = useDispatch()
 
-    
 
     useEffect(() => {
 
@@ -29,6 +28,11 @@ function ViewTickets(){
     const ticket = useSelector((state) => state.ticket.ticketById)
     const macros = useSelector((state) => state.applyMacro)
 
+
+    useEffect(() => {
+
+    }, [customer])
+
     let requesterId; 
     ticket ? requesterId = ticket.requester : null
 
@@ -44,52 +48,75 @@ function ViewTickets(){
       
     
 
-   
-
+if (Object.keys(customer).length === 0) return null 
 if (!ticket) return null
-if (!customer) return null
+
 if (!macros) return  null
 
 return (
     <div>
         <lable>
             Customer 
-            <p>{customer.customer.name}</p>
+            <input 
+            value={customer ? customer.customer.name : null}
+            disabled={true}
+            />
         </lable>
     <label>
         Title
-        <p>
-        {ticket.title}
-        
-        </p>
+        <input
+        value={ticket.title}
+        disabled={true}
+        />
     </label>
     <label>
         Type
-<p>{ticket.type}</p>
+<input 
+disabled={true}
+value={ticket.type}
+/>
     </label>
     <lable>
         Priority 
-<p>{ticket.priority}</p>
+<input 
+disabled={true}
+value={ticket.priority}
+/>
     </lable>
     <label>
         Description
-<p>{ticket.description}</p>
+<input 
+disabled={true}
+value={ticket.description}
+/>
     </label>
     <lable>
         Image 
-<p>{ticket.image}</p>
+<input
+disabled={true}
+value={ticket.image}
+/>
     </lable>
     <label>
         Assignee
-<p>{ticket.assignee}</p>
+<input
+disabled={true}
+value={ticket.assignee}
+/>
     </label>
     <label>
         Requester
-<p>{ticket.requester}</p>
+<input
+disabled={true}
+value={ticket.requester}
+/>
     </label>
     <lable>
         Apply Macro
-        <p>{ticket.apply_macro}</p>
+        <input
+        disabled={true}
+        value={ticket.apply_macro}
+        />
     </lable>
     <label>
         Image 

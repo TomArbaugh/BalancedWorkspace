@@ -6,7 +6,7 @@ from flask_login import current_user, login_required
 
 customer_routes = Blueprint('customers', __name__)
 
-@customer_routes.route('<int:id>')
+@customer_routes.route('/<int:id>')
 @login_required
 def get_customer_Id(id):
     customer = Customer.query.get(id)

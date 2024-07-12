@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getTicketIdThunk, putTicketThunk } from "../../redux/ticket";
+import { getCustomerIdThunk } from "../../redux/customer";
+import { getMacroIdThunk } from "../../redux/macro";
 import { useParams } from "react-router-dom";
 
 function EditTicketForm(){
@@ -15,6 +17,33 @@ function EditTicketForm(){
    // console.log(ticket_id)
     const ticket = useSelector((state) => state.ticket.ticketById)
     // console.log(ticket.title)
+    useEffect(() => {
+        dispatch(getMacroIdThunk())
+    }, [dispatch])
+    
+    const customer = useSelector((state) => state.customer)
+ 
+    const macros = useSelector((state) => state.applyMacro)
+
+
+    useEffect(() => {
+
+    }, [customer])
+
+    let requesterId; 
+    ticket ? requesterId = ticket.requester : null
+
+        useEffect(() => {
+
+        }, [macros])
+
+       useEffect(() => {
+
+        dispatch(getCustomerIdThunk(requesterId))
+
+       }, [dispatch, requesterId])
+      
+    
 
     const [image, setImage] = useState(null);
     const [imageLoading, setImageLoading] = useState(false);
@@ -62,7 +91,10 @@ function EditTicketForm(){
     // ...
 
    
-
+    if (Object.keys(customer).length === 0) return null 
+    if (!ticket) return null
+    
+    if (!macros) return  null
 return (
     <form 
     onSubmit={handleSubmit}

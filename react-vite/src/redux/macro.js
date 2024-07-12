@@ -7,13 +7,13 @@ const getMacroId = (macros) => ({
 
 export const getMacroIdThunk = () => async (dispatch) => {
     const response = await fetch(`/api/macro/`)
-    console.log("macros OK", response)
+    // console.log("macros OK", response)
     if (response.ok) {
         
         const macros = await response.json()
         
         dispatch(getMacroId(macros))
-        console.log("customer")
+        // console.log("customer")
     } else {
         console.log("NO SUCH CUSTOMER")
     }

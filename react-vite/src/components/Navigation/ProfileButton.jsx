@@ -41,8 +41,7 @@ function ProfileButton() {
   return (
     <>
       <div >
-      <button className="profile-buttons">Demo Login</button>
-      <button className="profile-buttons" onClick={toggleMenu}>
+      <button className={!user ? "profile-buttons" : "hide"} onClick={toggleMenu}>
         Sign In
       </button>
       </div>

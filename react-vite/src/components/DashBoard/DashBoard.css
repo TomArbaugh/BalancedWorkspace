@@ -1,0 +1,36 @@
+.view-ticket-preview {
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: solid 1px black;
+    text-decoration: none;
+    color: black;
+    padding-top: 10px;
+}
+
+.ticket-preview-image {
+    width: 100px;
+}
+
+.ticket-preview-element {
+    width: 8%;
+}
+
+#view-ticket-card {
+    display: flex;
+    justify-content: center;
+}
+
+#view-tickets-header {
+    display: flex;
+    width: 70%;
+    justify-content: space-around;
+    margin: auto;
+    border-bottom: solid black 1px;
+}
+
+.ticket-headers {
+    border-right: solid black 1px;
+    padding-right: 10px;
+   
+}

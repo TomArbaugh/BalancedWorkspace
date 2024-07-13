@@ -13,8 +13,8 @@ function LandingPage() {
                     <h2>Join us today and keep your job right side up, your business grinding the rail, and you rest easy knowing you have a balanced workspace</h2>
                 </div>
                 <div className="landing-button-container">
-                    <button className="landing-buttons">Start Free Trial</button>
-                    <button className="landing-buttons">Buy Now</button>
+                    <button className="landing-buttons">Demo Login</button>
+                    
                 </div>
             </div>
             <div className="landing-right">

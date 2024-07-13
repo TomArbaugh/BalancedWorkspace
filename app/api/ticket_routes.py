@@ -13,7 +13,7 @@ ticket_routes = Blueprint('tickets', __name__)
 @login_required
 def get_all_tickets():
 
-    tickets = Ticket.query.all()
+    tickets = Ticket.query.filter_by(assignee=current_user.id).all()
     if tickets is None:
         return {"message": "No Such Ticket"}, 404
     else:

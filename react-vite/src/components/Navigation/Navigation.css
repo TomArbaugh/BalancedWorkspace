@@ -4,6 +4,10 @@
   list-style-type: none;
 }
 
+.hide {
+  display: none;
+}
+
 .log-in-ul {
   color: white;
 }
@@ -19,11 +23,13 @@
 .profile-buttons {
   margin-left: 10px;
   width: 100px;
-  height: 35px;
+  height: 30px;
   border: none;
-  color: rgb(2, 53, 43);
-  background-color: rgb(222, 238, 253);
-  box-shadow: 1px 1px 1.5px 1px #01192e;
+  font-size: large;
+  color: #00201b;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 1px 1px 1.5px 1px black;
   
 }
 
@@ -35,7 +41,8 @@
 .text-dec-none {
   text-decoration: none;
   font-size: larger;
-  color: rgb(245, 253, 249);
+  color: white;
+
   
 }
 
@@ -45,12 +52,12 @@
 
 #landing-h1 {
   margin-bottom: 0px;
-  text-shadow: .1px .5px 1px #001a16;
+  text-shadow: 2px 2px 3px black;
 }
 
 #landing-h2 {
   margin-top: 0px;
-  text-shadow: 1px .5px 1px #001a16;
+  text-shadow: 2px 2px 3px black;
 }
 
 #landing-ul {

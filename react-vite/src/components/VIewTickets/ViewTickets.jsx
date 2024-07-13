@@ -4,7 +4,8 @@ import { getTicketIdThunk } from "../../redux/ticket";
 import { useParams } from "react-router-dom";
 import { getCustomerIdThunk } from "../../redux/customer";
 import { getMacroIdThunk } from "../../redux/macro";
-
+import { Link } from "react-router-dom";
+import "./ViewTickets.css"
 
 
 
@@ -54,74 +55,93 @@ if (!ticket) return null
 if (!macros) return  null
 
 return (
-    <div>
-        <lable>
-            Customer 
-            <input 
-            value={customer ? customer.customer.name : null}
-            disabled={true}
-            />
-        </lable>
-    <label>
-        Title
-        <input
-        value={ticket.title}
-        disabled={true}
-        />
+    <div id="view-ticket-form">
+        <div id="view-ticket-top">
+            <div id="view-ticket-left">
+         <label>
+            <h4>Requester</h4>
+        
+<input
+className="view-ticket-requester"
+disabled={true}
+value={customer ? customer.customer.name : null}
+/>
     </label>
     <label>
-        Type
+        <h4> Assignee</h4>
+       
+<input
+className="view-ticket-assignee"
+disabled={true}
+value={ticket.assignee}
+/>
+    </label>
+    <div id="view-type-priority">
+    <label>
+        <h4>Type</h4>
+        
 <input 
+className="view-ticket-type"
 disabled={true}
 value={ticket.type}
 />
     </label>
     <lable>
-        Priority 
+        <h4>Priority</h4>
+        
 <input 
+className="view-ticket-priority"
 disabled={true}
 value={ticket.priority}
 />
     </lable>
+    </div>
+    </div>
+    <div id="view-ticket-middle">
     <label>
-        Description
+        <h4>Title</h4>
+        
+        <input
+        id="view-ticket-title-input"
+        value={ticket.title}
+        disabled={true}
+        />
+    </label>
+   <lable> <h4 id="view-ticket-description">{ticket.description}</h4></lable>
+    <label>
+       
+        <h4>Description</h4>
 <input 
+id="view-ticket-description-input"
 disabled={true}
 value={ticket.description}
 />
     </label>
-    <lable>
-        Image 
-<input
-disabled={true}
-value={ticket.image}
-/>
-    </lable>
+    </div>
+    <div id="view-ticket-right">
     <label>
-        Assignee
-<input
-disabled={true}
-value={ticket.assignee}
-/>
+        <h4>Image</h4>
+       
+        <img 
+        id="view-ticket-image"
+        src={ticket.tickets_images[0].image} />
     </label>
-    <label>
-        Requester
-<input
-disabled={true}
-value={ticket.requester}
-/>
-    </label>
+    </div>
+    </div>
+    <div id="view-ticket-bottom">
     <lable>
-        Apply Macro
+        <h4>Apply Macro</h4>
+        
         <input
+        id="view-macros-input"
         disabled={true}
         value={ticket.apply_macro}
         />
     </lable>
-    <label>
-        Image 
-        <img src={ticket.tickets_images[0].image} />
-    </label>
+    <Link to={`/edit/ticket/${ticket.id}`}
+    className="view-ticket-button">Edit</Link>
+    </div>
+
 </div>
 )
 }

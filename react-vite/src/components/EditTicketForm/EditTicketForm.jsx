@@ -4,12 +4,14 @@ import { getTicketIdThunk, putTicketThunk } from "../../redux/ticket";
 import { getCustomerIdThunk } from "../../redux/customer";
 import { getMacroIdThunk } from "../../redux/macro";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import "./EditTicketForm.css"
 
 function EditTicketForm(){
 
     const dispatch = useDispatch()
     const {ticket_id} = useParams()
-
+    const navigate = useNavigate()
 
     useEffect(() => {
         dispatch(getTicketIdThunk(ticket_id))
@@ -87,6 +89,7 @@ function EditTicketForm(){
         setImageLoading(true);
         await dispatch(putTicketThunk(image, newTicket, ticket_id));
         // history.push("/images");
+        navigate(`/view/ticket/${ticket_id}`)
     }
     // ...
 
@@ -99,18 +102,38 @@ return (
     <form 
     onSubmit={handleSubmit}
     encType="multipart/form-data"
+    id="ticket-form"
 >
-    <label>
-        Title
-        <input 
-        id='title'
-        value={title}
-        onChange={((e) => setTitle(e.target.value))}
-        />
-    </label>
-    <label>
-        Type
+    <div id="ticket-top">
+    <div id="ticket-left-panel">
+<label >
+    <h4>Requester</h4>
+        
     <select
+    className="edit-ticket-requester"
+    value={requester}
+    
+    >
+        <option>{requester}</option>
+    </select>
+    </label>
+    <label >
+        <h4>Assignee</h4>
+       
+    <select
+    className="edit-ticket-assignee"
+    value={assignee}
+    onChange={((e) => setAssignee(e.target.value))}
+    >
+        <option>No Assignees</option>
+    </select>
+    </label>
+    <div id="type-priority">
+    <label id="type">
+        <h4>Type</h4>
+        
+    <select
+    className="edit-ticket-type"
     value={type}
     onChange={((e) => setType(e.target.value))}
     >
@@ -120,9 +143,11 @@ return (
         <option>Task</option>
     </select>
     </label>
-    <lable>
-        Priority 
+    <lable >
+        <h4>Priority</h4>
+         
         <select
+        className="edit-ticket-priority"
         value={priority}
         onChange={((e) => setPriority(e.target.value))}
         >
@@ -132,50 +157,61 @@ return (
             <option>Urgent</option>
         </select>
     </lable>
-    <label>
-        Description
+    </div>
+    </div>
+    <div id="ticket-middle-panel">
+    <label className="edit-ticket-title">
+        <h4>Title</h4>
+        
         <input 
-        value={description}
-        onChange={((e) => setDescription(e.target.value))}
+        value={title}
+        onChange={((e) => setTitle(e.target.value))}
+        id="ticket-title-input"
         />
     </label>
-    <lable>
-        Image Upload
+    <label>
+        <h4 id="ticket-description">{description}</h4>
+    </label>
+    <label className="edit-ticket-description">
+        <h4>Description</h4>
+        
+        <input 
+        value={' '}
+        onChange={((e) => setDescription(e.target.value))}
+        id="ticket-description-input"
+        />
+    </label>
+    </div>
+    <div id="edit-ticket-right">
+    <lable className="edit-ticket-image">
+        <h4>Image Upload</h4>
+        
         <input
         type="file"
         accept="image/*"
         onChange={(e) => setImage(e.target.files[0])}
     />
     </lable>
-    <label>
-        Assignee
-    <select
-    value={assignee}
-    onChange={((e) => setAssignee(e.target.value))}
-    >
-        <option>No Assignees</option>
-    </select>
-    </label>
-    <label>
-        Requester
-    <select
-    value={requester}
-    
-    >
-        <option>{requester}</option>
-    </select>
-    </label>
-    <lable>
-        Apply Macro
+    <img 
+    id="edit-ticket-image"
+    src={ticket.tickets_images[0].image} />
+    </div>
+    </div>
+    <div id="ticket-bottom">
+    <lable className="edit-ticket-macro">
+        <h4>Apply Macro</h4>
+       
         <select
         value={apply_macro}
         onChange={((e) => setApplyMacro(e.target.value))}
+        id="macros-input"
         >
             <option>No Macros</option>
         </select>
     </lable>
-    <button type="submit">Submit Ticket</button>
+    <button className="edit-ticket-button" type="submit">Submit Ticket</button>
     {(imageLoading)&& <p>Loading...</p>}
+    </div>
 </form>
 )
 }

@@ -9,14 +9,17 @@ function TicketForm(){
     const dispatch = useDispatch()
 
     const customers = useSelector((state) => state.customer)
+    useEffect(() => {
+
+    }, [customers])
 
     useEffect(() => {
         dispatch(getAllCustomersThunk())
-    }, [customers, dispatch])
+    }, [dispatch])
   
     
 
-    console.log(customers)
+    console.log("CUSTOMERS", customers)
 
     const [image, setImage] = useState(null);
     const [imageLoading, setImageLoading] = useState(false);
@@ -52,7 +55,7 @@ function TicketForm(){
         // history.push("/images");
     }
     // ...
-    if (!customers.length) return null;
+    if (Object.keys(customers).length === 0) return null;
 return (
     <form 
     onSubmit={handleSubmit}
@@ -69,7 +72,7 @@ return (
     value={requester}
     onChange={((e) => setRequester(e.target.value))}
     >
-        {customers ? customers.map((customer) => (
+        {customers ? customers.allCustomers.map((customer) => (
             <option key={customer.id}>{customer.name}</option>
         )) : null}
         

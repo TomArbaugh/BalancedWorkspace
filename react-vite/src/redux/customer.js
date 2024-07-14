@@ -30,8 +30,9 @@ export const getAllCustomersThunk =  () => async (dispatch) => {
   if (response.ok) {
     
     const customers = await response.json()
-    // console.log("IM OK", customers)
-    getAllCustomers(customers)
+    
+    dispatch(getAllCustomers(customers))
+    console.log("IM OK", customers)
   }
 }
 

@@ -3,28 +3,35 @@ import { useDispatch, useSelector } from "react-redux";
 import { postTicketThunk } from "../../redux/ticket";
 import "./TicketForm.css"
 import { getAllCustomersThunk } from "../../redux/customer";
+import { getMacroIdThunk } from "../../redux/macro";
 
 
 function TicketForm(){
     const dispatch = useDispatch()
 
+    useEffect(() => {
+        dispatch(getMacroIdThunk())
+    }, [dispatch])
+
+    const user = useSelector((state) => state.session.user)
     const customers = useSelector((state) => state.customer)
+    const macros = useSelector((state) => state.applyMacro)
     useEffect(() => {
 
-    }, [customers])
+    }, [customers, user])
 
     useEffect(() => {
         dispatch(getAllCustomersThunk())
     }, [dispatch])
   
-    
+    // console.log(user.username)
 
-    console.log("CUSTOMERS", customers)
+    // console.log("CUSTOMERS", customers)
 
     const [image, setImage] = useState(null);
     const [imageLoading, setImageLoading] = useState(false);
     const [title, setTitle] = useState()
-    const [assignee, setAssignee] = useState("No Assignees")
+    const [assignee] = useState(user.id)
     const [type, setType] = useState("Question")
     const [priority, setPriority] = useState("Low")
     const [apply_macro, setApplyMacro] = useState("No Macros")
@@ -56,6 +63,8 @@ function TicketForm(){
     }
     // ...
     if (Object.keys(customers).length === 0) return null;
+    if (!user) return null;
+    
 return (
     <form 
     onSubmit={handleSubmit}
@@ -81,13 +90,12 @@ return (
     <label >
         <h4>Assignee</h4>
        
-    <select
+    <input
     className="create-ticket-assignee"
-    value={assignee}
-    onChange={((e) => setAssignee(e.target.value))}
-    >
-        <option>No Assignees</option>
-    </select>
+    value={user.username}
+    disabled={true}
+    />
+ 
     </label>
     <div id="create-type-priority">
     <label id="type">
@@ -164,7 +172,9 @@ return (
         onChange={((e) => setApplyMacro(e.target.value))}
         id="create-macros-input"
         >
-            <option>No Macros</option>
+           {macros.macros.map((macro) => (
+            <option>{macro.name}</option>
+           ))}
         </select>
     </lable>
     <button className="create-ticket-button" type="submit">Submit Ticket</button>

@@ -4,16 +4,16 @@
   list-style-type: none;
 }
 
-.hide {
-  display: none;
-}
+
 
 .log-in-ul {
   color: white;
 }
+
 .nav-links {
   color: rgb(226, 255, 245);
   text-decoration: none;
+  align-self: flex-end;
 }
 
 .nav-links:hover {
@@ -47,11 +47,15 @@
 }
 
 .li-landing {
+  display: flex;
+  flex-direction: column;
   list-style-type: none;
+  justify-content: space-between;
 }
 
 #landing-h1 {
   margin-bottom: 0px;
+  margin-top: 0px;
   text-shadow: 2px 2px 3px black;
 }
 
@@ -68,7 +72,18 @@
   padding-right: 100px;
   margin-top: 0px;
   margin-bottom: 0px;
-  padding-bottom: 50px;
+  /* padding-bottom: 50px; */
   border-top: 0px;
   background-color: #003c4a;
+  height: 200px;
+}
+
+.hide {
+  display: none;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+
 }

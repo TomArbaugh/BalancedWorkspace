@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { postTicketThunk } from "../../redux/ticket";
+import "./TicketForm.css"
 
 
 function TicketForm(){
@@ -44,18 +45,38 @@ return (
     <form 
     onSubmit={handleSubmit}
     encType="multipart/form-data"
+    id="create-ticket-form"
 >
-    <label>
-        Title
-        <input 
-        id='title'
-        value={title}
-        onChange={((e) => setTitle(e.target.value))}
-        />
-    </label>
-    <label>
-        Type
+    <div id="create-ticket-top">
+    <div id="create-ticket-left-panel">
+<label >
+    <h4>Requester</h4>
+        
     <select
+    className="create-ticket-requester"
+    value={requester}
+    
+    >
+        <option>{requester}</option>
+    </select>
+    </label>
+    <label >
+        <h4>Assignee</h4>
+       
+    <select
+    className="create-ticket-assignee"
+    value={assignee}
+    onChange={((e) => setAssignee(e.target.value))}
+    >
+        <option>No Assignees</option>
+    </select>
+    </label>
+    <div id="create-type-priority">
+    <label id="type">
+        <h4>Type</h4>
+        
+    <select
+    className="create-ticket-type"
     value={type}
     onChange={((e) => setType(e.target.value))}
     >
@@ -65,9 +86,11 @@ return (
         <option>Task</option>
     </select>
     </label>
-    <lable>
-        Priority 
+    <lable >
+        <h4>Priority</h4>
+         
         <select
+        className="create-ticket-priority"
         value={priority}
         onChange={((e) => setPriority(e.target.value))}
         >
@@ -77,50 +100,58 @@ return (
             <option>Urgent</option>
         </select>
     </lable>
+    </div>
+    </div>
+    <div id="create-ticket-middle-panel">
+    <label className="edit-ticket-title">
+        <h4>Title</h4>
+        
+        <input 
+        value={title}
+        onChange={((e) => setTitle(e.target.value))}
+        id="create-ticket-title-input"
+        />
+    </label>
     <label>
-        Description
+   
+    </label>
+    <label className="create-ticket-description">
+        <h4>Description</h4>
+        
         <input 
         value={description}
         onChange={((e) => setDescription(e.target.value))}
+        id="create-ticket-description-input"
         />
     </label>
-    <lable>
-        Image Upload
+    </div>
+    <div id="create-ticket-right">
+    <lable className="create-ticket-image">
+        <h4>Image Upload</h4>
+        
         <input
         type="file"
         accept="image/*"
         onChange={(e) => setImage(e.target.files[0])}
     />
     </lable>
-    <label>
-        Assignee
-    <select
-    value={assignee}
-    onChange={((e) => setAssignee(e.target.value))}
-    >
-        <option>No Assignees</option>
-    </select>
-    </label>
-    <label>
-        Requester
-    <select
-    value={requester}
-    onChange={((e) => setRequester(e.target.value))}
-    >
-        <option>No Customer</option>
-    </select>
-    </label>
-    <lable>
-        Apply Macro
+    </div>
+    </div>
+    <div id="create-ticket-bottom">
+    <lable className="create-ticket-macro">
+        <h4>Apply Macro</h4>
+       
         <select
         value={apply_macro}
         onChange={((e) => setApplyMacro(e.target.value))}
+        id="create-macros-input"
         >
             <option>No Macros</option>
         </select>
     </lable>
-    <button type="submit">Submit Ticket</button>
+    <button className="create-ticket-button" type="submit">Submit Ticket</button>
     {(imageLoading)&& <p>Loading...</p>}
+    </div>
 </form>
 )
 }

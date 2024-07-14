@@ -176,7 +176,7 @@ return (
         <h4>Description</h4>
         
         <input 
-        value={' '}
+        value={description}
         onChange={((e) => setDescription(e.target.value))}
         id="ticket-description-input"
         />

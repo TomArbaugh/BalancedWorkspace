@@ -1,6 +1,32 @@
 import "./LandingPage.css"
+import { thunkLogin } from "../../redux/session";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 function LandingPage() {
+
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
+    const logIn = async (e) => {
+        e.preventDefault()
+        
+        const email = "demo@aa.io"
+        const password = "password"
+
+        const serverResponse = await dispatch(
+            thunkLogin({
+              email,
+              password,
+            })
+          );
+
+          if (serverResponse) {
+            setErrors(serverResponse);
+          } else {
+            navigate('view/tickets/all')
+          }
+    }
 
     return (
         <div className="landing-body">
@@ -13,7 +39,9 @@ function LandingPage() {
                     <h2>Join us today and keep your job right side up, your business grinding the rail, and you rest easy knowing you have a balanced workspace</h2>
                 </div>
                 <div className="landing-button-container">
-                    <button className="landing-buttons">Demo Login</button>
+                    <button 
+                    onClick={logIn}
+                    className="landing-buttons">Demo Login</button>
                     
                 </div>
             </div>

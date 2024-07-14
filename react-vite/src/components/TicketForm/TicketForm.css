@@ -1,31 +1,31 @@
-#view-ticket-left {
+#create-ticket-left-panel {
     display: flex;
     flex-direction: column;
     padding-right: 40px;
     width:15%;
 }
 
-.view-ticket-requester {
+.create-ticket-requester {
     width: 175px;
     height: 30px;
 }
 
-.view-ticket-assignee {
+.create-ticket-assignee {
     width: 175px;
     height: 30px;
 }
 
-.view-ticket-type {
+.create-ticket-type {
     width: 85px;
     height: 30px;
 }
 
-.view-ticket-priority {
+.create-ticket-priority {
     width: 85px;
     height: 30px;
 }
 
-#view-type-priority {
+#create-type-priority {
     display: flex;
 }
 
@@ -34,64 +34,63 @@
    
 }
 
-#view-ticket-description {
-    border: solid, 1px, gray;
-    color: gray;
+#ticket-description {
+    border: solid, 1px, black;
     height: 300px;
 }
 
-#view-ticket-top {
+#create-ticket-top {
     display: flex;
 }
 
-#view-ticket-title-input {
+#create-ticket-title-input {
     width: 100%;
     height: 30px;
     box-sizing: border-box;
 }
 
-#view-ticket-description {
+#create-ticket-description {
     width: 100%;
     padding: 10px;
     box-sizing: border-box;
 }
 
-#view-ticket-description-input {
+#create-ticket-description-input {
     width: 100%;
-    height: 150px;
+    height: 350px;
     box-sizing: border-box;
 }
 
-#view-ticket-middle {
+#create-ticket-middle-panel {
     width: 60%;
     padding-right: 50px;
 }
 
-#view-ticket-bottom {
+#create-ticket-bottom {
     display: flex;
     justify-content: space-between;
 }
 
-#view-ticket-form {
+#create-ticket-form {
     padding: 50px;
 }
 
-.view-ticket-button {
+.create-ticket-button {
     height: 30px;
     width: 100px;
     align-self: flex-end;
 }
 
-#view-macros-input {
+#create-macros-input {
     height: 30px;
     width: 175px;
 }
 
-#view-ticket-image {
+#create-ticket-image {
     width: 100%;
     padding-top: 50px;
 }
 
-#view-ticket-right {
+#create-ticket-right {
     width: 20%;
 }

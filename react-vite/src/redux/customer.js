@@ -32,7 +32,7 @@ export const getAllCustomersThunk =  () => async (dispatch) => {
     const customers = await response.json()
     
     dispatch(getAllCustomers(customers))
-    console.log("IM OK", customers)
+    // console.log("IM OK", customers)
   }
 }
 

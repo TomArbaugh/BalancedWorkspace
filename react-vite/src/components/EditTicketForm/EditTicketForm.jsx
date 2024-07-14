@@ -205,8 +205,10 @@ return (
         value={apply_macro}
         onChange={((e) => setApplyMacro(e.target.value))}
         id="macros-input"
-        >
-            <option>No Macros</option>
+        >     
+        {macros.macros.map((macro) => (
+            <option key={macro.id}>{macro.id}</option>
+           ))}
         </select>
     </lable>
     <button className="edit-ticket-button" type="submit">Submit Ticket</button>

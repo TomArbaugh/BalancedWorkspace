@@ -49,7 +49,7 @@ function ViewTickets(){
       
     
 
-if (Object.keys(customer).length === 0) return null 
+if (Object.keys(customer).length === 0 || !customer) return null 
 if (!ticket) return null
 
 if (!macros) return  null

@@ -9,6 +9,8 @@ import { getMacroIdThunk } from "../../redux/macro";
 function TicketForm(){
     const dispatch = useDispatch()
 
+ 
+
     useEffect(() => {
         dispatch(getMacroIdThunk())
     }, [dispatch])
@@ -34,9 +36,9 @@ function TicketForm(){
     const [assignee] = useState(user.id)
     const [type, setType] = useState("Question")
     const [priority, setPriority] = useState("Low")
-    const [apply_macro, setApplyMacro] = useState("No Macros")
+    const [apply_macro, setApplyMacro] = useState()
     const [description, setDescription] = useState()
-    const [requester, setRequester] = useState("No Customer")
+    const [requester, setRequester] = useState()
 
 
         
@@ -45,6 +47,8 @@ function TicketForm(){
         // const formData = new FormData();
         // formData.append("image", image);
         // console.log(image, "formData jsx")
+        console.log(apply_macro)
+      
         const newTicket = {
             title,
             assignee,
@@ -54,14 +58,16 @@ function TicketForm(){
             requester,
             description
         }
-        console.log(newTicket)
+        // console.log("apply-macro", apply_macro)
         // aws uploads can be a bit slow—displaying
         // some sort of loading message is a good idea
         setImageLoading(true);
         await dispatch(postTicketThunk(image, newTicket));
         // history.push("/images");
+        
     }
     // ...
+    
     if (Object.keys(customers).length === 0) return null;
     if (!user) return null;
     
@@ -82,7 +88,7 @@ return (
     onChange={((e) => setRequester(e.target.value))}
     >
         {customers ? customers.allCustomers.map((customer) => (
-            <option key={customer.id}>{customer.name}</option>
+            <option key={customer.id}>{customer.id}</option>
         )) : null}
         
     </select>
@@ -139,7 +145,7 @@ return (
         />
     </label>
     <label>
-   
+    <h4 id="ticket-description">{description}</h4>
     </label>
     <label className="create-ticket-description">
         <h4>Description</h4>
@@ -172,9 +178,7 @@ return (
         onChange={((e) => setApplyMacro(e.target.value))}
         id="create-macros-input"
         >
-           {macros.macros.map((macro) => (
-            <option>{macro.name}</option>
-           ))}
+      
         </select>
     </lable>
     <button className="create-ticket-button" type="submit">Submit Ticket</button>

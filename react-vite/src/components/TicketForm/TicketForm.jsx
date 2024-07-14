@@ -1,13 +1,23 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { postTicketThunk } from "../../redux/ticket";
 import "./TicketForm.css"
+import { getAllCustomersThunk } from "../../redux/customer";
 
 
 function TicketForm(){
     const dispatch = useDispatch()
 
+    const customers = useSelector((state) => state.customer)
+
+    useEffect(() => {
+        dispatch(getAllCustomersThunk())
+    }, [customers, dispatch])
   
+    
+
+    console.log(customers)
+
     const [image, setImage] = useState(null);
     const [imageLoading, setImageLoading] = useState(false);
     const [title, setTitle] = useState()
@@ -17,6 +27,8 @@ function TicketForm(){
     const [apply_macro, setApplyMacro] = useState("No Macros")
     const [description, setDescription] = useState()
     const [requester, setRequester] = useState("No Customer")
+
+
         
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -40,7 +52,7 @@ function TicketForm(){
         // history.push("/images");
     }
     // ...
-    
+    if (!customers.length) return null;
 return (
     <form 
     onSubmit={handleSubmit}
@@ -55,9 +67,12 @@ return (
     <select
     className="create-ticket-requester"
     value={requester}
-    
+    onChange={((e) => setRequester(e.target.value))}
     >
-        <option>{requester}</option>
+        {customers ? customers.map((customer) => (
+            <option key={customer.id}>{customer.name}</option>
+        )) : null}
+        
     </select>
     </label>
     <label >

@@ -15,3 +15,12 @@ def get_customer_Id(id):
     else:
         return customer.to_dict()
     
+@customer_routes.route('/')
+@login_required
+def get_customer():
+    customers = Customer.query.filter_by(user_id=current_user.id).all()
+
+    if customers is None:
+              return {"error": "Customer Not Found" }
+    else:
+        return [customer.to_dict() for customer in customers]

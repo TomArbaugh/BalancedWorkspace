@@ -102,15 +102,11 @@ export const postTicketThunk = (image, newTicket) => async (dispatch) => {
     // console.log("FORM DATA", image)
     // console.log("newTicket", newTicket)
     // console.log(ticket_id, "here in putTicketThunk")
-  
-    
-    
+    console.log(image, "image in thunk")
       const formData = new FormData();
       formData.append('image', image);
-    
-  
-  
-  
+     
+
         const ticketResponse = await fetch(`/api/tickets/${ticket_id}/edit`, {
           method: "PUT",
           headers: {
@@ -127,7 +123,8 @@ export const postTicketThunk = (image, newTicket) => async (dispatch) => {
             console.log("There was an error making your ticketResponse!")
         }
   
-       
+      
+        if (image !== null) {
           const imageResponse = await fetch(`/api/tickets/${ticket_id}/edit-image`, {
             method: "PUT",
             body: formData
@@ -143,8 +140,8 @@ export const postTicketThunk = (image, newTicket) => async (dispatch) => {
         } else {
             console.log("There was an error making your ImageResponse!")
         }
-        
-
+      }
+      
     };
   
 export const deleteTicketThunk = (ticket_id) => async (dispatch) => {

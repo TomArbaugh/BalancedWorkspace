@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getTicketIdThunk, putTicketThunk } from "../../redux/ticket";
-import { getCustomerIdThunk } from "../../redux/customer";
+import { getCustomerIdThunk, getAllCustomersThunk } from "../../redux/customer";
 import { getMacroIdThunk } from "../../redux/macro";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -21,6 +21,10 @@ function EditTicketForm(){
     // console.log(ticket.title)
     useEffect(() => {
         dispatch(getMacroIdThunk())
+    }, [dispatch])
+
+    useEffect(() => {
+        dispatch(getAllCustomersThunk())
     }, [dispatch])
     
     const customer = useSelector((state) => state.customer)
@@ -56,11 +60,11 @@ function EditTicketForm(){
     const [apply_macro, setApplyMacro] = useState("No Macros")
     const [description, setDescription] = useState()
     const [requester, setRequester] = useState("No Customer")
-  
+    const [errors, setErrors] = useState({})
   
     useEffect(() => {
         if (ticket) {
-            setImage(ticket.tickets_images[0])
+           
             setTitle(ticket.title)
             setAssignee(ticket.assignee)
             setType(ticket.type)
@@ -71,11 +75,25 @@ function EditTicketForm(){
         }
     }, [ticket])
 
+    const validateForm = () => {
+        const newErrors = {}
+        if (!title || title.length < 1 || title.length > 40) newErrors.title = "Title must be between 1 and 40 characters."
+        if (!requester) newErrors.requester = "Requester is required."
+        if (!description || description.length < 3 || description.length > 2000) newErrors.description = "Description must be between 3 and 2000 characters."
+        return newErrors
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        const newErrors = validateForm();
+        if (Object.keys(newErrors).length > 0) {
+            setErrors(newErrors);
+            return;
+        }
+        if (!image) setImage('noImage')
         
-        console.log(description)
+        console.log(apply_macro, "apply macro")
         // const formData = new FormData();
         // formData.append("image", image);
         // console.log(image, "formData jsx")
@@ -88,10 +106,12 @@ function EditTicketForm(){
             requester,
             description 
         }
-        console.log("IMAGE", image)
+
+       
+        // console.log("IMAGE", image)
         // aws uploads can be a bit slow—displaying
         // some sort of loading message is a good idea
-        console.log(newTicket, "NEW TICKET ON EDIT ")
+        // console.log(newTicket, "NEW TICKET ON EDIT ")
         setImageLoading(true);
         await dispatch(putTicketThunk(image, newTicket, ticket_id));
         // history.push("/images");
@@ -100,9 +120,9 @@ function EditTicketForm(){
     // ...
 
    
-    if (Object.keys(customer).length === 0) return null 
+    if (Object.keys(customer).length === 0 || !customer.customer) return null 
     if (!ticket) return null
-    
+    if (!customer.allCustomers) return null
     if (!macros) return  null
 return (
     <form 
@@ -121,12 +141,12 @@ return (
     
     >
         <option>{customer.customer.name}</option>
-        <option>No Requester Selected</option>
         {customer ? customer.allCustomers.map((customer) => (
             <option key={customer.id} value={customer.id}>{customer.name}</option>
         )) : null}
     </select>
     </label>
+    {errors.requester && <p className="error-message">{errors.requester}</p>}
     <label >
         <h4>Assignee</h4>
        
@@ -179,8 +199,9 @@ return (
         id="ticket-title-input"
         />
     </label>
+    {errors.title && <p className="error-message">{errors.title}</p>}
     <label>
-        <h4 id="ticket-description">{description}</h4>
+
     </label>
     <label className="edit-ticket-description">
         <h4>Description</h4>
@@ -192,12 +213,14 @@ return (
         > 
         </textarea>
     </label>
+    {errors.description && <p className="error-message">{errors.description}</p>}
     </div>
     <div id="edit-ticket-right">
     <lable className="edit-ticket-image">
         <h4>Image Upload</h4>
         
         <input
+        
         type="file"
         accept="image/*"
         onChange={(e) => setImage(e.target.files[0])}
@@ -218,9 +241,11 @@ return (
         id="macros-input"
         >    
         <option>No Macro</option>
-        {macros.macros.map((macro) => (
-            <option key={macro.id} value={macro.id}>{macro.name}</option>
-           ))}
+
+        {macros ? macros.macros.map((macro) => (
+            <option 
+            key={macro.id} value={macro.id}>{macro.description}</option>
+           )) : null}
         </select>
     </lable>
     <button className="edit-ticket-button" type="submit">Submit Ticket</button>

@@ -2,7 +2,7 @@ import { NavLink, Link } from "react-router-dom";
 import ProfileButton from "./ProfileButton";
 import { GiTightrope } from "react-icons/gi";
 import {useSelector} from "react-redux"
-import "./Navigation.css";
+
 
 function Navigation() {
 

@@ -7,22 +7,22 @@
 
 .edit-ticket-requester {
     width: 175px;
-    height: 30px;
+    height: 40px;
 }
 
 .edit-ticket-assignee {
     width: 175px;
-    height: 30px;
+    height: 40px;
 }
 
 .edit-ticket-type {
     width: 85px;
-    height: 30px;
+    height: 40px;
 }
 
 .edit-ticket-priority {
     width: 85px;
-    height: 30px;
+    height: 40px;
 }
 
 #type-priority {
@@ -45,7 +45,7 @@
 
 #ticket-title-input {
     width: 100%;
-    height: 30px;
+    height: 40px;
     box-sizing: border-box;
 }
 
@@ -80,11 +80,15 @@
     height: 30px;
     width: 100px;
     align-self: flex-end;
+    border-radius: 20px;
+    background-color: #1b3c59;
+    color: white;
 }
 
 #macros-input {
-    height: 30px;
-    width: 175px;
+    height: 90px;
+    width: 100%;
+    text-wrap: wrap;
 }
 
 #edit-ticket-image {
@@ -95,3 +99,12 @@
 #edit-ticket-right {
     width: 20%;
 }
+
+.edit-ticket-macro {
+    width: 90%
+}
+
+.error-message {
+    color: red;
+}
+

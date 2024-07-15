@@ -10,6 +10,9 @@ function TicketForm(){
     const dispatch = useDispatch()
     const navigate = useNavigate()
  
+    useEffect(() => {
+        dispatch(getAllCustomersThunk())
+    }, [dispatch])
 
     useEffect(() => {
         dispatch(getMacroIdThunk())
@@ -18,13 +21,19 @@ function TicketForm(){
     const user = useSelector((state) => state.session.user)
     const customers = useSelector((state) => state.customer)
     const macros = useSelector((state) => state.applyMacro)
+
     useEffect(() => {
 
     }, [customers, user])
 
-    useEffect(() => {
-        dispatch(getAllCustomersThunk())
-    }, [dispatch])
+    const validateForm = () => {
+        const newErrors = {}
+        if (!title || title.length < 1 || title.length > 40) newErrors.title = "Title must be between 1 and 40 characters."
+        if (typeof requester !== "number") newErrors.requester = "Requester is required."
+        if (!description || description.length < 3 || description.length > 2000) newErrors.description = "Description must be between 3 and 2000 characters."
+        return newErrors
+    }
+
   
     // console.log(user.username)
 
@@ -39,11 +48,17 @@ function TicketForm(){
     const [apply_macro, setApplyMacro] = useState()
     const [description, setDescription] = useState()
     const [requester, setRequester] = useState()
-
+    const [errors, setErrors] = useState({})
 
         
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        const newErrors = validateForm();
+        if (Object.keys(newErrors).length > 0) {
+            setErrors(newErrors);
+            return;
+        }
         // const formData = new FormData();
         // formData.append("image", image);
         // console.log(image, "formData jsx")
@@ -67,7 +82,7 @@ function TicketForm(){
         navigate('/view/tickets/all')
     }
     // ...
-    
+    if (!customers.allCustomers) return null;
     if (Object.keys(customers).length === 0) return null;
     if (!user) return null;
     if (!macros) return  null
@@ -94,6 +109,7 @@ return (
         
     </select>
     </label>
+    {errors.requester && <p className="error-message">{errors.requester}</p>}
     <label >
         <h4>Assignee</h4>
        
@@ -146,8 +162,8 @@ return (
         />
     </label>
     <label>
-    <h4 id="ticket-description">{''}</h4>
     </label>
+    {errors.title && <p className="error-message">{errors.title}</p>}
     <label className="create-ticket-description">
         <h4>Description</h4>
         
@@ -157,6 +173,7 @@ return (
         id="create-ticket-description-input"
         ></textarea>
     </label>
+    {errors.description && <p className="error-message">{errors.description}</p>}
     </div>
     <div id="create-ticket-right">
     <lable className="create-ticket-image">

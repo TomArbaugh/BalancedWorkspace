@@ -5,6 +5,7 @@ import OpenModalMenuItem from "./OpenModalMenuItem";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import { useNavigate } from "react-router-dom";
+import './Navigation.css'
 
 function ProfileButton() {
   const dispatch = useDispatch();
@@ -43,9 +44,9 @@ function ProfileButton() {
 
   return (
     <>
-      <div >
+      <div className="nav-div">
       <button className="profile-buttons" onClick={toggleMenu}>
-       {!user ? "Sign In" : "Log Out"}
+       {!user ? "Sign In" : "Menu"}
       </button>
       </div>
  

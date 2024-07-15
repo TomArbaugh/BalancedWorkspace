@@ -21,11 +21,16 @@ function DashBoard () {
 
     return (
         <div>
+            <div className="dashboard-header">
+            <h1>Dashboard</h1>
+            <h4>({tickets.length}) Open Tickets</h4>
+            </div>
+            
             <div id="view-tickets-header">
             <h3 className="ticket-headers">Id</h3>
             <h3 className="ticket-headers">Subject</h3>
             <h3 className="ticket-headers">Requester</h3>
-            <h3 className="ticket-headers">Assignee</h3>
+            
             <h3 className="ticket-headers">Type</h3>
             <h3 className="ticket-headers"> Priority</h3>
             <h3 className="ticket-headers">Image</h3>
@@ -41,7 +46,6 @@ function DashBoard () {
                     <h4 className="ticket-preview-element"># {ticket.id}</h4>
                     <h4 className="ticket-preview-element">{ticket.title}</h4>
                     <h4 className="ticket-preview-element">{ticket.requester}</h4>
-                    <h4 className="ticket-preview-element">{ticket.assignee}</h4>
                     <h4 className="ticket-preview-element">{ticket.type}</h4>
                     <h4 className="ticket-preview-element">{ticket.priority}</h4>
                     {ticket.tickets_images.length ? <img 

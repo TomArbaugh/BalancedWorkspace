@@ -119,7 +119,7 @@ value={ticket.priority}
         disabled={true}
         />
     </label>
-   <lable> <h4 id="view-ticket-description">{ticket.description}</h4></lable>
+   <lable> </lable>
     <label>
        
         <h4>Description</h4>
@@ -141,7 +141,7 @@ value=''
     </div>
     </div>
     <div id="view-ticket-bottom">
-    <lable>
+    <lable className="view-ticket-macro">
         <h4>Apply Macro</h4>
         
         <input

@@ -2,6 +2,7 @@ const GET_ALL_TICKETS = "/get/all/tickets"
 const GET_TICKET_ID = "/get/ticket/id"
 const CREATE_TICKET = "/post/ticket"
 const EDIT_TICKET = "/put/ticket"
+const DELETE_TICKET = "/delete/ticket"
 
 const getAllTickets = (tickets) => ({
     type: GET_ALL_TICKETS,
@@ -26,6 +27,10 @@ const putTicket = (ticketImage, newTicket) => ({
       ticketImage,
       newTicket
     }
+})
+
+const deleteTicket = () => ({
+  type: DELETE_TICKET,
 })
 
 export const getAllTicketsThunk = () => async (dispatch) => {
@@ -99,8 +104,11 @@ export const postTicketThunk = (image, newTicket) => async (dispatch) => {
     console.log(ticket_id, "here in putTicketThunk")
   
     
-    const formData = new FormData();
-    formData.append('image', image);
+    
+      const formData = new FormData();
+      formData.append('image', image);
+    
+  
   
   
         const ticketResponse = await fetch(`/api/tickets/${ticket_id}/edit`, {
@@ -119,23 +127,33 @@ export const postTicketThunk = (image, newTicket) => async (dispatch) => {
             console.log("There was an error making your ticketResponse!")
         }
   
-        const imageResponse = await fetch(`/api/tickets/${ticket_id}/edit-image`, {
-          method: "PUT",
-          body: formData
-        });
-      
-  
-        if (imageResponse.ok) {
-          console.log("IMAGE SENT TO ROUTES")
-          const ticketImage = await imageResponse.json();
-           
-          dispatch(putTicket(ticketImage, newTicket));
-          
-      } else {
-          console.log("There was an error making your ImageResponse!")
-      }
+       
+          const imageResponse = await fetch(`/api/tickets/${ticket_id}/edit-image`, {
+            method: "PUT",
+            body: formData
+          });
+        
+    
+          if (imageResponse.ok) {
+            console.log("IMAGE SENT TO ROUTES")
+            const ticketImage = await imageResponse.json();
+             
+            dispatch(putTicket(ticketImage, newTicket));
+            
+        } else {
+            console.log("There was an error making your ImageResponse!")
+        }
+        
+
     };
   
+export const deleteTicketThunk = (ticket_id) => async (dispatch) => {
+  const response = await fetch(`/api/tickets/${ticket_id}/delete`)
+  if (response.ok) {
+    return {"message": "successfully deleted"}
+    
+  }
+}
 const initialState = {}
 
 

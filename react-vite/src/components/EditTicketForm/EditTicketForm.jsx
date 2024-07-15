@@ -86,6 +86,7 @@ function EditTicketForm(){
         console.log(newTicket)
         // aws uploads can be a bit slow—displaying
         // some sort of loading message is a good idea
+        console.log(newTicket, "NEW TICKET ON EDIT ")
         setImageLoading(true);
         await dispatch(putTicketThunk(image, newTicket, ticket_id));
         // history.push("/images");

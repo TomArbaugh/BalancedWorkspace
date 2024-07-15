@@ -8,9 +8,9 @@ class TicketForm(FlaskForm):
     title = StringField("title", validators=[DataRequired()])
     type = SelectField("type", validators=[DataRequired()], choices=["Question", "Incident", "Problem", "Task"])
     priority = SelectField("priority", validators=[DataRequired()], choices=["Low", "Medium", "High", "Urgent"])
-    assignee = SelectField("assignee", choices=["No Assignees"])
-    requester = SelectField("requester", choices=["No Customer"])
-    apply_macro = SelectField("apply_macro", choices=["No Macros"])
+    assignee = IntegerField("assignee", validators=[DataRequired()])
+    requester = IntegerField("requester", validators=[DataRequired()])
+    apply_macro = IntegerField("apply_macro", validators=[DataRequired()])
     description = StringField("description", validators=[DataRequired()])
     submit = SubmitField("Submit Ticket")
 

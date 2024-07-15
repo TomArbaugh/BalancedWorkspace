@@ -13,9 +13,9 @@ const getAllCustomers = (customers) => ({
 
 export const getCustomerIdThunk = (requesterId) => async (dispatch) => {
     const response = await fetch(`/api/customers/${requesterId}`)
-    console.log("CUSTOMER OK", requesterId)
+    // console.log("CUSTOMER OK", requesterId)
     if (response.ok) {
-      console.log("customer")
+      // console.log("customer")
         const customer = await response.json()
         
         dispatch(getCustomerId(customer))

@@ -4,11 +4,11 @@ import { postTicketThunk } from "../../redux/ticket";
 import "./TicketForm.css"
 import { getAllCustomersThunk } from "../../redux/customer";
 import { getMacroIdThunk } from "../../redux/macro";
-
+import { useNavigate } from "react-router-dom";
 
 function TicketForm(){
     const dispatch = useDispatch()
-
+    const navigate = useNavigate()
  
 
     useEffect(() => {
@@ -64,13 +64,13 @@ function TicketForm(){
         setImageLoading(true);
         await dispatch(postTicketThunk(image, newTicket));
         // history.push("/images");
-        
+        navigate('/view/tickets/all')
     }
     // ...
     
     if (Object.keys(customers).length === 0) return null;
     if (!user) return null;
-    
+    if (!macros) return  null
 return (
     <form 
     onSubmit={handleSubmit}
@@ -178,7 +178,9 @@ return (
         onChange={((e) => setApplyMacro(e.target.value))}
         id="create-macros-input"
         >
-      
+      {macros.macros.map((macro) => (
+            <option key={macro.id}>{macro.id}</option>
+           ))}
         </select>
     </lable>
     <button className="create-ticket-button" type="submit">Submit Ticket</button>

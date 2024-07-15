@@ -77,9 +77,18 @@
 }
 
 .view-ticket-button {
-    height: 30px;
-    width: 100px;
-    align-self: flex-end;
+   padding-right: 10px;
+ 
+}
+
+#inner-button {
+    width: 70px;
+    border-radius: 20px;
+}
+
+#view-delete-ticket-button {
+    width: 70px;
+    border-radius: 20px;
 }
 
 #view-macros-input {
@@ -94,4 +103,9 @@
 
 #view-ticket-right {
     width: 20%;
+}
+
+.view-delete-edit-buttons {
+    display: flex;
+    align-items: flex-end;
 }

@@ -88,7 +88,7 @@ return (
     onChange={((e) => setRequester(e.target.value))}
     >
         {customers ? customers.allCustomers.map((customer) => (
-            <option key={customer.id}>{customer.id}</option>
+            <option key={customer.id} value={customer.id}>{customer.name}</option>
         )) : null}
         
     </select>
@@ -145,16 +145,16 @@ return (
         />
     </label>
     <label>
-    <h4 id="ticket-description">{description}</h4>
+    <h4 id="ticket-description">{''}</h4>
     </label>
     <label className="create-ticket-description">
         <h4>Description</h4>
         
-        <input 
+        <textarea 
         value={description}
         onChange={((e) => setDescription(e.target.value))}
         id="create-ticket-description-input"
-        />
+        ></textarea>
     </label>
     </div>
     <div id="create-ticket-right">
@@ -179,7 +179,7 @@ return (
         id="create-macros-input"
         >
       {macros.macros.map((macro) => (
-            <option key={macro.id}>{macro.id}</option>
+            <option key={macro.id} value={macro.id}>{macro.name}</option>
            ))}
         </select>
     </lable>

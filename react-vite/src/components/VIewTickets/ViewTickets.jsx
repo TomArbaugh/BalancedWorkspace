@@ -29,7 +29,7 @@ function ViewTickets(){
     const customer = useSelector((state) => state.customer)
     const ticket = useSelector((state) => state.ticket.ticketById)
     const macros = useSelector((state) => state.applyMacro)
-
+    const user = useSelector((state) => state.session.user)
 
     useEffect(() => {
 
@@ -55,9 +55,10 @@ function ViewTickets(){
 
 if (Object.keys(customer).length === 0 || !customer) return null 
 if (!ticket) return null
-
+if (!user) return null
 if (!macros) return  null
-
+let chosenMacro;
+macros ? chosenMacro = macros.macros.find((macro) => macro.id === ticket.apply_macro) : null
 return (
     <div id="view-ticket-form">
         <div id="view-ticket-top">
@@ -77,7 +78,7 @@ value={customer.customer ? customer.customer.name : null}
 <input
 className="view-ticket-assignee"
 disabled={true}
-value={ticket.assignee}
+value={user.username}
 />
     </label>
     <div id="view-type-priority">
@@ -139,7 +140,7 @@ value=''
         <input
         id="view-macros-input"
         disabled={true}
-        value={ticket.apply_macro}
+        value={chosenMacro.name}
         />
     </lable>
     <div className="view-delete-edit-buttons">

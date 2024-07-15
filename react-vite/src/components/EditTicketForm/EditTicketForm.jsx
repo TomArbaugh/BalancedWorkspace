@@ -24,10 +24,10 @@ function EditTicketForm(){
     }, [dispatch])
     
     const customer = useSelector((state) => state.customer)
- 
+    const user = useSelector((state) => state.session.user)
     const macros = useSelector((state) => state.applyMacro)
 
-
+   
     useEffect(() => {
 
     }, [customer])
@@ -73,7 +73,7 @@ function EditTicketForm(){
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-       
+        description = description.concat(' ', newDescription)
         console.log(description)
         // const formData = new FormData();
         // formData.append("image", image);
@@ -116,10 +116,10 @@ return (
         
     <select
     className="edit-ticket-requester"
-    value={requester}
+    value={customer.customer.name}
     
     >
-        <option>{requester}</option>
+        <option>{customer.customer.name}</option>
     </select>
     </label>
     <label >
@@ -127,10 +127,10 @@ return (
        
     <select
     className="edit-ticket-assignee"
-    value={assignee}
+    value={user.username}
     onChange={((e) => setAssignee(e.target.value))}
     >
-        <option>No Assignees</option>
+        <option>{user.username}</option>
     </select>
     </label>
     <div id="type-priority">
@@ -181,8 +181,8 @@ return (
         <h4>Description</h4>
         
         <textarea
-        value={newDescription}
-        onChange={((e) => setNewDescription(e.target.value))}
+        value={description}
+        onChange={((e) => setDescription(e.target.value))}
         id="ticket-description-input"
         > 
         </textarea>
@@ -213,7 +213,7 @@ return (
         id="macros-input"
         >     
         {macros.macros.map((macro) => (
-            <option key={macro.id}>{macro.id}</option>
+            <option key={macro.id} value={macro.id}>{macro.name}</option>
            ))}
         </select>
     </lable>

@@ -56,6 +56,7 @@ function EditTicketForm(){
     const [apply_macro, setApplyMacro] = useState("No Macros")
     const [description, setDescription] = useState()
     const [requester, setRequester] = useState("No Customer")
+    const [newDescription, setNewDescription] = useState()
   
     useEffect(() => {
         if (ticket) {
@@ -71,6 +72,9 @@ function EditTicketForm(){
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+       
+        console.log(description)
         // const formData = new FormData();
         // formData.append("image", image);
         // console.log(image, "formData jsx")
@@ -81,7 +85,7 @@ function EditTicketForm(){
             priority,
             apply_macro,
             requester,
-            description
+            description 
         }
         console.log(newTicket)
         // aws uploads can be a bit slow—displaying
@@ -176,11 +180,12 @@ return (
     <label className="edit-ticket-description">
         <h4>Description</h4>
         
-        <input 
-        value={description}
-        onChange={((e) => setDescription(e.target.value))}
+        <textarea
+        value={newDescription}
+        onChange={((e) => setNewDescription(e.target.value))}
         id="ticket-description-input"
-        />
+        > 
+        </textarea>
     </label>
     </div>
     <div id="edit-ticket-right">

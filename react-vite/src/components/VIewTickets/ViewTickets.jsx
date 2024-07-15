@@ -118,7 +118,7 @@ value={ticket.priority}
 <input 
 id="view-ticket-description-input"
 disabled={true}
-value={ticket.description}
+value=''
 />
     </label>
     </div>

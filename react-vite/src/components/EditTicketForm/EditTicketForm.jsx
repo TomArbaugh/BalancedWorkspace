@@ -56,10 +56,11 @@ function EditTicketForm(){
     const [apply_macro, setApplyMacro] = useState("No Macros")
     const [description, setDescription] = useState()
     const [requester, setRequester] = useState("No Customer")
-    const [newDescription, setNewDescription] = useState()
+  
   
     useEffect(() => {
         if (ticket) {
+            setImage(ticket.tickets_images[0])
             setTitle(ticket.title)
             setAssignee(ticket.assignee)
             setType(ticket.type)
@@ -73,7 +74,7 @@ function EditTicketForm(){
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        description = description.concat(' ', newDescription)
+        
         console.log(description)
         // const formData = new FormData();
         // formData.append("image", image);
@@ -87,7 +88,7 @@ function EditTicketForm(){
             requester,
             description 
         }
-        console.log(newTicket)
+        console.log("IMAGE", image)
         // aws uploads can be a bit slow—displaying
         // some sort of loading message is a good idea
         console.log(newTicket, "NEW TICKET ON EDIT ")
@@ -120,6 +121,10 @@ return (
     
     >
         <option>{customer.customer.name}</option>
+        <option>No Requester Selected</option>
+        {customer ? customer.allCustomers.map((customer) => (
+            <option key={customer.id} value={customer.id}>{customer.name}</option>
+        )) : null}
     </select>
     </label>
     <label >
@@ -211,7 +216,8 @@ return (
         value={apply_macro}
         onChange={((e) => setApplyMacro(e.target.value))}
         id="macros-input"
-        >     
+        >    
+        <option>No Macro</option>
         {macros.macros.map((macro) => (
             <option key={macro.id} value={macro.id}>{macro.name}</option>
            ))}

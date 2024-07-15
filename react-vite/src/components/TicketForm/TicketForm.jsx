@@ -87,6 +87,7 @@ return (
     value={requester}
     onChange={((e) => setRequester(e.target.value))}
     >
+        <option>No Requester Selected</option>
         {customers ? customers.allCustomers.map((customer) => (
             <option key={customer.id} value={customer.id}>{customer.name}</option>
         )) : null}
@@ -178,9 +179,10 @@ return (
         onChange={((e) => setApplyMacro(e.target.value))}
         id="create-macros-input"
         >
-      {macros.macros.map((macro) => (
+            <option>No Macro</option>
+      {macros ?macros.macros.map((macro) => (
             <option key={macro.id} value={macro.id}>{macro.name}</option>
-           ))}
+           )) : null}
         </select>
     </lable>
     <button className="create-ticket-button" type="submit">Submit Ticket</button>

@@ -57,8 +57,15 @@ if (Object.keys(customer).length === 0 || !customer) return null
 if (!ticket) return null
 if (!user) return null
 if (!macros) return  null
+
 let chosenMacro;
-macros ? chosenMacro = macros.macros.find((macro) => macro.id === ticket.apply_macro) : null
+if (ticket.apply_macro) {
+   
+    macros ? chosenMacro = macros.macros.find((macro) => macro.id === ticket.apply_macro) : null
+} else {
+    chosenMacro = "No Macro Chosen"
+}
+
 return (
     <div id="view-ticket-form">
         <div id="view-ticket-top">

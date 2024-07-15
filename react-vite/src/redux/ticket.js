@@ -99,9 +99,9 @@ export const postTicketThunk = (image, newTicket) => async (dispatch) => {
   };
 
   export const putTicketThunk = (image, newTicket, ticket_id) => async (dispatch) => {
-    console.log("FORM DATA", image)
-    console.log("newTicket", newTicket)
-    console.log(ticket_id, "here in putTicketThunk")
+    // console.log("FORM DATA", image)
+    // console.log("newTicket", newTicket)
+    // console.log(ticket_id, "here in putTicketThunk")
   
     
     

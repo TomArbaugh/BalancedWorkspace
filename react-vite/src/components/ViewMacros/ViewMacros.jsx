@@ -4,6 +4,7 @@ import { getAllMacrosThunk } from "../../redux/macro"
 import { Link } from "react-router-dom"
 import OpenModalMenuItem from "../Navigation/OpenModalMenuItem"
 import EditMacro from "../EditMacro/EditMacro"
+import DeleteMacro from "../DeleteMacro/DeleteMacro"
 import "./ViewMacros.css"
 
 
@@ -34,7 +35,7 @@ function ViewMacros(){
             </div>
      
             {macros.macros.map((macro) => (
-                <div id="button-container">
+                <div key={macro.id} id="button-container">
                     <div id="button-inner-container">
                     <div className="macro-buttons">
                     <OpenModalMenuItem 
@@ -47,7 +48,7 @@ function ViewMacros(){
                      <OpenModalMenuItem 
                     
                     itemText="Delete"
-                     modalComponent={<EditMacro macroId={macro.id}/>}
+                     modalComponent={<DeleteMacro macroId={macro.id}/>}
                     />
                     </div>
                     </div>

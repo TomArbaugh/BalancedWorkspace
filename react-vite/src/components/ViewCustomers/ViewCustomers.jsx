@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { useEffect } from "react"
 import { getAllCustomersThunk } from "../../redux/customer"
 import OpenModalMenuItem from "../Navigation/OpenModalMenuItem"
-import EditMacro from "../EditMacro/EditMacro"
+import DeleteCustomer from "../DeleteCustomer/DeleteCustomer"
 import EditCustomer from "../EditCustomer/EditCustomer"
 import "./ViewCustomers.css"
 
@@ -22,7 +22,7 @@ function ViewCustomers(){
 
     }, [customer])
 
-    if (Object.keys(customer).length === 0) return null 
+   if (!customer.allCustomers) return null;
     return (
         <div>
              <div className="customer-header">
@@ -60,7 +60,7 @@ function ViewCustomers(){
                      <OpenModalMenuItem 
                     
                     itemText="Delete"
-                     modalComponent={<EditMacro customerId={customer.id}/>}
+                     modalComponent={<DeleteCustomer customerId={customer.id}/>}
                     />
                     </div>
                     </div>

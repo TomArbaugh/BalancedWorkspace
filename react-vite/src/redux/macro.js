@@ -3,6 +3,7 @@ const CREATE_MACRO = '/create/macro'
 const GET_ALL_MACROS = '/get/all/macros'
 const EDIT_MACRO = '/edit/macro'
 
+
 const getAllMacros = (macros) => ({
     type: GET_ALL_MACROS,
     payload: macros
@@ -72,6 +73,11 @@ export const editMacroThunk = (newMacro, macroId) => async (dispatch) => {
     const newMacro = await response.json()
     dispatch(editMacro(newMacro))
   }
+}
+
+export const deleteMacroThunk = () => async () => {
+  const response = await fetch (`/api/macro/${macroId}/delete`)
+  if (response.ok) return {"message": "successfully deleted"}
 }
 
 const initialState = {}

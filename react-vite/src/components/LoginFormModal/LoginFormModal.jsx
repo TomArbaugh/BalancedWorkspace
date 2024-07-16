@@ -19,10 +19,7 @@ function LoginFormModal() {
     return null;
   }
 
-  const validate = () => {
-    const newErrors = {}
-    
-  }
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();

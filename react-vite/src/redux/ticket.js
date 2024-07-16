@@ -2,7 +2,7 @@ const GET_ALL_TICKETS = "/get/all/tickets"
 const GET_TICKET_ID = "/get/ticket/id"
 const CREATE_TICKET = "/post/ticket"
 const EDIT_TICKET = "/put/ticket"
-const DELETE_TICKET = "/delete/ticket"
+
 
 const getAllTickets = (tickets) => ({
     type: GET_ALL_TICKETS,
@@ -29,9 +29,6 @@ const putTicket = (ticketImage, newTicket) => ({
     }
 })
 
-const deleteTicket = () => ({
-  type: DELETE_TICKET,
-})
 
 export const getAllTicketsThunk = () => async (dispatch) => {
   
@@ -144,7 +141,7 @@ export const postTicketThunk = (image, newTicket) => async (dispatch) => {
       
     };
   
-export const deleteTicketThunk = (ticket_id) => async (dispatch) => {
+export const deleteTicketThunk = (ticket_id) => async () => {
   const response = await fetch(`/api/tickets/${ticket_id}/delete`)
   if (response.ok) {
     return {"message": "successfully deleted"}

@@ -23,6 +23,7 @@ function Navigation() {
           <Link 
           className={user ? "nav-link" : "hide"}
           to="/create/ticket">Create Ticket</Link>
+
           <div className="nav-link">
           <OpenModalMenuItem
         
@@ -41,8 +42,14 @@ function Navigation() {
         itemText="Create Macro"
         modalComponent={<CreateMacro />}
         />
+        
           </div>
-      
+          <Link 
+          className={user ? "nav-link" : "hide"}
+          to="/view/customers">Customers</Link>
+           <Link 
+          className={user ? "nav-link" : "hide"}
+          to="/view/macros">Macros</Link>
           {/* <Link 
           className={user ? "nav-link" : "hide"}
           to="macro/create">Create Macro</Link> */}

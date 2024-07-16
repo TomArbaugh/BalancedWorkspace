@@ -96,7 +96,14 @@
     list-style: none;
     text-align: center;
     font-size: smaller;
-    padding: 3px;
+    padding: 1px;
+    border: solid 2px black;
+}
+
+.ticket-delete-button:hover {
+    background-color: white;
+    color: black;
+  
 }
 
 #view-delete-ticket-button {

@@ -3,6 +3,7 @@ const GET_ALL_CUSTOMERS = '/get/all/customers'
 const CREATE_CUSTOMER = '/create/customer'
 const EDIT_CUSTOMER = '/edit/customer'
 
+
 const getCustomerId = (customer) => ({
     type: GET_CUSTOMER_ID,
     payload: customer
@@ -22,6 +23,8 @@ const editCustomer = (newCustomer) => ({
   type: EDIT_CUSTOMER,
   payload: newCustomer
 })
+
+
 
 export const editCustomerThunk = (customerId, customer) => async (dispatch) => {
   const response = await fetch(`/api/customer/${customerId}`, {
@@ -76,6 +79,10 @@ export const createCustomerThunk = (customer) => async (dispatch) => {
   }
 }
 
+export const deleteCustomerThunk = (customerId) => async () => {
+  const response = await fetch(`/api/customer/${customerId}/delete`)
+  if (response.ok) return {"message": "successfully deleted"}
+}
 const initialState = {}
 
 

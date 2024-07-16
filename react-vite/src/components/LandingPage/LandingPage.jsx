@@ -3,29 +3,28 @@ import { thunkLogin } from "../../redux/session";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
+
 function LandingPage() {
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
-
+    
+    
     const logIn = async (e) => {
         e.preventDefault()
         
         const email = "demo@aa.io"
         const password = "password"
 
-        const serverResponse = await dispatch(
+        await dispatch(
             thunkLogin({
               email,
               password,
             })
           );
 
-          if (serverResponse) {
-            setErrors(serverResponse);
-          } else {
-            navigate('view/tickets/all')
-          }
+        navigate('view/tickets/all')
+          
     }
 
     return (

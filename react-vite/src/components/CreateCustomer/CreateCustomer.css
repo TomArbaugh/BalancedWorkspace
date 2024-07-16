@@ -1,0 +1,50 @@
+.create-customer-form{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    width: 350px;
+    height: 500px;
+}
+
+#create-customer-button {
+    margin-top: 25px;
+    height: 50px;
+    border-radius: 20px;
+    background-color: #1b3c59;
+    color: white;
+    font-weight: bolder;
+    font-size: larger;
+}
+
+#create-customer-error-message {
+    text-align: center;
+    color: red;
+}
+#disabled {
+    margin-top: 25px;
+    height: 50px;
+    border-radius: 20px;
+    background-color: #98aebe;
+    color: white;
+    font-weight: bolder;
+    font-size: larger;
+}
+
+#create-customer-header {
+    padding: 10px;
+    text-align: center;
+}
+
+.create-customer-input {
+    width: 97%;
+    height: 40px;
+    margin-bottom: 15px;
+}
+
+.creat-customer-label {
+    margin-bottom: 8px;
+}
+
+.create-customer-error {
+    color: red;
+}

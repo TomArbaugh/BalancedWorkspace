@@ -1,0 +1,36 @@
+#sign-up-modal {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    width: 300px;
+}
+
+#sign-up-button {
+    margin-top: 25px;
+    height: 50px;
+    border-radius: 20px;
+    background-color: #1b3c59;
+    color: white;
+    font-weight: bolder;
+    font-size: larger;
+}
+
+#sign-up-header {
+    padding: 10px;
+    text-align: center;
+}
+
+.sign-up-input {
+    width: 97%;
+    height: 40px;
+    margin-bottom: 15px;
+}
+
+.sign-up-label {
+    margin-bottom: 8px;
+   
+}
+
+.sign-up-errors {
+    color: red;
+}

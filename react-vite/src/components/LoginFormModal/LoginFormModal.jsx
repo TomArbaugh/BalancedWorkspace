@@ -19,8 +19,15 @@ function LoginFormModal() {
     return null;
   }
 
+  const validate = () => {
+    const newErrors = {}
+    
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+
 
     const serverResponse = await dispatch(
       thunkLogin({
@@ -39,35 +46,43 @@ function LoginFormModal() {
 
   return (
     <>
-      <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
+      <h1 id="log-header">Log In</h1>
+      <form 
+      id="log-in-form"
+      onSubmit={handleSubmit}>
         <label>
-          Email
+          <h4 className="log-labels">Email</h4>
+          
           <input
+          className="log-inputs"
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
         </label>
-        {errors.email && <p>{errors.email}</p>}
+        {errors.email && <p className="log-errors">{errors.email}</p>}
         <label>
-          Password
+          <h4 className="log-labels">Password</h4>
+          
           <input
+          className="log-inputs"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
         </label>
-        {errors.password && <p>{errors.password}</p>}
+        {errors.password && <p className="log-errors">{errors.password}</p>}
         <button
-
+          id="demo-button"
           onClick={() => demoLogIn()}
         >
           Log in as Demo User
         </button>
-        <button type="submit">Log In</button>
+        <button 
+        id="log-in-button"
+        type="submit">Log In</button>
 
       </form>
     </>

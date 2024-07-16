@@ -99,3 +99,11 @@
 .nav-link:hover {
   text-decoration: underline;
 }
+
+#log-out-button {
+  border-radius: 20px;
+  margin-top: 10px;
+  height: 30px;
+  width: 100px;
+  font-weight: 300;
+}

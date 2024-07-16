@@ -1,0 +1,45 @@
+#log-in-form {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    width: 300px;
+}
+
+#log-in-button {
+    margin-top: 25px;
+    height: 50px;
+    border-radius: 20px;
+    background-color: #1b3c59;
+    color: white;
+    font-weight: bolder;
+    font-size: larger;
+}
+
+#demo-button {
+    margin-top: 25px;
+    height: 55px;
+    border-radius: 20px;
+    background-color: #1b3c59;
+    color: white;
+    font-weight: bolder;
+    font-size: larger;
+}
+
+#log-header {
+    padding: 10px;
+    text-align: center;
+}
+
+.log-inputs {
+    width: 97%;
+    height: 40px;
+    margin-bottom: 15px;
+}
+
+.log-labels {
+    margin-bottom: 8px;
+}
+
+.log-errors {
+    color: red;
+}

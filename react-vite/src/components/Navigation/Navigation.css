@@ -1,8 +1,21 @@
 .profile-dropdown {
-  padding-top: 60px;
+  padding-top: 5px;
   position: absolute;
   color:rgb(222, 238, 253);
   list-style-type: none;
+}
+
+.menu-links {
+  color: white;
+  text-decoration: none;
+}
+
+.menu-links:hover {
+  text-decoration: underline;
+}
+
+.profile-dropdown > li {
+  padding-top: 10px;
 }
 
 .nav-div {
@@ -60,6 +73,10 @@
   justify-content: space-between;
 }
 
+.li-landing-two {
+  list-style-type: none;
+}
+
 #landing-h1 {
   margin-bottom: 0px;
   margin-top: 0px;
@@ -106,4 +123,9 @@
   height: 30px;
   width: 100px;
   font-weight: 300;
+}
+
+#log-out-button:hover {
+  background-color:rgb(37, 5, 241);
+  color: white;
 }

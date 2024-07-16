@@ -9,6 +9,8 @@ import ViewTickets from '../components/VIewTickets/ViewTickets';
 import DashBoard from '../components/DashBoard/DashBoard';
 import CreateCustomer from '../components/CreateCustomer/CreateCustomer';
 import CreateMacro from '../components/CreateMacro/CreateMacro';
+import ViewCustomers from '../components/ViewCustomers/ViewCustomers';
+import ViewMacros from '../components/ViewMacros/ViewMacros';
 
 
 export const router = createBrowserRouter([
@@ -50,6 +52,14 @@ export const router = createBrowserRouter([
       {
         path: "macro/create",
         element: <CreateMacro />
+      },
+      {
+        path: "view/customers",
+        element: <ViewCustomers/>
+      },
+      {
+        path: "view/macros",
+        element: <ViewMacros />
       }
     ],
   },

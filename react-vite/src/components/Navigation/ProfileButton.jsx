@@ -5,6 +5,7 @@ import OpenModalMenuItem from "./OpenModalMenuItem";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import './Navigation.css'
 
 function ProfileButton() {
@@ -56,6 +57,8 @@ function ProfileButton() {
             <>
               <li>{user.username}</li>
               <li>{user.email}</li>
+              <li><Link to="/view/customers" className="menu-links">Customers</Link></li>
+              <li><Link to="/view/macros" className="menu-links">Macros</Link></li>
               <li>
                 <button id="log-out-button" onClick={logout}>Log Out</button>
               </li>
@@ -74,6 +77,7 @@ function ProfileButton() {
                 onItemClick={closeMenu}
                 modalComponent={<SignupFormModal />}
               />
+             
             </>
           )}
         </ul>

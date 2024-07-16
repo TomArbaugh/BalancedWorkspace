@@ -1,5 +1,5 @@
-.macro-card {
-    
+#button-inner-container {
+    display: flex;
 }
 
 .macro-header {
@@ -16,13 +16,26 @@
     
 }
 
+.macro-buttons {
+    padding-top: 5px;
+    margin-left: 20px;
+    margin-top: 30px;
+    height: 25px;
+    width: 80px;
+    border-radius: 20px;
+    background-color: #1b3c59;
+    color: white;
+    font-weight: bolder;
+    font-size: large;
+    list-style-type: none;
+    text-align: center;
+    font-size: large;
+}
+
+
 .view-macro-preview {
     text-decoration: none;
     color: black;
-}
-
-.macro-element {
-    
 }
 
 #macro-card-and-headers {

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { postTicketThunk } from "../../redux/ticket";
 import "./TicketForm.css"
 import { getAllCustomersThunk } from "../../redux/customer";
-import { getMacroIdThunk } from "../../redux/macro";
+import { getAllMacrosThunk } from "../../redux/macro";
 import { useNavigate } from "react-router-dom";
 
 function TicketForm(){
@@ -15,7 +15,7 @@ function TicketForm(){
     }, [dispatch])
 
     useEffect(() => {
-        dispatch(getMacroIdThunk())
+        dispatch(getAllMacrosThunk())
     }, [dispatch])
 
     const user = useSelector((state) => state.session.user)

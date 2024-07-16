@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteTicketThunk, getTicketIdThunk } from "../../redux/ticket";
 import { useParams } from "react-router-dom";
 import { getCustomerIdThunk } from "../../redux/customer";
-import { getMacroIdThunk } from "../../redux/macro";
+import { getAllMacrosThunk } from "../../redux/macro";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "./ViewTickets.css"
@@ -23,7 +23,7 @@ function ViewTickets(){
    // console.log(ticket_id)
     // console.log(ticket.title)
     useEffect(() => {
-        dispatch(getMacroIdThunk())
+        dispatch(getAllMacrosThunk())
     }, [dispatch])
     
     const customer = useSelector((state) => state.customer)

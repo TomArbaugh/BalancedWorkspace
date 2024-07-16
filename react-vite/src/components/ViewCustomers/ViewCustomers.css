@@ -40,3 +40,15 @@
 .customer-element {
     width: 10%;
 }
+
+.customer-buttons {
+    list-style: none;
+    text-align: center;
+    padding: 5px;
+    width: 50px;
+    margin-top: 5px;
+    margin-left: 50px;
+    border-radius: 20px;
+    background-color: #1b3c59;
+    color: white;
+}

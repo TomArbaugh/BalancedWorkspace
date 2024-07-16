@@ -1,7 +1,8 @@
 import { useSelector, useDispatch } from "react-redux"
 import { useEffect } from "react"
 import { getAllCustomersThunk } from "../../redux/customer"
-import { Link } from "react-router-dom"
+import OpenModalMenuItem from "../Navigation/OpenModalMenuItem"
+import EditMacro from "../EditMacro/EditMacro"
 import "./ViewCustomers.css"
 
 
@@ -32,17 +33,37 @@ function ViewCustomers(){
                 <h3 className="customer-labels">Assignee #</h3>
                 <h3 className="customer-labels">Name</h3>
                 <h3 className="customer-labels">Email</h3>
+                <h3 className="customer-labels">Options</h3>
             </div>
             {customer.allCustomers.map((customer) => (
+                
                 <div key={customer.id} className="customer-card">
-                    <Link
-                    className="view-customer-preview"
-                    >
+            
+                    <div className="view-customer-preview">
+                    
+                    
                 <h4 className="customer-element">{customer.id}</h4>
                 <h4 className="customer-element">{customer.user_id}</h4>
                      <h4 className="customer-element">{customer.name}</h4>
                      <h4 className="customer-element">{customer.email}</h4>
-                     </Link>
+                     
+                     <div className="customer-element">
+                    <div className="customer-buttons">
+                    <OpenModalMenuItem 
+                    
+                    itemText="Edit"
+                     modalComponent={<EditMacro customerId={customer.id}/>}
+                    />
+                    </div>
+                    <div className="customer-buttons">
+                     <OpenModalMenuItem 
+                    
+                    itemText="Delete"
+                     modalComponent={<EditMacro customerId={customer.id}/>}
+                    />
+                    </div>
+                    </div>
+                    </div>
                      </div>
             ))}
            

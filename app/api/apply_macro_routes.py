@@ -8,13 +8,23 @@ apply_macro_routes = Blueprint('macro', __name__)
 
 @apply_macro_routes.route('/')
 @login_required
-def get_macro_Id():
+def get_all_macros():
     macros = Macro.query.filter_by(user_id=current_user.id).all()
    
     if macros is None:
-        return {"error": "Macro Not Found" }
+        return {"error": "Macros Not Found" }
     else:
         return [macro.to_dict() for macro in macros]
+
+@apply_macro_routes.route('/<int:id>')
+@login_required
+def get_macro_Id(id):
+    macro = Macro.query.get(id)
+
+    if macro is None:
+        return {"error": "Macro Not Found"}
+    else:
+        return macro.to_dict()
 
 @apply_macro_routes.route('/create', methods=["POST"])
 @login_required
@@ -38,9 +48,9 @@ def create_macro():
         return {"errors": form.errors}, 400
     return
 
-@apply_macro_routes.route('/edit/<int:id>', methods=["PUT"])
+@apply_macro_routes.route('/edit/<int:macroId>', methods=["PUT"])
 @login_required
-def edit_macro(id):
+def edit_macro(macroId):
 
     macro = Macro.query.get(id)
 

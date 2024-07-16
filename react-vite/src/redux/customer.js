@@ -1,6 +1,7 @@
 const GET_CUSTOMER_ID = '/get/customer/id'
 const GET_ALL_CUSTOMERS = '/get/all/customers'
 const CREATE_CUSTOMER = '/create/customer'
+const EDIT_CUSTOMER = '/edit/customer'
 
 const getCustomerId = (customer) => ({
     type: GET_CUSTOMER_ID,
@@ -16,6 +17,25 @@ const createCustomer = (customer) => ({
   type: CREATE_CUSTOMER,
   payload: customer
 })
+
+const editCustomer = (newCustomer) => ({
+  type: EDIT_CUSTOMER,
+  payload: newCustomer
+})
+
+export const editCustomerThunk = (customerId, customer) => async (dispatch) => {
+  const response = await fetch(`/api/customer/${customerId}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(customer)
+  })
+  if (response.ok) {
+    const newCustomer = await response.json()
+    dispatch(editCustomer(newCustomer))
+  }
+}
 
 export const getCustomerIdThunk = (requesterId) => async (dispatch) => {
     const response = await fetch(`/api/customers/${requesterId}`)
@@ -65,6 +85,8 @@ function customerReducer(state = initialState, action) {
         return {...state, customer: action.payload}
       case GET_ALL_CUSTOMERS:
         return {...state, allCustomers: action.payload}
+      case EDIT_CUSTOMER:
+        return {...state, newCustomer: action.payload}
       default:
         return state;
     }

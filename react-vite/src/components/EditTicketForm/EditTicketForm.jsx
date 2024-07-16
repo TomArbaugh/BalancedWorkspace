@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getTicketIdThunk, putTicketThunk } from "../../redux/ticket";
 import { getCustomerIdThunk, getAllCustomersThunk } from "../../redux/customer";
-import { getMacroIdThunk } from "../../redux/macro";
+import { getAllMacrosThunk } from "../../redux/macro";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "./EditTicketForm.css"
@@ -20,7 +20,7 @@ function EditTicketForm(){
     const ticket = useSelector((state) => state.ticket.ticketById)
     // console.log(ticket.title)
     useEffect(() => {
-        dispatch(getMacroIdThunk())
+        dispatch(getAllMacrosThunk())
     }, [dispatch])
 
     useEffect(() => {

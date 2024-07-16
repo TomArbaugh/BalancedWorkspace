@@ -124,7 +124,7 @@ value={ticket.priority}
 <input 
 id="view-ticket-description-input"
 disabled={true}
-value=''
+value={ticket.description}
 />
     </label>
     </div>
@@ -142,11 +142,13 @@ value=''
     <lable className="view-ticket-macro">
         <h4>Apply Macro</h4>
         
-        <input
+        <select
         id="view-macros-input"
         disabled={true}
-        value={chosenMacro.name}
-        />
+        value={chosenMacro.description}
+        >
+            <option>{chosenMacro.description}</option>
+        </select>
     </lable>
     <div className="view-delete-edit-buttons">
     <Link to={`/edit/ticket/${ticket.id}`}

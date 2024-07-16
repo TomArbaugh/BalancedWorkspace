@@ -1,0 +1,42 @@
+.customer-card {
+    display: flex;
+    justify-content: center;
+}
+
+.customer-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-right: 15%;
+    margin-left: 14%;
+    padding-bottom: 50px;
+    border-bottom: solid black 1px;
+}
+
+.customer-labels {
+    border-right: solid black 1px;
+    padding-right: 10px;
+}
+
+#view-customer-headers {
+    display: flex;
+    width: 70%;
+    justify-content: space-between;
+    margin: auto;
+    border-bottom: solid black 1px;
+}
+
+.view-customer-preview {
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: solid 1px black;
+    text-decoration: none;
+    color: black;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.customer-element {
+    width: 10%;
+}

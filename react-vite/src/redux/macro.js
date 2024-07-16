@@ -1,5 +1,6 @@
 const GET_MACRO_ID = '/get/macro/id'
 const CREATE_MACRO = '/create/macro'
+const GET_ALL_MACROS = '/get/all/macros'
 
 const getMacroId = (macros) => ({
     type: GET_MACRO_ID,
@@ -10,6 +11,7 @@ const createMacro = (macro) => ({
   type: CREATE_MACRO,
   payload: macro
 })
+
 
 export const getMacroIdThunk = () => async (dispatch) => {
     const response = await fetch(`/api/macro/`)

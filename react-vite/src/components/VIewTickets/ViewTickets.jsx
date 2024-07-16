@@ -1,11 +1,12 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteTicketThunk, getTicketIdThunk } from "../../redux/ticket";
+import { getTicketIdThunk } from "../../redux/ticket";
 import { useParams } from "react-router-dom";
 import { getCustomerIdThunk } from "../../redux/customer";
 import { getAllMacrosThunk } from "../../redux/macro";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
+import DeleteTicket from "../DeleteTicket/DeleteTicket";
 import "./ViewTickets.css"
 
 
@@ -13,7 +14,7 @@ import "./ViewTickets.css"
 function ViewTickets(){
     const {ticket_id} = useParams()
     const dispatch = useDispatch()
-    const navigate = useNavigate()
+    
 
     useEffect(() => {
 
@@ -48,10 +49,7 @@ function ViewTickets(){
 
        }, [dispatch, requesterId])
       
-    const deleteTicket = () => {
-        dispatch(deleteTicketThunk(ticket_id))
-        navigate('/view/tickets/all')
-    }
+
 
 if (Object.keys(customer).length === 0 || !customer) return null 
 if (!ticket) return null
@@ -153,7 +151,13 @@ value=''
     <div className="view-delete-edit-buttons">
     <Link to={`/edit/ticket/${ticket.id}`}
     className="view-ticket-button"><button id="inner-button">Edit</button></Link>
-    <button id="view-delete-ticket-button" onClick={deleteTicket} type="submit">Delete</button>
+    <div className="ticket-delete-button">
+     <OpenModalMenuItem 
+                    
+                    itemText="Delete"
+                     modalComponent={<DeleteTicket />}
+                    />
+                    </div>
     </div>
    
     </div>

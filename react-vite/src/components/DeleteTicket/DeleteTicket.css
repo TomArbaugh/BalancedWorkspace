@@ -1,0 +1,27 @@
+.delete-modal {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    text-align: center;
+    padding: 10px;
+}
+
+.delete-modal-buttons {
+    margin-top: 10px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: red;
+    color: white;
+    font-size: x-large;
+    font-weight: 900;
+}
+
+.dont-delete-modal-buttons {
+    margin-top: 10px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: #1b3c59;
+    color: white;
+    font-size: x-large;
+    font-weight: 900;
+}

@@ -3,6 +3,7 @@ import { useEffect } from "react"
 import { getAllCustomersThunk } from "../../redux/customer"
 import OpenModalMenuItem from "../Navigation/OpenModalMenuItem"
 import EditMacro from "../EditMacro/EditMacro"
+import EditCustomer from "../EditCustomer/EditCustomer"
 import "./ViewCustomers.css"
 
 
@@ -52,7 +53,7 @@ function ViewCustomers(){
                     <OpenModalMenuItem 
                     
                     itemText="Edit"
-                     modalComponent={<EditMacro customerId={customer.id}/>}
+                     modalComponent={<EditCustomer customerId={customer.id}/>}
                     />
                     </div>
                     <div className="customer-buttons">

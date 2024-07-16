@@ -88,6 +88,17 @@
     color: white;
 }
 
+.ticket-delete-button {
+    width: 65px;
+    border-radius: 20px;
+    background-color: #1b3c59;
+    color: white;
+    list-style: none;
+    text-align: center;
+    font-size: smaller;
+    padding: 3px;
+}
+
 #view-delete-ticket-button {
     width: 70px;
     border-radius: 20px;

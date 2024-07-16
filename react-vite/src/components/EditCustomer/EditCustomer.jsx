@@ -2,9 +2,9 @@ import { useEffect, useState } from "react"
 import { useModal } from "../../context/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { editCustomerThunk, getCustomerIdThunk } from "../../redux/customer";
-import "./CreateCustomer.css"
+import "./EditCustomer.css"
 
-function CreateCustomer({customerId}){
+function EditCustomer({customerId}){
     const dispatch = useDispatch()
     const { closeModal } = useModal() 
     const [name, setName] = useState()
@@ -45,14 +45,14 @@ function CreateCustomer({customerId}){
             email
         }
 
-        await dispatch(editCustomerThunk(customer))
+        await dispatch(editCustomerThunk(customerId, customer))
 
         closeModal()
     }
 
     return (
         <div id="create-customer-div">
-        <h1 id="create-customer-header">Create Customer</h1>
+        <h1 id="create-customer-header">Edit Customer</h1>
        <form
        className="create-customer-form"
        onSubmit={onSubmit}
@@ -85,4 +85,4 @@ function CreateCustomer({customerId}){
     )
 }
 
-export default CreateCustomer
+export default EditCustomer

@@ -12,7 +12,7 @@ class Macro(db.Model):
     name = db.Column(db.String(40), nullable=False)
     description = db.Column(db.String(2000), nullable=False)
     available_for = db.Column(db.String, nullable=False)
-    actions = db.Column(db.String(255))
+
 
     macros_user = db.relationship(
         "User",
@@ -30,6 +30,5 @@ class Macro(db.Model):
             "user_id": self.user_id,
             "name": self.name,
             "description": self.description,
-            "available_for": self.available_for,
-            "actions": self.actions
+            "available_for": self.available_for
         }

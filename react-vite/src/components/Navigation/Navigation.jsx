@@ -1,7 +1,10 @@
 import { NavLink, Link } from "react-router-dom";
 import ProfileButton from "./ProfileButton";
 import { GiTightrope } from "react-icons/gi";
-import {useSelector} from "react-redux"
+import {useSelector} from "react-redux";
+import OpenModalMenuItem from "./OpenModalMenuItem";
+import CreateCustomer from "../CreateCustomer/CreateCustomer"
+import CreateMacro from "../CreateMacro/CreateMacro"
 
 
 function Navigation() {
@@ -16,11 +19,36 @@ function Navigation() {
           <h1 id="landing-h1">B<GiTightrope />LANCED</h1>
           <h2 id="landing-h2">workspace</h2>
           </NavLink>
+          <div className={user ? "nav-links" : "hide"}>
           <Link 
           className={user ? "nav-link" : "hide"}
           to="/create/ticket">Create Ticket</Link>
+          <div className="nav-link">
+          <OpenModalMenuItem
+        
+        itemText="Create Customer"
+        modalComponent={<CreateCustomer />}
+        />
+          </div>
+       
+          {/* <Link 
+          className={user ? "nav-link" : "hide"}
+          to="customer/create">Create Customer</Link> */}
+
+          <div className="nav-link">
+          <OpenModalMenuItem 
+        
+        itemText="Create Macro"
+        modalComponent={<CreateMacro />}
+        />
+          </div>
+      
+          {/* <Link 
+          className={user ? "nav-link" : "hide"}
+          to="macro/create">Create Macro</Link> */}
+          </div>
       </li>
-      <li className="li-landing">
+      <li className="li-landing-two">
         <ProfileButton />
       </li>
     </ul>

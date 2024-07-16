@@ -1,8 +1,14 @@
 const GET_MACRO_ID = '/get/macro/id'
+const CREATE_MACRO = '/create/macro'
 
 const getMacroId = (macros) => ({
     type: GET_MACRO_ID,
     payload: macros
+})
+
+const createMacro = (macro) => ({
+  type: CREATE_MACRO,
+  payload: macro
 })
 
 export const getMacroIdThunk = () => async (dispatch) => {
@@ -17,6 +23,20 @@ export const getMacroIdThunk = () => async (dispatch) => {
     } else {
         console.log("NO SUCH CUSTOMER")
     }
+}
+
+export const createMacroThunk = (macro) => async (dispatch) => {
+  const response =  await fetch('/api/macro/create', {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(macro)
+  })
+  if (response.ok) {
+    const macro = await response.json()
+    dispatch(createMacro(macro))
+  } else {
+    console.log("There was an error making your Customer")
+  }
 }
 
 const initialState = {}

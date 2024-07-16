@@ -7,6 +7,8 @@ import EditTicketForm from '../components/EditTicketForm/EditTicketForm';
 import LandingPage from '../components/LandingPage/LandingPage';
 import ViewTickets from '../components/VIewTickets/ViewTickets';
 import DashBoard from '../components/DashBoard/DashBoard';
+import CreateCustomer from '../components/CreateCustomer/CreateCustomer';
+import CreateMacro from '../components/CreateMacro/CreateMacro';
 
 
 export const router = createBrowserRouter([
@@ -40,6 +42,14 @@ export const router = createBrowserRouter([
       {
         path: "view/tickets/all",
         element: <DashBoard />
+      },
+      {
+        path: "customer/create",
+        element: <CreateCustomer />
+      },
+      {
+        path: "macro/create",
+        element: <CreateMacro />
       }
     ],
   },

@@ -40,7 +40,7 @@ def upload_image(ticket_id):
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
-        print("-----------------------------------------", "form Validated") 
+        # print("-----------------------------------------", "form Validated") 
         image = form.data["image"]
         image.filename = get_unique_filename(image.filename)
         upload = upload_file_to_s3(image)

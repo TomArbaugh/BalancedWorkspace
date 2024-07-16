@@ -14,12 +14,3 @@ class TicketForm(FlaskForm):
     description = StringField("description", validators=[DataRequired()])
     submit = SubmitField("Submit Ticket")
 
-
-"""EXAMPLE ROUTE 
-
-
-
-image_routes = Blueprint("images", __name__)
-
-
-"""

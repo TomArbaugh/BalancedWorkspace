@@ -1,16 +1,43 @@
 #message-center {
     display: flex;
     flex-direction: column;
-    width: 500px;
+    min-width: 500px;
+    max-width: 500px;
     text-align: center;
     margin: auto;
+    margin-top: 10px;
     padding-top: 50px;
+    border: black solid 1px;
 }
 
 #message-header {
-    padding-bottom: 50px;
+    padding-bottom: 5px;
 }
 
 #input {
-    height: 500px;
+    max-height: 420px;
+    min-height: 420px;
+    border: black solid 1px;
+}
+
+#convo-select {
+    max-height: 40px;
+    min-height: 40px;
+    margin: 10px;
+}
+
+.message-card {
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    border: black solid 1px;
+    padding: 10px;
+    margin: 10px;
+}
+
+#message-input {
+    border: black solid 1px;
+    min-height: 150px;
+    max-height: 150px;
+    margin: 10px;
 }

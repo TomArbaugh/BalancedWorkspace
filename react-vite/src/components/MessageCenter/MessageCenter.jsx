@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { getMessagesThunk } from "../../redux/message"
+import { createMessageThunk, getMessagesThunk } from "../../redux/message"
 import { getUsersThunk } from "../../redux/session"
 import "./MessageCenter.css"
 
@@ -23,7 +23,7 @@ function MessageCenter() {
 
     useEffect(() => {
 
-    }, [users, messages])
+    }, [users, messages, otherPerson, convoArr])
 
     if (!messages) return null;
     if (!users) return null;
@@ -39,20 +39,33 @@ function MessageCenter() {
                 
             if (message.sender_id.toString() === otherPerson || message.receiver_id.toString() === otherPerson) {
                 
-                console.log(message)
+                // console.log(message)
                 tempArr.push(message)
                 
             }
+            return
         })
         setConvoArr(tempArr)
     }
     
-   console.log(convoArr)
+    const sendMessage = (e) => {
+        e.preventDefault()
+        
+        
+        const newMessage = {
+            message: message
+        }
+        // console.log(otherPerson)
+        dispatch(createMessageThunk(otherPerson, newMessage))
+    }
+    
+   
 
     return (
         <div id="message-center">
             <h2 id="message-header">Message Center</h2>
             <select
+            id="convo-select"
             value={otherPerson}
             onChange={((e) => otherPersonFunc(e))}
             >
@@ -65,17 +78,26 @@ function MessageCenter() {
             id="input"
             >
                 {convoArr ? convoArr.map((convo) => (
-                    <div key={convo.id}>
+                    <div key={convo.id} className="message-card">
                     <p>Sender Id: {convo.sender_id}</p>
                     <p >{convo.message}</p>
                     </div>
                 )) : null}
   
             </div>
+            <form
+            onSubmit={sendMessage}
+            >
             <textarea
+            id="message-input"
             value={message}
             onChange={((e) => setMessage(e.target.value))}
             ></textarea>
+            <button
+             
+            type="submit">Send</button>
+            </form>
+     
         </div>
     )
 }

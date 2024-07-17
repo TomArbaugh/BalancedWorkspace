@@ -99,7 +99,7 @@ export const postTicketThunk = (image, newTicket) => async (dispatch) => {
     // console.log("FORM DATA", image)
     // console.log("newTicket", newTicket)
     // console.log(ticket_id, "here in putTicketThunk")
-    console.log(image, "image in thunk")
+    // console.log(image, "image in thunk")
       const formData = new FormData();
       formData.append('image', image);
      

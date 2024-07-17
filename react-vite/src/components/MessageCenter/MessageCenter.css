@@ -1,0 +1,16 @@
+#message-center {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    text-align: center;
+    margin: auto;
+    padding-top: 50px;
+}
+
+#message-header {
+    padding-bottom: 50px;
+}
+
+#input {
+    height: 500px;
+}

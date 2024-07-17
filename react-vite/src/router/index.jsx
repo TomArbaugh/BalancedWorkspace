@@ -11,6 +11,7 @@ import CreateCustomer from '../components/CreateCustomer/CreateCustomer';
 import CreateMacro from '../components/CreateMacro/CreateMacro';
 import ViewCustomers from '../components/ViewCustomers/ViewCustomers';
 import ViewMacros from '../components/ViewMacros/ViewMacros';
+import MessageCenter from '../components/MessageCenter/MessageCenter';
 
 
 export const router = createBrowserRouter([
@@ -60,6 +61,10 @@ export const router = createBrowserRouter([
       {
         path: "view/macros",
         element: <ViewMacros />
+      },
+      {
+        path: "message/center",
+        element: <MessageCenter />
       }
     ],
   },

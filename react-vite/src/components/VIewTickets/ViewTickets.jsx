@@ -77,7 +77,7 @@ disabled={true}
 value={customer.customer ? customer.customer.name : null}
 />
     </label>
-    <p className="error-message">{false ? "nothing" : null} </p>
+    <p className="error-message"></p>
     <label>
         <h4> Assignee</h4>
        
@@ -118,7 +118,7 @@ value={ticket.priority}
         disabled={true}
         />
     </label>
-    <p className="error-message">{false ? "nothing" : null} </p>
+    <p className="error-message"> </p>
    <lable> </lable>
     <label>
        
@@ -129,7 +129,7 @@ disabled={true}
 value={ticket.description}
 />
     </label>
-    <p className="error-message">{false ? "nothing" : null} </p>
+    <p className="error-message"> </p>
     </div>
     <div id="view-ticket-right">
     <label>

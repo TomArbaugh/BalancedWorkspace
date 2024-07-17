@@ -9,12 +9,14 @@ import sessionReducer from "./session";
 import ticketReducer from "./ticket"
 import customerReducer from "./customer";
 import applyMacroReducer from "./macro";
+import messageReducer from "./message";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   ticket: ticketReducer,
   customer: customerReducer,
-  applyMacro: applyMacroReducer
+  applyMacro: applyMacroReducer,
+  message: messageReducer
 });
 
 let enhancer;

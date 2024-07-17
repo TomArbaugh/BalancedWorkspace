@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux"
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { getAllCustomersThunk } from "../../redux/customer"
 import OpenModalMenuItem from "../Navigation/OpenModalMenuItem"
 import DeleteCustomer from "../DeleteCustomer/DeleteCustomer"

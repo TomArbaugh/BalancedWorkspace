@@ -1,26 +1,18 @@
 import { useDispatch } from "react-redux"
 import { deleteMacroThunk } from "../../redux/macro"
 import { useModal } from "../../context/Modal"
-import { useNavigate } from "react-router-dom"
 import "./DeleteMacro.css"
-import { useEffect } from "react"
+
 
 function DeleteMacro({macroId}) {
     
-    const navigate = useNavigate()
+    
     const dispatch = useDispatch()
     const {closeModal} = useModal()
 
-    const deleteMacro = async (e) => {
-        e.preventDefault()
-        const deleted = await dispatch(deleteMacroThunk(macroId))
-
-        if (deleted) {
-            closeModal()
- 
-        }
-        
- 
+    const deleteMacro = () => {
+        dispatch(deleteMacroThunk(macroId))
+        closeModal()
     }
 
     const closeTheModal = (e) => {

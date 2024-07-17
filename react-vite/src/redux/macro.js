@@ -2,6 +2,7 @@ const GET_MACRO_ID = '/get/macro/id'
 const CREATE_MACRO = '/create/macro'
 const GET_ALL_MACROS = '/get/all/macros'
 const EDIT_MACRO = '/edit/macro'
+const DELETE_MACRO = '/delete/macro'
 
 
 const getAllMacros = (macros) => ({
@@ -24,7 +25,10 @@ const editMacro = (newMacro) => ({
   payload: newMacro
 })
 
-
+const deleteMacro = (deletedMacro) => ({
+  type: DELETE_MACRO,
+  payload: deletedMacro
+})
 export const getAllMacrosThunk = () => async (dispatch) => {
     const response = await fetch(`/api/macro/`)
     // console.log("macros OK", response)
@@ -75,9 +79,13 @@ export const editMacroThunk = (newMacro, macroId) => async (dispatch) => {
   }
 }
 
-export const deleteMacroThunk = (macroId) => async () => {
+export const deleteMacroThunk = (macroId) => async (dispatch) => {
   const response = await fetch (`/api/macro/${macroId}/delete`)
-  if (response.ok) return {"message": "successfully deleted"}
+  if (response.ok) {
+    const deletedMacro = response.json()
+    dispatch(deleteMacro(deletedMacro))
+    
+  }
 }
 
 const initialState = {}
@@ -91,6 +99,8 @@ function applyMacroReducer(state = initialState, action) {
         return {...state, Macro: action.payload}
       case EDIT_MACRO:
         return {...state, NewMac: action.payload}
+      case DELETE_MACRO:
+        return {...state, DeleteMacro: action.payload }
       default:
         return state;
     }

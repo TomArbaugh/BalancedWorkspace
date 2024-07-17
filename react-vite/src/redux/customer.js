@@ -2,6 +2,7 @@ const GET_CUSTOMER_ID = '/get/customer/id'
 const GET_ALL_CUSTOMERS = '/get/all/customers'
 const CREATE_CUSTOMER = '/create/customer'
 const EDIT_CUSTOMER = '/edit/customer'
+const DELETE_CUSTOMER = '/delete/customer'
 
 
 const getCustomerId = (customer) => ({
@@ -24,7 +25,10 @@ const editCustomer = (newCustomer) => ({
   payload: newCustomer
 })
 
-
+const deleteCustomer = (data) => ({
+  type: DELETE_CUSTOMER,
+  payload: data
+})
 
 export const editCustomerThunk = (customerId, customer) => async (dispatch) => {
   const response = await fetch(`/api/customers/edit/${customerId}`, {
@@ -79,9 +83,13 @@ export const createCustomerThunk = (customer) => async (dispatch) => {
   }
 }
 
-export const deleteCustomerThunk = (customerId) => async () => {
+export const deleteCustomerThunk = (customerId) => async (dispatch) => {
   const response = await fetch(`/api/customers/${customerId}/delete`)
-  if (response.ok) return {"message": "successfully deleted"}
+  if (response.ok) {
+    const data = response.json()
+    dispatch(deleteCustomer(data))
+    
+  }
 }
 const initialState = {}
 
@@ -94,6 +102,8 @@ function customerReducer(state = initialState, action) {
         return {...state, allCustomers: action.payload}
       case EDIT_CUSTOMER:
         return {...state, newCustomer: action.payload}
+      case DELETE_CUSTOMER:
+        return {...state, CustomerDeleted: action.payload}
       default:
         return state;
     }

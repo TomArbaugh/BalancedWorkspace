@@ -11,10 +11,12 @@ function ViewCustomers(){
 
     const dispatch = useDispatch()
    
+    const newCustomer = useSelector((state) => state.customer.newCustomer)
+    const deletedCustomer = useSelector((state) => state.customer.CustomerDeleted)
 
     useEffect(() => {
         dispatch(getAllCustomersThunk())
-    }, [dispatch])
+    }, [dispatch, newCustomer, deletedCustomer])
     
     const customer = useSelector((state) => state.customer)
 

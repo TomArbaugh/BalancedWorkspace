@@ -16,6 +16,7 @@ function EditCustomer({customerId}){
     }, [dispatch, customerId])
 
     const customer = useSelector((state) => state.customer.customer)
+    
 
     useEffect(() => {
         if (customer) {

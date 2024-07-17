@@ -12,21 +12,25 @@ function ViewMacros(){
 
     const dispatch = useDispatch()
 
+    const newMac = useSelector((state) => state.applyMacro.NewMac)
+    const deletedMac = useSelector((state) => state.applyMacro.DeleteMacro)
+
         useEffect(() => {
         dispatch(getAllMacrosThunk())
-    }, [dispatch])
+    }, [dispatch, newMac, deletedMac])
     
     const macros = useSelector((state) => state.applyMacro)
-
+   
 
     useEffect(() => {
 
     }, [macros])
 
-  
+  console.log("NEWMAC", newMac)
        
     
     if (Object.keys(macros).length === 0) return null 
+    
     return (
         <div id="view-macro-top-head">
              <div className="macro-header">

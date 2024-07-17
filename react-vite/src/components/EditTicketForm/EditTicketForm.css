@@ -101,10 +101,13 @@
 }
 
 .edit-ticket-macro {
-    width: 90%
+    width: 90%;
+    
 }
 
 .error-message {
     color: red;
+    min-height: 5px;
+    max-height: 5px;
 }
 

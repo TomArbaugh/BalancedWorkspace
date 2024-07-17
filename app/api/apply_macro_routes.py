@@ -52,21 +52,20 @@ def create_macro():
 @login_required
 def edit_macro(macroId):
 
-    macro = Macro.query.get(id)
+    macro = Macro.query.get(macroId)
 
     form = CreateMacroForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
        
-        macro.user_id = current_user.id,
-        macro.name = form.data["name"],
-        macro.description = form.data["description"],
-        macro.available_for = form.data["available_for"]
+        macro.user_id = current_user.id
+        macro.name = form.data["name"]
+        macro.description = form.data["description"]
         
      
         db.session.commit()
-        return new_macro.to_dict()
+        return macro.to_dict()
 
     if form.errors:
         print(form.errors)

@@ -50,7 +50,7 @@ function SignupFormModal() {
   return (
     <div >
       <h1 id="sign-up-header">Sign Up</h1>
-      {errors.server && <p className="sign-up-errors">{errors.server}</p>}
+      <p>{errors.server ? errors.server : null}</p>
       <form 
       id="sign-up-modal"
       onSubmit={handleSubmit}>
@@ -65,7 +65,7 @@ function SignupFormModal() {
             required
           />
         </label>
-        {errors.email && <p className="sign-up-errors">{errors.email}</p>}
+       <p className="sign-up-errors">{errors.email ? errors.email : null}</p>
         <label>
           <h4 className="sign-up-label">Username</h4>
           
@@ -77,7 +77,7 @@ function SignupFormModal() {
             required
           />
         </label>
-        {errors.username && <p className="sign-up-errors">{errors.username}</p>}
+        <p className="sign-up-errors">{errors.username ? errors.username : null}</p>
         <label>
           <h4 className="sign-up-label">Password</h4>
           
@@ -89,7 +89,7 @@ function SignupFormModal() {
             required
           />
         </label>
-        {errors.password && <p className="sign-up-errors">{errors.password}</p>}
+        <p className="sign-up-errors">{errors.password ? errors.password : null}</p>
         <label>
           <h4 className="sign-up-label">Confirm Password</h4>
           
@@ -101,7 +101,7 @@ function SignupFormModal() {
             required
           />
         </label>
-        {errors.confirmPassword && <p className="sign-up-errors">{errors.confirmPassword}</p>}
+        <p className="sign-up-errors">{errors.confirmPassword ? errors.confirmPassword : null}</p>
         <button id="sign-up-button" type="submit">Sign Up</button>
       </form>
     </div>

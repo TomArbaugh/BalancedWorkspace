@@ -3,10 +3,11 @@
     flex-direction: column;
     padding: 10px;
     width: 300px;
+   
 }
 
 #sign-up-button {
-    margin-top: 25px;
+    
     height: 50px;
     border-radius: 20px;
     background-color: #1b3c59;
@@ -16,14 +17,14 @@
 }
 
 #sign-up-header {
-    padding: 10px;
+   
     text-align: center;
 }
 
 .sign-up-input {
     width: 97%;
     height: 40px;
-    margin-bottom: 15px;
+   
 }
 
 .sign-up-label {
@@ -33,4 +34,6 @@
 
 .sign-up-errors {
     color: red;
+    min-height: 5px;
+    max-height: 5px;
 }

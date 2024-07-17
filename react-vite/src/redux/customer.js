@@ -27,7 +27,7 @@ const editCustomer = (newCustomer) => ({
 
 
 export const editCustomerThunk = (customerId, customer) => async (dispatch) => {
-  const response = await fetch(`/api/customer/${customerId}`, {
+  const response = await fetch(`/api/customers/edit/${customerId}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json"
@@ -80,7 +80,7 @@ export const createCustomerThunk = (customer) => async (dispatch) => {
 }
 
 export const deleteCustomerThunk = (customerId) => async () => {
-  const response = await fetch(`/api/customer/${customerId}/delete`)
+  const response = await fetch(`/api/customers/${customerId}/delete`)
   if (response.ok) return {"message": "successfully deleted"}
 }
 const initialState = {}

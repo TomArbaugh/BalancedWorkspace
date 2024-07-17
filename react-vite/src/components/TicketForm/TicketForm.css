@@ -89,8 +89,9 @@
     color: black;
 }
 #create-macros-input {
-    height: 40px;
+    height: 90px;
     width: 100%;
+    text-wrap: wrap;
 }
 
 #create-ticket-image {
@@ -108,4 +109,6 @@
 
 .error-message {
     color: red;
+    min-height: 5px;
+    max-height: 5px;
 }

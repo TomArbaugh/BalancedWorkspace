@@ -137,8 +137,8 @@ return (
         
     <select
     className="edit-ticket-requester"
-    value={customer.customer.name}
-    
+    value={requester}
+    onChange={((e) => setRequester(e.target.value))}
     >
         <option>{customer.customer.name}</option>
         {customer ? customer.allCustomers.map((customer) => (
@@ -146,7 +146,7 @@ return (
         )) : null}
     </select>
     </label>
-    {errors.requester && <p className="error-message">{errors.requester}</p>}
+    <p className="error-message">{errors.requester ? errors.requester : null}</p>
     <label >
         <h4>Assignee</h4>
        
@@ -199,7 +199,7 @@ return (
         id="ticket-title-input"
         />
     </label>
-    {errors.title && <p className="error-message">{errors.title}</p>}
+    <p className="error-message">{errors.title ? errors.title : null}</p>
     <label>
 
     </label>
@@ -213,7 +213,7 @@ return (
         > 
         </textarea>
     </label>
-    {errors.description && <p className="error-message">{errors.description}</p>}
+    <p className="error-message">{errors.description ? errors.description : null}</p>
     </div>
     <div id="edit-ticket-right">
     <lable className="edit-ticket-image">

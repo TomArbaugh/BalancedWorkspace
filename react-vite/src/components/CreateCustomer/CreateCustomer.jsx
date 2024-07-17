@@ -52,7 +52,7 @@ function CreateCustomer(){
         onChange={((e) => setName(e.target.value))}
         />
         </label>
-        {error.name && <p className="create-customer-error">{error.name}</p>}
+        <p className="create-customer-error">{error.name ? error.name : null}</p>
     <label>
         <h4 className="create-customer-label">Email</h4>
         <input 
@@ -61,8 +61,8 @@ function CreateCustomer(){
         onChange={((e) => setEmail(e.target.value))}
         />
     </label>
-    {error.email && <p className="create-customer-error">{error.email}</p>}
-        {(!email || !name) && <p id="create-customer-error-message">Please provide name and email.</p>}
+    <p className="create-customer-error">{error.email ? error.email : null}</p>
+        <p id={(!email || !name) ? "create-customer-error-message" : "invisi-text"}>Please provide name and email.</p>
         <button 
         id={email && name ? "create-customer-button" : "disabled"}
         type="submit">Create Customer</button>

@@ -75,7 +75,7 @@ export const editMacroThunk = (newMacro, macroId) => async (dispatch) => {
   }
 }
 
-export const deleteMacroThunk = () => async () => {
+export const deleteMacroThunk = (macroId) => async () => {
   const response = await fetch (`/api/macro/${macroId}/delete`)
   if (response.ok) return {"message": "successfully deleted"}
 }

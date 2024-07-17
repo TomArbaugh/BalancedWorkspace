@@ -7,8 +7,8 @@ import "./EditCustomer.css"
 function EditCustomer({customerId}){
     const dispatch = useDispatch()
     const { closeModal } = useModal() 
-    const [name, setName] = useState()
-    const [email, setEmail] = useState()
+    const [name, setName] = useState("")
+    const [email, setEmail] = useState("")
     const [error, setError] = useState({})
 
     useEffect(() => {
@@ -46,7 +46,7 @@ function EditCustomer({customerId}){
         }
 
         await dispatch(editCustomerThunk(customerId, customer))
-
+      
         closeModal()
     }
 
@@ -65,7 +65,7 @@ function EditCustomer({customerId}){
         onChange={((e) => setName(e.target.value))}
         />
         </label>
-        {error.name && <p className="create-customer-error">{error.name}</p>}
+        <p className="create-customer-error">{error.name ? error.name : null}</p>
     <label>
         <h4 className="create-customer-label">Email</h4>
         <input 
@@ -74,7 +74,7 @@ function EditCustomer({customerId}){
         onChange={((e) => setEmail(e.target.value))}
         />
     </label>
-    {error.email && <p className="create-customer-error">{error.email}</p>}
+    <p className="create-customer-error">{error.email ? error.email : null}</p>
         {(!email || !name) && <p id="create-customer-error-message">Please provide name and email.</p>}
         <button 
         id={email && name ? "create-customer-button" : "disabled"}

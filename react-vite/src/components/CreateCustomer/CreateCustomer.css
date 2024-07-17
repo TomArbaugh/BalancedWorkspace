@@ -19,6 +19,15 @@
 #create-customer-error-message {
     text-align: center;
     color: red;
+    min-height: 5px;
+    max-height: 5px;
+}
+
+#invisi-text {
+    text-align: center;
+    color: white;
+    min-height: 5px;
+    max-height: 5px;
 }
 #disabled {
     margin-top: 25px;
@@ -47,4 +56,6 @@
 
 .create-customer-error {
     color: red;
+    min-height: 5px;
+    max-height: 5px;
 }

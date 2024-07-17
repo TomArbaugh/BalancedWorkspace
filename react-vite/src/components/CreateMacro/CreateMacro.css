@@ -28,6 +28,15 @@
 #create-macro-error-message {
     text-align: center;
     color: red;
+    min-height: 5px;
+    max-height: 5px;
+}
+
+#invisi-text {
+    text-align: center;
+    color: white;
+    min-height: 5px;
+    max-height: 5px;
 }
 
 #create-macro-header {
@@ -47,5 +56,7 @@
 
 .create-macro-error {
     color: red;
+    min-height: 5px;
+    max-height: 5px;
 }
 

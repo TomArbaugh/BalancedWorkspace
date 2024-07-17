@@ -58,7 +58,7 @@ function LoginFormModal() {
             required
           />
         </label>
-        {errors.email && <p className="log-errors">{errors.email}</p>}
+        <p className="log-errors">{errors.email ? errors.email : null}</p>
         <label>
           <h4 className="log-labels">Password</h4>
           
@@ -70,7 +70,7 @@ function LoginFormModal() {
             required
           />
         </label>
-        {errors.password && <p className="log-errors">{errors.password}</p>}
+        <p className="log-errors">{errors.password ? errors.password : null}</p>
         <button
           id="demo-button"
           onClick={() => demoLogIn()}

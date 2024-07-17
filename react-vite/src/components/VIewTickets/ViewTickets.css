@@ -18,13 +18,14 @@
 }
 
 .view-ticket-type {
-    width: 85px;
+    width: 80px;
     height: 40px;
     font-weight: bolder;
+    margin-right: 5px;
 }
 
 .view-ticket-priority {
-    width: 85px;
+    width: 80px;
     height: 40px;
     font-weight: bolder;
 }

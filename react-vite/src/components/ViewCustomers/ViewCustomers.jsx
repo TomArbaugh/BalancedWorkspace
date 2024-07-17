@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { getAllCustomersThunk } from "../../redux/customer"
 import OpenModalMenuItem from "../Navigation/OpenModalMenuItem"
 import DeleteCustomer from "../DeleteCustomer/DeleteCustomer"
@@ -10,6 +10,7 @@ import "./ViewCustomers.css"
 function ViewCustomers(){
 
     const dispatch = useDispatch()
+   
 
     useEffect(() => {
         dispatch(getAllCustomersThunk())
@@ -58,7 +59,7 @@ function ViewCustomers(){
                     </div>
                     <div className="customer-buttons">
                      <OpenModalMenuItem 
-                    
+    
                     itemText="Delete"
                      modalComponent={<DeleteCustomer customerId={customer.id}/>}
                     />

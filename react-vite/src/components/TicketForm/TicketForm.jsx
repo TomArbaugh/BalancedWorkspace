@@ -29,8 +29,9 @@ function TicketForm(){
     const validateForm = () => {
         const newErrors = {}
         if (!title || title.length < 1 || title.length > 40) newErrors.title = "Title must be between 1 and 40 characters."
-        if (typeof requester !== "number") newErrors.requester = "Requester is required."
+        if (!requester) newErrors.requester = "Requester is required."
         if (!description || description.length < 3 || description.length > 2000) newErrors.description = "Description must be between 3 and 2000 characters."
+        if (image === null) newErrors.image = "Image is Required"
         return newErrors
     }
 
@@ -50,6 +51,7 @@ function TicketForm(){
     const [requester, setRequester] = useState()
     const [errors, setErrors] = useState({})
 
+   
         
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -104,12 +106,12 @@ return (
     >
         <option>No Requester Selected</option>
         {customers ? customers.allCustomers.map((customer) => (
-            <option key={customer.id} value={customer.id}>{customer.name}</option>
+            <option key={customer.id} value={(customer.id)}>{customer.name}</option>
         )) : null}
         
     </select>
     </label>
-    {errors.requester && <p className="error-message">{errors.requester}</p>}
+    <p className="error-message">{errors.requester ? errors.requester : null}</p>
     <label >
         <h4>Assignee</h4>
        
@@ -163,7 +165,7 @@ return (
     </label>
     <label>
     </label>
-    {errors.title && <p className="error-message">{errors.title}</p>}
+    <p className="error-message">{errors.title ? errors.title : null}</p>
     <label className="create-ticket-description">
         <h4>Description</h4>
         
@@ -173,7 +175,7 @@ return (
         id="create-ticket-description-input"
         ></textarea>
     </label>
-    {errors.description && <p className="error-message">{errors.description}</p>}
+    <p className="error-message">{errors.description ? errors.description : null}</p>
     </div>
     <div id="create-ticket-right">
     <lable className="create-ticket-image">
@@ -185,6 +187,7 @@ return (
         onChange={(e) => setImage(e.target.files[0])}
     />
     </lable>
+    <p className="error-message">{errors.image ? errors.image : null}</p>
     </div>
     </div>
     <div id="create-ticket-bottom">
@@ -198,7 +201,7 @@ return (
         >
             <option>No Macro</option>
       {macros ?macros.macros.map((macro) => (
-            <option key={macro.id} value={macro.id}>{macro.name}</option>
+            <option key={macro.id} value={macro.id}>{macro.description}</option>
            )) : null}
         </select>
     </lable>

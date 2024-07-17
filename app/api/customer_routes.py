@@ -64,7 +64,7 @@ def edit_customer(id):
     
        
         db.session.commit()
-        return new_customer.to_dict()
+        return customer.to_dict()
 
     if form.errors:
         print(form.errors)

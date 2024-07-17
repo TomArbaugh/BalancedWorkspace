@@ -69,7 +69,7 @@ function EditMacro({macroId}){
          onChange={((e) => setName(e.target.value))}
          />
          </label>
-         {error.name && <p className="create-customer-error">{error.name}</p>}
+         <p className="create-customer-error">{error.name ? error.name : null}</p>
      <label>
          <h4 className="create-macro-label">Description</h4>
          <input 
@@ -78,8 +78,8 @@ function EditMacro({macroId}){
          onChange={((e) => setDescription(e.target.value))}
          />
      </label>
-     {error.description && <p className="create-customer-error">{error.description}</p>}
-     {(!description || !name) && <p id="create-macro-error-message">Please provide name and description.</p>}
+     <p className="create-customer-error">{error.description ? error.description : null}</p>
+     <p id={(!description || !name) ? "create-macro-error-message" : "invisi-text"}>Please provide name and description.</p>
          <button 
 
          id={description && name ? "create-macro-button" : "disabled"}

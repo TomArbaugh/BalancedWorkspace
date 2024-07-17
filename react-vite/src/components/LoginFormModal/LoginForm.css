@@ -3,6 +3,7 @@
     flex-direction: column;
     padding: 10px;
     width: 300px;
+    
 }
 
 #log-in-button {
@@ -28,6 +29,7 @@
 #log-header {
     padding: 10px;
     text-align: center;
+
 }
 
 .log-inputs {
@@ -38,8 +40,12 @@
 
 .log-labels {
     margin-bottom: 8px;
+    
 }
 
 .log-errors {
     color: red;
+    margin: 0px;
+    min-height: 5px;
+    max-height: 5px;
 }

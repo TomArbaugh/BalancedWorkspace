@@ -10,15 +10,16 @@ import "./ViewCustomers.css"
 function ViewCustomers(){
 
     const dispatch = useDispatch()
-   
-    const newCustomer = useSelector((state) => state.customer.newCustomer)
-    const deletedCustomer = useSelector((state) => state.customer.CustomerDeleted)
+    const customer = useSelector((state) => state.customer)
+    const newCustomer = customer.newCustomer
+    const deletedCustomer = customer.CustomerDeleted
+    const createdCustomer = customer.CreatedCustomer
 
     useEffect(() => {
         dispatch(getAllCustomersThunk())
-    }, [dispatch, newCustomer, deletedCustomer])
+    }, [dispatch, newCustomer, deletedCustomer, createdCustomer])
     
-    const customer = useSelector((state) => state.customer)
+    
 
 
     useEffect(() => {

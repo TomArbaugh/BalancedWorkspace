@@ -11,15 +11,17 @@ import "./ViewMacros.css"
 function ViewMacros(){
 
     const dispatch = useDispatch()
-
-    const newMac = useSelector((state) => state.applyMacro.NewMac)
-    const deletedMac = useSelector((state) => state.applyMacro.DeleteMacro)
+    const macros = useSelector((state) => state.applyMacro)
+    const newMac = macros.NewMac
+    const deletedMac = macros.DeleteMacro
+    const createdMac = macros.CreatedMac
+    // const createdMac = useSelector((state) => state.applyMacro.CreatedMac)
 
         useEffect(() => {
         dispatch(getAllMacrosThunk())
-    }, [dispatch, newMac, deletedMac])
+    }, [dispatch, newMac, deletedMac, createdMac])
     
-    const macros = useSelector((state) => state.applyMacro)
+    
    
 
     useEffect(() => {

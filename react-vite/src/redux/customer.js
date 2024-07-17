@@ -102,6 +102,8 @@ function customerReducer(state = initialState, action) {
         return {...state, allCustomers: action.payload}
       case EDIT_CUSTOMER:
         return {...state, newCustomer: action.payload}
+      case CREATE_CUSTOMER:
+        return {...state, CreatedCustomer: action.payload}
       case DELETE_CUSTOMER:
         return {...state, CustomerDeleted: action.payload}
       default:

@@ -9,7 +9,7 @@ apply_macro_routes = Blueprint('macro', __name__)
 @apply_macro_routes.route('/')
 @login_required
 def get_all_macros():
-    macros = Macro.query.filter_by(user_id=current_user.id).all()
+    macros = Macro.query.filter_by(user_id=current_user.id).order_by(Macro.id.desc()).all()
    
     if macros is None:
         return {"error": "Macros Not Found" }

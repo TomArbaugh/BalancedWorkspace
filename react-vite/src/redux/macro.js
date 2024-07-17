@@ -101,6 +101,8 @@ function applyMacroReducer(state = initialState, action) {
         return {...state, NewMac: action.payload}
       case DELETE_MACRO:
         return {...state, DeleteMacro: action.payload }
+      case CREATE_MACRO:
+        return {...state, CreatedMac: action.payload}
       default:
         return state;
     }

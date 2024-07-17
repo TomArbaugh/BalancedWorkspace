@@ -14,12 +14,6 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
 
-    users_message_triggers = db.relationship(
-        "MessageTrigger",
-        back_populates = 'message_triggers_user',
-        cascade="delete"
-    )
-
     users_macros = db.relationship(
         "Macro",
         back_populates = "macros_user",

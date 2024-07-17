@@ -3,7 +3,7 @@ from .users import seed_users, undo_users
 from .customers import seed_customers, undo_customers
 from .images import seed_images, undo_images
 from .macros import seed_macros, undo_macros
-from .message_triggers import seed_message_triggers, undo_message_triggers
+from .messages import seed_messages, undo_messages
 from .tickets import seed_tickets, undo_tickets
 from app.models.db import db, environment, SCHEMA
 
@@ -20,7 +20,7 @@ def seed():
         # command, which will  truncate all tables prefixed with 
         # the schema name (see comment in users.py undo_users function).
         # Make sure to add all your other model's undo functions below
-        undo_message_triggers()
+        undo_messages()
         undo_images()
         undo_tickets()
         undo_macros()
@@ -31,14 +31,14 @@ def seed():
     seed_macros()
     seed_tickets()
     seed_images()
-    seed_message_triggers()
+    seed_messages()
     # Add other seed functions here
 
 
 # Creates the `flask seed undo` command
 @seed_commands.command('undo')
 def undo():
-    undo_message_triggers()
+    undo_messages()
     undo_images()
     undo_tickets()
     undo_macros()

@@ -78,7 +78,7 @@ function MessageCenter() {
         } else if (otherPerson === '2') {
             email = 'marnie@aa.io'
             password = 'Thdn&4jK3$'
-        } else if (otherPerson === 3) {
+        } else if (otherPerson === '3') {
             email = 'bobbie@aa.io'
             password = 'lksdjIUjbwEF8$'
         } else {

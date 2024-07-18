@@ -30,13 +30,13 @@ const deleteCustomer = (data) => ({
   payload: data
 })
 
-export const editCustomerThunk = (customerId, customer) => async (dispatch) => {
+export const editCustomerThunk = (customerId, newCustomer) => async (dispatch) => {
   const response = await fetch(`/api/customers/edit/${customerId}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json"
     },
-    body: JSON.stringify(customer)
+    body: JSON.stringify(newCustomer)
   })
   if (response.ok) {
     const newCustomer = await response.json()

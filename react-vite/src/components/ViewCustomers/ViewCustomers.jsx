@@ -14,6 +14,7 @@ function ViewCustomers(){
     const newCustomer = customer.newCustomer
     const deletedCustomer = customer.CustomerDeleted
     const createdCustomer = customer.CreatedCustomer
+    
 
     useEffect(() => {
         dispatch(getAllCustomersThunk())

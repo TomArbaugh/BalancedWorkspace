@@ -106,7 +106,7 @@ return (
     value={requester}
     onChange={((e) => setRequester(e.target.value))}
     >
-        <option>No Requester Selected</option>
+        <option  value={0}>No Requester Selected</option>
         {customers ? customers.allCustomers.map((customer) => (
             <option key={customer.id} value={(customer.id)}>{customer.name}</option>
         )) : null}

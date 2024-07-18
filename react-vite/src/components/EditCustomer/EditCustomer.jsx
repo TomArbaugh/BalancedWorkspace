@@ -41,12 +41,12 @@ function EditCustomer({customerId}){
             return;
         }
 
-        const customer = {
+        const newCustomer = {
             name,
             email
         }
 
-        await dispatch(editCustomerThunk(customerId, customer))
+        await dispatch(editCustomerThunk(customerId, newCustomer))
       
         closeModal()
     }

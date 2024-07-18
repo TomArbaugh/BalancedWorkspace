@@ -86,6 +86,8 @@ function MessageCenter() {
         }
       
 
+        setOtherPerson(currentUser.id)
+
         await dispatch(
             thunkLogin({
               email,

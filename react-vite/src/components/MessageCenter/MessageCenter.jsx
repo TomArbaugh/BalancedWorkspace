@@ -85,7 +85,8 @@ function MessageCenter() {
             password = 'lksdjIUjbwEF8$'
         }
       
-
+        setOtherPerson(currentUser.id)
+        
         await dispatch(
             thunkLogin({
               email,

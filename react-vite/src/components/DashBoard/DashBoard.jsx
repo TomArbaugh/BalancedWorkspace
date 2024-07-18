@@ -17,6 +17,10 @@ function DashBoard () {
     // console.log(tickets.tickets[0].tickets_images[0].image)
 
     useEffect(() => {
+
+    }, [ticketState])
+    
+    useEffect(() => {
         dispatch(getAllTicketsThunk())
     }, [dispatch, deltedTicket])
 

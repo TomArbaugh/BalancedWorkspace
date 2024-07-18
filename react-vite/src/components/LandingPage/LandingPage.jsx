@@ -14,7 +14,7 @@ function LandingPage() {
         e.preventDefault()
         
         const email = "demo@aa.io"
-        const password = "password"
+        const password = "LhO&FBO$zz"
 
         await dispatch(
             thunkLogin({

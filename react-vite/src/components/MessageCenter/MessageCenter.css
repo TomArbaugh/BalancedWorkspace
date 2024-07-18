@@ -3,7 +3,7 @@
     flex-direction: column;
     min-width: 500px;
     max-width: 500px;
-    height: 650px;
+    height: 690px;
     text-align: center;
     margin: auto;
     margin-top: 10px;
@@ -13,6 +13,7 @@
 #message-header {
     padding-bottom: 5px;
     color: #1b3c59;
+    font-weight: ;
 }
 
 #input {
@@ -20,7 +21,7 @@
     flex-direction: column-reverse;
     max-height: 270px;
     min-height: 270px;
-    border: #1b3c59 solid 1px;
+    border: #1b3c59 solid 2px;
     margin: 10px;
     overflow: scroll;
     
@@ -77,6 +78,16 @@
     color: white;
 }
 
+#new-log-in {
+    border-radius: 20px;
+    background-color: #1b3c59;
+    color: white;
+    width: 95%;
+    margin: auto;
+    min-height: 40px;
+    max-height: 40px;
+}
+
 .message-button-container {
     display: flex;
     justify-content: flex-end;
@@ -86,4 +97,5 @@
     margin: 0px;
     text-align: left;
     padding-left: 10px;
+    font-weight: 300;
 }

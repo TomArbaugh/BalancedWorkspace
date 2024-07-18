@@ -15,7 +15,7 @@ function LoginFormModal() {
 
   const demoLogIn = () => {
     setEmail('demo@aa.io');
-    setPassword('password');
+    setPassword('LhO&FBO$zz');
     return null;
   }
 

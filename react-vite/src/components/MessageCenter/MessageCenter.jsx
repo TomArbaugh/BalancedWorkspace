@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { createMessageThunk, getMessagesThunk } from "../../redux/message"
+import { thunkLogin, thunkLogout } from "../../redux/session"
 import { getUsersThunk } from "../../redux/session"
 import DeleteMessage from "../DeleteMessage/DeleteMessage"
 import EditMessage from "../EditMessage/EditMessage"
@@ -12,6 +13,7 @@ function MessageCenter() {
     const [message, setMessage] = useState()
     const [otherPerson, setOtherPerson] = useState()
     const [convoArr, setConvoArr] = useState()
+    const [user, setUser] = useState()
     const dispatch = useDispatch()
     const ref = useRef(null)
 
@@ -40,7 +42,7 @@ function MessageCenter() {
 
     useEffect(() => {
 
-    }, [users])
+    }, [users, user])
 
     useEffect(() => {
         let tempArr;
@@ -62,8 +64,38 @@ function MessageCenter() {
        
         setConvoArr(tempArr)
        }, [otherPerson, messages])
+
+       dispatch(thunkLogout)
         
+       const logIn = async (e) => {
+
+        setUser(otherPerson)
+
+        e.preventDefault()
+            let email;
+            let password;
+        if (otherPerson === '1') {
+            email = "demo@aa.io"
+            password = "LhO&FBO$zz"
+        } else if (otherPerson === '2') {
+            email = 'marnie@aa.io'
+            password = 'Thdn&4jK3$'
+        } else {
+            email = 'bobbie@aa.io'
+            password = 'lksdjIUjbwEF8$'
+        }
+      
+
+        await dispatch(
+            thunkLogin({
+              email,
+              password,
+            })
+          );
+
         
+          
+    }
 
     
     
@@ -84,6 +116,10 @@ function MessageCenter() {
     return (
         <div id="message-center">
             <h2 id="message-header">Message Center</h2>
+            <button
+            id="new-log-in"
+            onClick={logIn}
+            >Login As Conversation Partner</button>
             <select
             id="convo-select"
             value={otherPerson}
@@ -101,7 +137,7 @@ function MessageCenter() {
             >
                 {convoArr ? convoArr.map((convo) => (
                     <div key={convo.id} className="message-card">
-                    {convo.senderId = currentUser.id ? <p>Me:</p> : <p>Sender Id: {convo.sender_id}</p>}
+                    {convo.sender_id === currentUser.id ? <p>Me:</p> : <p>Sender Id: {convo.sender_id}</p>}
                     <p >{convo.message}</p>
                     <div className="message-button-container">
                     <div className="message-buttons">

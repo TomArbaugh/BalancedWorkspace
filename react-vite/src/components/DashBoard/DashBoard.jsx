@@ -21,7 +21,7 @@ function DashBoard () {
     }, [dispatch, deltedTicket])
 
   
-    if (!tickets || Object.keys(tickets) < 1) return null
+    if (!tickets || Object.keys(ticketState) < 1) return null
 
     return (
         <div>

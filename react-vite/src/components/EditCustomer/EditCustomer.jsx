@@ -76,10 +76,10 @@ function EditCustomer({customerId}){
         />
     </label>
     <p className="create-customer-error">{error.email ? error.email : null}</p>
-        {(!email || !name) && <p id="create-customer-error-message">Please provide name and email.</p>}
+        <p id={(!email || !name) ? "create-customer-error-message" : "invisi-text"}>Please provide name and email.</p>
         <button 
         id={email && name ? "create-customer-button" : "disabled"}
-        type="submit">Create Customer</button>
+        type="submit">Edit Customer</button>
         
        </form>
        </div>

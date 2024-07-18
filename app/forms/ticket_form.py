@@ -10,7 +10,7 @@ class TicketForm(FlaskForm):
     priority = SelectField("priority", validators=[DataRequired()], choices=["Low", "Medium", "High", "Urgent"])
     assignee = IntegerField("assignee", validators=[DataRequired()])
     requester = IntegerField("requester", validators=[DataRequired()])
-    apply_macro = IntegerField("apply_macro", validators=[DataRequired()])
+    apply_macro = IntegerField("apply_macro")
     description = StringField("description", validators=[DataRequired()])
     submit = SubmitField("Submit Ticket")
 

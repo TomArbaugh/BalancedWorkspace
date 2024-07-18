@@ -13,7 +13,7 @@ ticket_routes = Blueprint('tickets', __name__)
 @login_required
 def get_all_tickets():
 
-    tickets = Ticket.query.filter_by(assignee=current_user.id).all()
+    tickets = Ticket.query.filter_by(assignee=current_user.id).order_by(Ticket.id.desc()).all()
     if tickets is None:
         return {"message": "No Such Ticket"}, 404
     else:
@@ -66,6 +66,7 @@ def upload_image(ticket_id):
 @ticket_routes.route("/create", methods=["POST"])
 @login_required
 def create_ticket():
+    # print("IM HERE------------------------------------")
     form = TicketForm()
 
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -82,6 +83,7 @@ def create_ticket():
             requester = form.data["requester"],
             description = form.data["description"]
         )
+        # print("NEW TICKET-----------------------------", new_ticket)
         db.session.add(new_ticket)
         db.session.commit()
         return new_ticket.to_dict()

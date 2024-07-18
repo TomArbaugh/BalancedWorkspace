@@ -83,7 +83,7 @@ function EditMacro({macroId}){
          <button 
 
          id={description && name ? "create-macro-button" : "disabled"}
-         type="submit">Create Macro</button>
+         type="submit">Edit Macro</button>
         </form>
         </div>
     )

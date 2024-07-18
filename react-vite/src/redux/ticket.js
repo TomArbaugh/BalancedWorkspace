@@ -2,6 +2,7 @@ const GET_ALL_TICKETS = "/get/all/tickets"
 const GET_TICKET_ID = "/get/ticket/id"
 const CREATE_TICKET = "/post/ticket"
 const EDIT_TICKET = "/put/ticket"
+const DELETED_TICKET = '/deleted/ticket'
 
 
 const getAllTickets = (tickets) => ({
@@ -27,6 +28,11 @@ const putTicket = (ticketImage, newTicket) => ({
       ticketImage,
       newTicket
     }
+})
+
+const deletedTicket = (ticket) => ({
+  type: DELETED_TICKET,
+  payload: ticket
 })
 
 
@@ -141,10 +147,11 @@ export const postTicketThunk = (image, newTicket) => async (dispatch) => {
       
     };
   
-export const deleteTicketThunk = (ticket_id) => async () => {
+export const deleteTicketThunk = (ticket_id) => async (dispatch) => {
   const response = await fetch(`/api/tickets/${ticket_id}/delete`)
   if (response.ok) {
-    return {"message": "successfully deleted"}
+    const ticket = await response.json()
+    dispatch(deletedTicket(ticket))
     
   }
 }
@@ -161,6 +168,8 @@ function ticketReducer(state = initialState, action) {
         return {...state, EditedTicket: action.payload}
       case CREATE_TICKET:
         return { ...state, NewTicket: action.payload};
+      case DELETED_TICKET:
+        return {...state, DeletedTicket: action.payload}
       default:
         return state;
     }

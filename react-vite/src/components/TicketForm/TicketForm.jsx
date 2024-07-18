@@ -46,7 +46,7 @@ function TicketForm(){
     const [assignee] = useState(user.id)
     const [type, setType] = useState("Question")
     const [priority, setPriority] = useState("Low")
-    const [apply_macro, setApplyMacro] = useState()
+    const [apply_macro, setApplyMacro] = useState(0)
     const [description, setDescription] = useState()
     const [requester, setRequester] = useState()
     const [errors, setErrors] = useState({})
@@ -64,6 +64,7 @@ function TicketForm(){
         // const formData = new FormData();
         // formData.append("image", image);
         // console.log(image, "formData jsx")
+
         console.log(apply_macro)
       
         const newTicket = {
@@ -75,7 +76,7 @@ function TicketForm(){
             requester,
             description
         }
-        // console.log("apply-macro", apply_macro)
+        // console.log("newTicket", newTicket)
         // aws uploads can be a bit slow—displaying
         // some sort of loading message is a good idea
         setImageLoading(true);

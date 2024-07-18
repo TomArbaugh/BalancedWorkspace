@@ -140,14 +140,14 @@ function MessageCenter() {
                     {convo.sender_id === currentUser.id ? <p>Me:</p> : <p>Sender Id: {convo.sender_id}</p>}
                     <p >{convo.message}</p>
                     <div className="message-button-container">
-                    <div className="message-buttons">
+                    <div className={convo.sender_id === currentUser.id ?"message-buttons" : "hide"}>
                     <OpenModalMenuItem 
                     
                     itemText="Delete"
                      modalComponent={<DeleteMessage messageId={convo.id}/>}
                     />
                     </div>
-                    <div className="message-buttons">
+                    <div className={convo.sender_id === currentUser.id ?"message-buttons" : "hide"}>
                           <OpenModalMenuItem 
                     
                     itemText="Edit"

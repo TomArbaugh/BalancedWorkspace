@@ -5,6 +5,7 @@ import {useSelector} from "react-redux";
 import OpenModalMenuItem from "./OpenModalMenuItem";
 import CreateCustomer from "../CreateCustomer/CreateCustomer"
 import CreateMacro from "../CreateMacro/CreateMacro"
+import MessageCenter from "../MessageCenter/MessageCenter";
 
 
 function Navigation() {
@@ -53,6 +54,11 @@ function Navigation() {
           {/* <Link 
           className={user ? "nav-link" : "hide"}
           to="macro/create">Create Macro</Link> */}
+           <OpenModalMenuItem
+        
+        itemText="Message Center"
+        modalComponent={<MessageCenter />}
+        /> 
           </div>
       </li>
       <li className="li-landing-two">

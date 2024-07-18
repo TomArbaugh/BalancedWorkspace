@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { createMessageThunk, getMessagesThunk } from "../../redux/message"
 import { getUsersThunk } from "../../redux/session"
@@ -13,44 +13,59 @@ function MessageCenter() {
     const [otherPerson, setOtherPerson] = useState()
     const [convoArr, setConvoArr] = useState()
     const dispatch = useDispatch()
+    const ref = useRef(null)
+
+ 
 
     useEffect(() => {
         dispatch(getUsersThunk())
     }, [dispatch])
-    const users = useSelector((state) => state.session.allUsers)
-    const messages = useSelector((state) => state.message.Messages)
+    const userState = useSelector((state) => state.session)
+    const users = userState.allUsers
+    const currentUser = userState.user
+    const messageState = useSelector((state) => state.message)
+    const messages = messageState.Messages
+    const newMessage = messageState.newMessage
     // console.log(users, "USERS")
     // console.log(messages, "MESSAGES")
+    
+    const scroller = () => {
+        if (ref.current) {
+            ref.scrollIntoView({behavior: "smooth"})
+        }
+    }
     useEffect(() => {
         dispatch(getMessagesThunk())
-    }, [dispatch])
+    }, [newMessage, dispatch])
 
     useEffect(() => {
 
-    }, [users, messages, otherPerson, convoArr])
+    }, [users])
 
-    if (!messages) return null;
-    if (!users) return null;
-
-  
-    
-    const otherPersonFunc = (e) => {
-        setOtherPerson(e.target.value)
+    useEffect(() => {
         let tempArr;
         // console.log("HELO FROM OTHERPERSONFUNK")
         tempArr = []
-        messages.forEach((message) => {
-                
+        
+        otherPerson ? messages.forEach((message) => {
+            // console.log(message)
+            // console.log(otherPerson)
             if (message.sender_id.toString() === otherPerson || message.receiver_id.toString() === otherPerson) {
                 
-                // console.log(message)
+                
                 tempArr.push(message)
                 
             }
             return
-        })
+        }) : null
+
+       
         setConvoArr(tempArr)
-    }
+       }, [otherPerson, messages])
+        
+        
+
+    
     
     const sendMessage = (e) => {
         e.preventDefault()
@@ -59,42 +74,51 @@ function MessageCenter() {
         const newMessage = {
             message: message
         }
-        // console.log(otherPerson)
+        
         dispatch(createMessageThunk(otherPerson, newMessage))
     }
     
    
-
+    if (!messages) return null;
+    if (!users) return null;
     return (
         <div id="message-center">
             <h2 id="message-header">Message Center</h2>
             <select
             id="convo-select"
             value={otherPerson}
-            onChange={((e) => otherPersonFunc(e))}
+            onChange={((e) => setOtherPerson(e.target.value))}
             >
                 <option>Chose Conversation</option>
                 {users ? users.map((user) => (
-                    <option key={user.id} value={user.id}>{user.username}</option>
+                    <option key={user.id} disabled={currentUser.id === user.id} value={user.id}>{user.username}</option>
                 )) : null}
             </select>
             <div
+            ref={scroller}
             id="input"
+           
             >
                 {convoArr ? convoArr.map((convo) => (
                     <div key={convo.id} className="message-card">
-                    <p>Sender Id: {convo.sender_id}</p>
+                    {convo.senderId = currentUser.id ? <p>Me:</p> : <p>Sender Id: {convo.sender_id}</p>}
                     <p >{convo.message}</p>
+                    <div className="message-button-container">
+                    <div className="message-buttons">
                     <OpenModalMenuItem 
                     
                     itemText="Delete"
                      modalComponent={<DeleteMessage messageId={convo.id}/>}
                     />
+                    </div>
+                    <div className="message-buttons">
                           <OpenModalMenuItem 
                     
                     itemText="Edit"
                      modalComponent={<EditMessage messageId={convo.id}/>}
                     />
+                    </div>
+                    </div>
                     </div>
                 )) : null}
     
@@ -102,13 +126,14 @@ function MessageCenter() {
             <form
             onSubmit={sendMessage}
             >
+                <h4 id="input-label">Message:</h4>
             <textarea
             id="message-input"
             value={message}
             onChange={((e) => setMessage(e.target.value))}
             ></textarea>
             <button
-             
+             id="message-submit"
             type="submit">Send</button>
             </form>
      

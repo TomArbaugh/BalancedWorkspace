@@ -3,6 +3,7 @@ import { useModal } from "../../context/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { getMessageIdThunk } from "../../redux/message";
 import { editMessageThunk } from "../../redux/message";
+import "./EditMessage.css"
 
 
 function EditMessage({messageId}){
@@ -49,19 +50,21 @@ function EditMessage({messageId}){
     }
     return (
         <div>
-            <h1>Edit Message</h1>
+            <h1 id="edit-message-header">Edit Message</h1>
             <form
+            id="edit-message-form"
             onSubmit={onSubmit}
             >
                 <label>
                     <h4>Message</h4>
                     <textarea
+                    id="edit-text-area"
                     value={message}
                     onChange={((e) => setMessage(e.target.value))}
                     ></textarea>
                 </label>
-                <p>{error.message? error.message : null}</p>
-                <button type="submit">Save</button>
+                <p className="edit-message-errors">{error.message? error.message : null}</p>
+                <button id="edit-message-button" type="submit">Save</button>
             </form>
         </div>
     )

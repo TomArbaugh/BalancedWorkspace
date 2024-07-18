@@ -1,0 +1,29 @@
+#edit-message-form {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    color: #1b3c59;
+}
+
+#edit-message-header {
+    padding: 10px;
+    color: #1b3c59;
+}
+
+#edit-text-area {
+    width: 95%;
+    color: #1b3c59;
+}
+
+#edit-message-button {
+    border-radius: 30px;
+    background-color: #1b3c59;
+    color: white;
+    font-weight: bolder;
+    font-size: larger;
+}
+
+.edit-message-errors {
+    color: red;
+}

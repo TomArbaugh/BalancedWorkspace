@@ -9,7 +9,7 @@ message_routes = Blueprint('messages', __name__)
 @login_required
 def get_all_messages():
 
-    messages = Message.query.filter((Message.sender_id == current_user.id) | (Message.receiver_id == current_user.id)).all()
+    messages = Message.query.filter((Message.sender_id == current_user.id) | (Message.receiver_id == current_user.id)).order_by(Message.id.desc()).all()
    
     if messages is None:
         return {"error": "Messages Not Found" }

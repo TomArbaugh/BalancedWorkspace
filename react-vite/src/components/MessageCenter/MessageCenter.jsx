@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { createMessageThunk, getMessagesThunk } from "../../redux/message"
 import { getUsersThunk } from "../../redux/session"
 import DeleteMessage from "../DeleteMessage/DeleteMessage"
+import EditMessage from "../EditMessage/EditMessage"
 import OpenModalMenuItem from "../Navigation/OpenModalMenuItem"
 
 import "./MessageCenter.css"
@@ -88,6 +89,11 @@ function MessageCenter() {
                     
                     itemText="Delete"
                      modalComponent={<DeleteMessage messageId={convo.id}/>}
+                    />
+                          <OpenModalMenuItem 
+                    
+                    itemText="Edit"
+                     modalComponent={<EditMessage messageId={convo.id}/>}
                     />
                     </div>
                 )) : null}

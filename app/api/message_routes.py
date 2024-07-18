@@ -61,14 +61,14 @@ def edit_message(id):
         return {"error": "no such message"}
     
     form = CreateMessage()
-    print("OtherPerson-----------------------------------", otherPerson)
+  
     form['csrf_token'].data = request.cookies['csrf_token']
     
     if form.validate_on_submit():
        
      
         message.message = form.data["message"]
-        print("MESAGE---------------------------", new_message)
+       
         
         db.session.commit()
         return message.to_dict()

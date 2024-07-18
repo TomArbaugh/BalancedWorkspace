@@ -2,6 +2,7 @@ const GET_MESSAGES = "/get/messages"
 const CREATE_MESSAGE = '/create/message'
 const GET_MESSAGE_ID = '/get/message/id'
 const DELETE_MESSAGE = '/delete/message'
+const EDIT_MESSAGE = '/edit/message'
 
 const getMessages = (messages) => ({
     type: GET_MESSAGES,
@@ -20,6 +21,11 @@ const getMessageId = (message) => ({
 
 const deleteMessage = (message) => ({
     type: DELETE_MESSAGE,
+    payload: message
+})
+
+const editMessage = (message) => ({
+    type: EDIT_MESSAGE,
     payload: message
 })
 
@@ -65,6 +71,20 @@ export const deleteMessageThunk = (messageId) => async (dispatch) => {
         dispatch(deleteMessage(message))
     }
 }
+
+export const editMessageThunk = (messageId, newMessage) => async (dispatch) => {
+    const response = await fetch(`/api/messages/edit/${messageId}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(newMessage)
+    })
+    if (response.ok) {
+        const message = await response.json()
+        dispatch(editMessage(message))
+    }
+}
 const initialState = {}
 
 function messageReducer(state = initialState, action) {
@@ -77,6 +97,8 @@ function messageReducer(state = initialState, action) {
             return {...state, theMessage: action.payload}
         case DELETE_MESSAGE:
             return {...state, deletedMessage: action.payload}
+        case EDIT_MESSAGE:
+            return {...state, editedMesssage: action.payload}
       default:
         return state;
     }

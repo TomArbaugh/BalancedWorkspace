@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { createMessageThunk, getMessagesThunk } from "../../redux/message"
-import { thunkLogin, thunkLogout } from "../../redux/session"
+import { thunkLogin} from "../../redux/session"
 import { getUsersThunk } from "../../redux/session"
 import DeleteMessage from "../DeleteMessage/DeleteMessage"
 import EditMessage from "../EditMessage/EditMessage"
@@ -88,7 +88,7 @@ function MessageCenter() {
       
         setOtherPerson(currentUser.id)
 
-        await dispatch(thunkLogout())
+       
 
         await dispatch(
             thunkLogin({

@@ -2,6 +2,9 @@ import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { createMessageThunk, getMessagesThunk } from "../../redux/message"
 import { getUsersThunk } from "../../redux/session"
+import DeleteMessage from "../DeleteMessage/DeleteMessage"
+import OpenModalMenuItem from "../Navigation/OpenModalMenuItem"
+
 import "./MessageCenter.css"
 
 function MessageCenter() {
@@ -81,9 +84,14 @@ function MessageCenter() {
                     <div key={convo.id} className="message-card">
                     <p>Sender Id: {convo.sender_id}</p>
                     <p >{convo.message}</p>
+                    <OpenModalMenuItem 
+                    
+                    itemText="Delete"
+                     modalComponent={<DeleteMessage messageId={convo.id}/>}
+                    />
                     </div>
                 )) : null}
-  
+    
             </div>
             <form
             onSubmit={sendMessage}

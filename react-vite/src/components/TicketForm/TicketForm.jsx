@@ -24,7 +24,7 @@ function TicketForm(){
 
     useEffect(() => {
 
-    }, [customers, user])
+    }, [customers, user, macros])
 
     const validateForm = () => {
         const newErrors = {}
@@ -88,7 +88,8 @@ function TicketForm(){
     if (!customers.allCustomers) return null;
     if (Object.keys(customers).length === 0) return null;
     if (!user) return null;
-    if (!macros) return  null
+    if (!macros) return  null;
+    if (!macros.macros) return null;
 return (
     <form 
     onSubmit={handleSubmit}

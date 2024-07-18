@@ -5,7 +5,7 @@ from sqlalchemy.sql import text
 # Adds a demo user, you can add other users here if you want
 def seed_macros():
     macro_one = Macro(
-        user_id=1, name='Office Hours', description='Hello! Thank you for reaching out to our dive shop. Our hours are 8am - 8pm Monday through Saturday, with group Open Water Dive classes on Monday, Wednesday, and Friday nights. Drop by any time, or sign up for classes on our website! Have a great day!', available_for='Me Only')
+        user_id=1, name='No Macros', description='No Macros', available_for='Me Only')
     macro_two = Macro(
         user_id=1, name='Padi Website', description="Hello! To start your adventures under the sea, begin by creating an account at https://www.padi.com/. We'll get you going on the online course work first, and then the fun will begin in the pool at the shop.", available_for='Me Only')
     macro_three = Macro(
@@ -19,9 +19,13 @@ def seed_macros():
     macro_seven = Macro(
         user_id=1, name="Certification Complete", description="Congragulations on completeing your certification! Now it's time to gear up! Visit our shop this week and recieve 5% off of all purchases!", available_for='Me Only')
     macro_eight = Macro(
-        user_id=1, name='Please bring required', description='Welcome to you Open Water certification course! Please remember to bring you required documentation, as well as your personal gear.', available_for='Me Only')
+        user_id=1, name='Office Hours', description='Hello! Thank you for reaching out to our dive shop. Our hours are 8am - 8pm Monday through Saturday, with group Open Water Dive classes on Monday, Wednesday, and Friday nights. Drop by any time, or sign up for classes on our website! Have a great day!', available_for='Me Only')
+    macro_nine = Macro(
+        user_id=1, name='No Macros', description='No Macros', available_for='Me Only')
+    macro_ten = Macro(
+        user_id=1, name='No Macros', description='No Macros', available_for='Me Only')
 
-    macros = [macro_one, macro_two, macro_three, macro_four, macro_five, macro_six, macro_seven, macro_eight]
+    macros = [macro_one, macro_two, macro_three, macro_four, macro_five, macro_six, macro_seven, macro_eight, macro_nine, macro_ten]
 
     for macro in macros:
         db.session.add(macro)

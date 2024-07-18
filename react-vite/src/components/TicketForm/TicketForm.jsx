@@ -46,7 +46,7 @@ function TicketForm(){
     const [assignee] = useState(user.id)
     const [type, setType] = useState("Question")
     const [priority, setPriority] = useState("Low")
-    const [apply_macro, setApplyMacro] = useState(0)
+    const [apply_macro, setApplyMacro] = useState("1")
     const [description, setDescription] = useState()
     const [requester, setRequester] = useState()
     const [errors, setErrors] = useState({})
@@ -106,7 +106,7 @@ return (
     value={requester}
     onChange={((e) => setRequester(e.target.value))}
     >
-        <option  value={0}>No Requester Selected</option>
+        <option>No Requester Selected</option>
         {customers ? customers.allCustomers.map((customer) => (
             <option key={customer.id} value={(customer.id)}>{customer.name}</option>
         )) : null}
@@ -201,7 +201,7 @@ return (
         onChange={((e) => setApplyMacro(e.target.value))}
         id="create-macros-input"
         >
-            <option>No Macro</option>
+            
       {macros ?macros.macros.map((macro) => (
             <option key={macro.id} value={macro.id}>{macro.description}</option>
            )) : null}

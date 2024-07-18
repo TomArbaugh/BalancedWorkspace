@@ -38,7 +38,7 @@ function MessageCenter() {
     }
     useEffect(() => {
         dispatch(getMessagesThunk())
-    }, [newMessage, dispatch])
+    }, [newMessage, otherPerson, dispatch])
 
     useEffect(() => {
 
@@ -85,8 +85,6 @@ function MessageCenter() {
             password = 'lksdjIUjbwEF8$'
         }
       
-
-        setOtherPerson(currentUser.id)
 
         await dispatch(
             thunkLogin({

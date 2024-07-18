@@ -14,15 +14,17 @@ function DashBoard () {
     ticketState ? tickets = ticketState.tickets : null
     let deltedTicket;
     ticketState ? deltedTicket = ticketState.DeletedTicket : null
+    let editedTicket;
+    ticketState ? editedTicket = ticketState.EditedTicket : null
     // console.log(tickets.tickets[0].tickets_images[0].image)
 
     useEffect(() => {
 
     }, [ticketState])
-    
+
     useEffect(() => {
         dispatch(getAllTicketsThunk())
-    }, [dispatch, deltedTicket])
+    }, [dispatch, deltedTicket, editedTicket])
 
   
     if (!tickets || Object.keys(ticketState) < 1) return null

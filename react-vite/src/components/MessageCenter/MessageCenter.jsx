@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { createMessageThunk, getMessagesThunk } from "../../redux/message"
 import { thunkLogin, thunkLogout } from "../../redux/session"
@@ -15,7 +15,7 @@ function MessageCenter() {
     const [convoArr, setConvoArr] = useState()
     const [user, setUser] = useState()
     const dispatch = useDispatch()
-    const ref = useRef(null)
+
 
  
 
@@ -31,18 +31,14 @@ function MessageCenter() {
     // console.log(users, "USERS")
     // console.log(messages, "MESSAGES")
     
-    const scroller = () => {
-        if (ref.current) {
-            ref.scrollIntoView({behavior: "smooth"})
-        }
-    }
+
     useEffect(() => {
         dispatch(getMessagesThunk())
-    }, [newMessage, otherPerson, dispatch])
+    }, [newMessage, user, dispatch])
 
     useEffect(() => {
 
-    }, [users, user])
+    }, [users, convoArr])
 
     useEffect(() => {
         let tempArr;
@@ -50,10 +46,10 @@ function MessageCenter() {
         tempArr = []
         
         otherPerson ? messages.forEach((message) => {
-            // console.log(message)
+            
             // console.log(otherPerson)
-            if (message.sender_id.toString() === otherPerson || message.receiver_id.toString() === otherPerson) {
-                
+            if (message.sender_id.toString() === otherPerson || message.receiver_id.toString() === otherPerson || message.sender_id === otherPerson || message.receiver_id === otherPerson) {
+                console.log(message)
                 
                 tempArr.push(message)
                 
@@ -63,13 +59,15 @@ function MessageCenter() {
 
        
         setConvoArr(tempArr)
-       }, [otherPerson, messages])
+       }, [otherPerson, messages, user])
 
-       dispatch(thunkLogout)
+
+
+       
         
        const logIn = async (e) => {
 
-        setUser(otherPerson)
+        
 
         e.preventDefault()
             let email;
@@ -80,13 +78,18 @@ function MessageCenter() {
         } else if (otherPerson === '2') {
             email = 'marnie@aa.io'
             password = 'Thdn&4jK3$'
-        } else {
+        } else if (otherPerson === 3) {
             email = 'bobbie@aa.io'
             password = 'lksdjIUjbwEF8$'
+        } else {
+            email = "demo@aa.io"
+            password = "LhO&FBO$zz"
         }
       
         setOtherPerson(currentUser.id)
-        
+
+        await dispatch(thunkLogout())
+
         await dispatch(
             thunkLogin({
               email,
@@ -94,8 +97,8 @@ function MessageCenter() {
             })
           );
 
-        
-          
+          setUser(currentUser.id)
+          setConvoArr()
     }
 
     
@@ -114,6 +117,10 @@ function MessageCenter() {
    
     if (!messages) return null;
     if (!users) return null;
+    if (!currentUser) return null;
+    if (!convoArr) return null;
+    console.log(convoArr)
+    console.log(otherPerson)
     return (
         <div id="message-center">
             <h2 id="message-header">Message Center</h2>
@@ -132,7 +139,6 @@ function MessageCenter() {
                 )) : null}
             </select>
             <div
-            ref={scroller}
             id="input"
            
             >

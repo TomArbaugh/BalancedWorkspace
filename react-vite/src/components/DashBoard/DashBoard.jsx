@@ -10,8 +10,10 @@ function DashBoard () {
     const dispatch = useDispatch()
 
     const ticketState = useSelector((state) => state.ticket)
-    const tickets = ticketState.tickets
-    const deltedTicket = ticketState.DeletedTicket
+    let tickets; 
+    ticketState ? tickets = ticketState.tickets : null
+    let deltedTicket;
+    ticketState ? deltedTicket = ticketState.DeletedTicket : null
     // console.log(tickets.tickets[0].tickets_images[0].image)
 
     useEffect(() => {

@@ -125,8 +125,8 @@ function MessageCenter() {
             email = 'bobbie@aa.io'
             password = 'lksdjIUjbwEF8$'
         } else {
-            email = "demo@aa.io"
-            password = "LhO&FBO$zz"
+            setPause(false)
+            return null;
         }
       
         setOtherPerson(currentUser.id)

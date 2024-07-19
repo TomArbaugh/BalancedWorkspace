@@ -41,7 +41,7 @@ function CreateCustomer(){
             if (!response.ok) {
                 // const cust = await response.json()
                 // console.log("THIS IS THE RESPONSE", response)
-                setError({"unique": "Customer Already Exists"})
+                setError({"unique": "Email Already Exists"})
             } else {
                 await dispatch(createCustomerThunk(customer))
                 closeModal()

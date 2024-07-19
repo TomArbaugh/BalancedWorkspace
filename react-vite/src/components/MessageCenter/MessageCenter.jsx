@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { createMessageThunk, getMessagesThunk, editMessageThunk } from "../../redux/message"
+import { createMessageThunk, getMessagesThunk, editMessageThunk, deleteMessageThunk } from "../../redux/message"
 import { thunkLogin} from "../../redux/session"
 import { getUsersThunk } from "../../redux/session"
-import DeleteMessage from "../DeleteMessage/DeleteMessage"
+// import DeleteMessage from "../DeleteMessage/DeleteMessage"
 // import EditMessage from "../EditMessage/EditMessage"
-import OpenModalMenuItem from "../Navigation/OpenModalMenuItem"
+// import OpenModalMenuItem from "../Navigation/OpenModalMenuItem"
 
 import "./MessageCenter.css"
 
@@ -17,6 +17,7 @@ function MessageCenter() {
     const [edit, setEdit] = useState(false)
     const [error, setError] = useState({})
     const [messId, setMesId] = useState()
+    const [yesOrNo, setYesOrNo] = useState(false)
     const dispatch = useDispatch()
 
 
@@ -31,6 +32,7 @@ function MessageCenter() {
     const messageState = useSelector((state) => state.message)
     const messages = messageState.Messages
     const newMessage = messageState.newMessage
+    const deletedMessage = messageState.deletedMessage
     // console.log(users, "USERS")
     // console.log(messages, "MESSAGES")
     const validations = () => {
@@ -41,7 +43,7 @@ function MessageCenter() {
 
     useEffect(() => {
         dispatch(getMessagesThunk())
-    }, [newMessage, user, dispatch])
+    }, [newMessage, user, deletedMessage, dispatch])
 
     useEffect(() => {
 
@@ -96,6 +98,13 @@ function MessageCenter() {
         
        }
        
+       const makeDelete = () => {
+        setYesOrNo(true)
+       }
+
+       const handleDelete = (messageId) => {
+        dispatch(deleteMessageThunk(messageId))
+       }
         
        const logIn = async (e) => {
         e.preventDefault()
@@ -177,14 +186,17 @@ function MessageCenter() {
 
                     {edit && messId === convo.id? <input value={message} onChange={((e) => setMessage(e.target.value))}/>: <p id="convo-message">{convo.message}</p>}
                     <div className="message-button-container">
-                    <div className={convo.sender_id === currentUser.id ?"message-buttons" : "hide"}>
+                <div className={convo.sender_id === currentUser.id ?"message-buttons" : "hide"}>
 
-                    <OpenModalMenuItem 
+                    {/* <OpenModalMenuItem 
                     
                     itemText="Delete"
                      modalComponent={<DeleteMessage messageId={convo.id}/>}
-                    />
-                    </div>
+                    /> */}
+                    <button className={edit ? "hide" : "edit-button"} disabled={edit} onClick={makeDelete}>Delete</button>
+                    <button className={yesOrNo ? "delete-confirmation" : "hide"} onClick={() => handleDelete(convo.id)}>Yes Delete?</button>
+                    <button className={yesOrNo ? "delete-confirmation" : "hide"} onClick={() => setYesOrNo(false)}>NO! Cancel!</button>
+                
 
                     <div className={convo.sender_id === currentUser.id ?"message-buttons" : "hide"}>
 
@@ -198,6 +210,7 @@ function MessageCenter() {
                      modalComponent={<EditMessage messageId={convo.id}/>}
                     /> */}
                     </div>
+                </div>
                     </div>
                     </div>
                 )) : null}

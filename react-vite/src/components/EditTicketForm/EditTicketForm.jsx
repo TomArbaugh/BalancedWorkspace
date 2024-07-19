@@ -19,17 +19,23 @@ function EditTicketForm(){
    // console.log(ticket_id)
     const ticket = useSelector((state) => state.ticket.ticketById)
     // console.log(ticket.title)
-    useEffect(() => {
-        dispatch(getAllMacrosThunk())
-    }, [dispatch])
-
-    useEffect(() => {
-        dispatch(getAllCustomersThunk())
-    }, [dispatch])
-    
     const customer = useSelector((state) => state.customer)
     const user = useSelector((state) => state.session.user)
     const macros = useSelector((state) => state.applyMacro)
+    const newMac = macros.CreatedMac
+    const editedMac = macros.NewMac
+    const newCustomer = customer.CreatedCustomer
+    const editedCustomer = customer.newCustomer
+
+    useEffect(() => {
+        dispatch(getAllMacrosThunk())
+    }, [dispatch, newMac, editedMac])
+
+    useEffect(() => {
+        dispatch(getAllCustomersThunk())
+    }, [dispatch, newCustomer, editedCustomer])
+    
+    
 
    
     useEffect(() => {

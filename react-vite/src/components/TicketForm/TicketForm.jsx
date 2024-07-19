@@ -9,18 +9,23 @@ import { useNavigate } from "react-router-dom";
 function TicketForm(){
     const dispatch = useDispatch()
     const navigate = useNavigate()
- 
-    useEffect(() => {
-        dispatch(getAllCustomersThunk())
-    }, [dispatch])
-
-    useEffect(() => {
-        dispatch(getAllMacrosThunk())
-    }, [dispatch])
-
     const user = useSelector((state) => state.session.user)
     const customers = useSelector((state) => state.customer)
     const macros = useSelector((state) => state.applyMacro)
+    const newMac = macros.CreatedMac
+    const editedMac = macros.NewMac
+    const newCustomer = customers.CreatedCustomer
+    const editedCustomer = customers.newCustomer
+
+    useEffect(() => {
+        dispatch(getAllCustomersThunk())
+    }, [dispatch, newCustomer, editedCustomer])
+
+    useEffect(() => {
+        dispatch(getAllMacrosThunk())
+    }, [dispatch, newMac, editedMac])
+
+    
 
     useEffect(() => {
 

@@ -49,11 +49,11 @@ function EditCustomer({customerId}){
         let response;
        
         try {
-            response = await fetch(`api/customers/validate/${email}/${name}`)
-            if (response.ok) {
+            response = await fetch(`/api/customers/validate/${email}/${name}`)
+            if (!response.ok) {
                 setError({"unique": "Customer Already Exists"})
             } else {
-                await dispatch(editCustomerThunk(newCustomer))
+                await dispatch(editCustomerThunk(customerId, newCustomer))
                 closeModal()
             }
         } catch (e) {

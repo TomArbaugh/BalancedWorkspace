@@ -1,5 +1,5 @@
 from app.models import Ticket, db, Image, Customer
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, abort
 from flask_login import current_user, login_required
 from app.forms.create_customer import CreateCustomerForm
 
@@ -10,14 +10,16 @@ customer_routes = Blueprint('customers', __name__)
 @customer_routes.route('/validate/<email>/<name>')
 @login_required
 def validate_customer(email, name):
+    # print("EMAIL--------------------------------------------", email)
+    # print("name--------------------------------------------", name)
     customer = Customer.query.filter((Customer.email == email) | (Customer.name == name)).all()
-    
+    # print("CUSTOMER--------------------------------------------", customer)
     if customer:
-        return customer.to_dict()
+        return abort(400, description="Customer Already Exists")
 
     else:
-        return {"validation": "success"}
-
+        return {"message": "successfully created"}
+    return
 
 @customer_routes.route('/<int:id>')
 @login_required

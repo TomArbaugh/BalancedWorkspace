@@ -35,8 +35,12 @@ function CreateCustomer(){
         let response;
        
         try {
-            response = await fetch(`api/customers/validate/${email}/${name}`)
-            if (response.ok) {
+            // console.log("EMAIL", email)
+            // console.log("NAME", name)
+            response = await fetch(`/api/customers/validate/${email}/${name}`)
+            if (!response.ok) {
+                // const cust = await response.json()
+                // console.log("THIS IS THE RESPONSE", response)
                 setError({"unique": "Customer Already Exists"})
             } else {
                 await dispatch(createCustomerThunk(customer))

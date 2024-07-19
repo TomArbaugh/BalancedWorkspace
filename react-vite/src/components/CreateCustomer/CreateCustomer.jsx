@@ -32,18 +32,34 @@ function CreateCustomer(){
             email
         }
 
-        await dispatch(createCustomerThunk(customer))
+        let response;
+       
+        try {
+            response = await fetch(`api/customers/validate/${email}/${name}`)
+            if (response.ok) {
+                setError({"unique": "Customer Already Exists"})
+            } else {
+                await dispatch(createCustomerThunk(customer))
+                closeModal()
+            }
+        } catch (e) {
+            console.log(e, "this is it")
+        }
+        
+        
 
-        closeModal()
+        
     }
 
     return (
         <div id="create-customer-div">
         <h1 id="create-customer-header">Create Customer</h1>
+        <p id="unique" className="create-customer-error">{error.unique ? error.unique : null}</p>
        <form
        className="create-customer-form"
        onSubmit={onSubmit}
        >
+        
         <label>
             <h4 className="create-customer-label">Name</h4>
             <input 

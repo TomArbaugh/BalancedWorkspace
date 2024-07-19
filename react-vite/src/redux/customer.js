@@ -70,6 +70,7 @@ export const getAllCustomersThunk =  () => async (dispatch) => {
 }
 
 export const createCustomerThunk = (customer) => async (dispatch) => {
+  
   const response =  await fetch('/api/customers/create', {
     method: "POST",
     headers: {"Content-Type": "application/json"},

@@ -7,6 +7,18 @@ from app.forms.create_customer import CreateCustomerForm
 
 customer_routes = Blueprint('customers', __name__)
 
+@customer_routes.route('/validate/<email>/<name>')
+@login_required
+def validate_customer(email, name):
+    customer = Customer.query.filter((Customer.email == email) | (Customer.name == name)).all()
+    
+    if customer:
+        return customer.to_dict()
+
+    else:
+        return {"validation": "success"}
+
+
 @customer_routes.route('/<int:id>')
 @login_required
 def get_customer_Id(id):

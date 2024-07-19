@@ -24,6 +24,10 @@
   
 }
 
+#unique {
+    text-align: center;
+}
+
 #create-customer-error-message {
     text-align: center;
     color: red;

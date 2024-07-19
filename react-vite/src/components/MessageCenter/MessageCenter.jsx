@@ -118,18 +118,22 @@ function MessageCenter() {
         if (otherPerson === '1' || otherPerson === 1) {
             email = "demo@aa.io"
             password = "LhO&FBO$zz"
+            setOtherPerson(currentUser.id)
         } else if (otherPerson === '2' || otherPerson === 2) {
             email = 'marnie@aa.io'
             password = 'Thdn&4jK3$'
+            setOtherPerson(currentUser.id)
         } else if (otherPerson === '3' || otherPerson === 3) {
             email = 'bobbie@aa.io'
             password = 'lksdjIUjbwEF8$'
+            setOtherPerson(currentUser.id)
         } else {
             setPause(false)
+            setOtherPerson()
             return null;
         }
       
-        setOtherPerson(currentUser.id)
+        
 
        
 

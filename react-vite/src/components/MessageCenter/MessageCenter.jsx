@@ -164,9 +164,10 @@ function MessageCenter() {
         <div id="message-center">
             <h2 id="message-header">Message Center</h2>
             <button
-            id="new-log-in"
+            id={otherPerson !== '1' && otherPerson !== '2' && otherPerson !== '3' ? "" : "new-log-in"}
             onClick={logIn}
-            >Login As Conversation Partner</button>
+            disabled={otherPerson !== '1' && otherPerson !== '2' && otherPerson !== '3'}
+            >{otherPerson === '1' ? <p className="log-in-vitation">Login As Demo</p> : otherPerson === '2' ? <p className="log-in-vitation">Login As Marnie</p> : otherPerson === '3' ? <p className="log-in-vitation">Login As Bobbie</p> : !otherPerson ? <p className="log-in-vitation">Please Select Below</p> : <p className="log-in-vitation">Your Partner's Login Is Not Saved</p>}</button>
             <select
             id="convo-select"
             value={otherPerson}
@@ -195,15 +196,15 @@ function MessageCenter() {
                      modalComponent={<DeleteMessage messageId={convo.id}/>}
                     /> */}
                     <button className={edit ? "hide" : "edit-button"} disabled={edit} onClick={makeDelete}>Delete</button>
-                    <button id="yes-delete" className={yesOrNo ? "delete-confirmation" : "hide"} onClick={() => handleDelete(convo.id)}>Yes Delete?</button>
-                    <button id="cancel-button" className={yesOrNo ? "delete-confirmation" : "hide"} onClick={() => {setYesOrNo(false); setEdit(false)}}>NO! Cancel!</button>
+                    <button id="yes-delete" className={yesOrNo && messId === convo.id? "delete-confirmation" : "hide"} onClick={() => handleDelete(convo.id)}>Yes Delete?</button>
+                    <button id="cancel-button" className={yesOrNo && messId === convo.id? "delete-confirmation" : "hide"} onClick={() => {setYesOrNo(false); setEdit(false)}}>NO! Cancel!</button>
                 
 
                     <div className={convo.sender_id === currentUser.id ?"message-buttons" : "hide"}>
 
                         <button className={edit ? "hide" : "edit-button"} disabled={edit} onClick={() => makeEdit(convo.id, convo.message)}>Edit</button>
 
-                        <button className={!edit || yesOrNo ? "hide" : "edit-button"}disabled={!edit} onClick={() => saveChange(convo.id)}>Save</button>
+                        <button className={!edit || yesOrNo || messId !== convo.id ? "hide" : "edit-button"} disabled={!edit} onClick={() => saveChange(convo.id)}>Save</button>
                         <p className="edit-message-errors">{error.message? error.message : null}</p>
                           {/* <OpenModalMenuItem 
                     

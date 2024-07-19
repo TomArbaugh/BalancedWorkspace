@@ -169,7 +169,7 @@ function MessageCenter() {
             <button
             id={otherPerson !== '1' && otherPerson !== '2' && otherPerson !== '3' && otherPerson !== 1 && otherPerson !== 2 && otherPerson !== 3 ? "" : "new-log-in"}
             onClick={logIn}
-            disabled={otherPerson !== '1' && otherPerson !== '2' && otherPerson !== '3' && otherPerson !== 1 && otherPerson !== 2 && otherPerson !== 3 &&  pause}
+            disabled={(otherPerson !== '1' && otherPerson !== '2' && otherPerson !== '3' && otherPerson !== 1 && otherPerson !== 2 && otherPerson !== 3) ||  pause}
             >{otherPerson === '1' || otherPerson === 1 ? <p className="log-in-vitation">Login As Demo</p> : otherPerson === '2' || otherPerson === 2 ? <p className="log-in-vitation">Login As Marnie</p> : otherPerson === '3' || otherPerson === 3 ? <p className="log-in-vitation">Login As Bobbie</p> : !otherPerson ? <p className="log-in-vitation">Please Select Below</p> : <p className="log-in-vitation">Your Partner&#39;s Login Is Not Saved</p>}</button>
             <select
             id="convo-select"

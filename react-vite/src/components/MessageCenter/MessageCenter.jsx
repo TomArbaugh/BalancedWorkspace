@@ -111,13 +111,13 @@ function MessageCenter() {
         e.preventDefault()
             let email;
             let password;
-        if (otherPerson === '1') {
+        if (otherPerson === '1' || otherPerson === 1) {
             email = "demo@aa.io"
             password = "LhO&FBO$zz"
-        } else if (otherPerson === '2') {
+        } else if (otherPerson === '2' || otherPerson === 2) {
             email = 'marnie@aa.io'
             password = 'Thdn&4jK3$'
-        } else if (otherPerson === '3') {
+        } else if (otherPerson === '3' || otherPerson === 3) {
             email = 'bobbie@aa.io'
             password = 'lksdjIUjbwEF8$'
         } else {
@@ -164,10 +164,10 @@ function MessageCenter() {
         <div id="message-center">
             <h2 id="message-header">Message Center</h2>
             <button
-            id={otherPerson !== '1' && otherPerson !== '2' && otherPerson !== '3' ? "" : "new-log-in"}
+            id={otherPerson !== '1' && otherPerson !== '2' && otherPerson !== '3' && otherPerson !== 1 && otherPerson !== 2 && otherPerson !== 3 ? "" : "new-log-in"}
             onClick={logIn}
-            disabled={otherPerson !== '1' && otherPerson !== '2' && otherPerson !== '3'}
-            >{otherPerson === '1' ? <p className="log-in-vitation">Login As Demo</p> : otherPerson === '2' ? <p className="log-in-vitation">Login As Marnie</p> : otherPerson === '3' ? <p className="log-in-vitation">Login As Bobbie</p> : !otherPerson ? <p className="log-in-vitation">Please Select Below</p> : <p className="log-in-vitation">Your Partner's Login Is Not Saved</p>}</button>
+            disabled={otherPerson !== '1' && otherPerson !== '2' && otherPerson !== '3' && otherPerson !== 1 && otherPerson !== 2 && otherPerson !== 3}
+            >{otherPerson === '1' || otherPerson === 1 ? <p className="log-in-vitation">Login As Demo</p> : otherPerson === '2' || otherPerson === 2 ? <p className="log-in-vitation">Login As Marnie</p> : otherPerson === '3' || otherPerson === 3 ? <p className="log-in-vitation">Login As Bobbie</p> : !otherPerson ? <p className="log-in-vitation">Please Select Below</p> : <p className="log-in-vitation">Your Partner's Login Is Not Saved</p>}</button>
             <select
             id="convo-select"
             value={otherPerson}

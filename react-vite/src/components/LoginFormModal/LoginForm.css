@@ -26,6 +26,18 @@
     font-size: larger;
 }
 
+#log-in-button:hover {
+    background-color: rgb(187, 213, 247);
+    color: black;
+    box-shadow: 2px 2px 3px 2px rgb(41, 51, 72);
+}
+
+#demo-button:hover {
+    background-color: rgb(187, 213, 247);
+    color: black;
+    box-shadow: 2px 2px 3px 2px rgb(41, 51, 72);
+}
+
 #log-header {
     padding: 10px;
     text-align: center;

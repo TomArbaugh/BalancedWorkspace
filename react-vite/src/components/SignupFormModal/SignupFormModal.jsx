@@ -17,7 +17,7 @@ function SignupFormModal() {
 
   const validations = () => {
     const newErrors = {}
-    if (password !== confirmPassword) newErrors.confirmPassword = "Confirm Password field must be the same as the Password field"
+    if (password !== confirmPassword) newErrors.confirmPassword = "Confirm Password field must be the same"
     if (password.length < 6 || password.length > 20) newErrors.password = "Password must be between 6 and 20 characters."
     if (!email.includes('@')) newErrors.email = "Please provide a valid email"
     if (username.length < 3 || username.length > 30) newErrors.username = "Username must be between 3 and 30 characters"

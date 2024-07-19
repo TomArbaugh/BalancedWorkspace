@@ -18,6 +18,7 @@ function MessageCenter() {
     const [error, setError] = useState({})
     const [messId, setMesId] = useState()
     const [yesOrNo, setYesOrNo] = useState(false)
+    const [pause, setPause] = useState(false)
     const dispatch = useDispatch()
 
 
@@ -109,6 +110,7 @@ function MessageCenter() {
         
        const logIn = async (e) => {
         e.preventDefault()
+        setPause(true)
             let email;
             let password;
         if (otherPerson === '1' || otherPerson === 1) {
@@ -138,6 +140,7 @@ function MessageCenter() {
 
           setUser(currentUser.id)
           setConvoArr()
+          setPause(false)
     }
 
     
@@ -166,7 +169,7 @@ function MessageCenter() {
             <button
             id={otherPerson !== '1' && otherPerson !== '2' && otherPerson !== '3' && otherPerson !== 1 && otherPerson !== 2 && otherPerson !== 3 ? "" : "new-log-in"}
             onClick={logIn}
-            disabled={otherPerson !== '1' && otherPerson !== '2' && otherPerson !== '3' && otherPerson !== 1 && otherPerson !== 2 && otherPerson !== 3}
+            disabled={otherPerson !== '1' && otherPerson !== '2' && otherPerson !== '3' && otherPerson !== 1 && otherPerson !== 2 && otherPerson !== 3 &&  pause}
             >{otherPerson === '1' || otherPerson === 1 ? <p className="log-in-vitation">Login As Demo</p> : otherPerson === '2' || otherPerson === 2 ? <p className="log-in-vitation">Login As Marnie</p> : otherPerson === '3' || otherPerson === 3 ? <p className="log-in-vitation">Login As Bobbie</p> : !otherPerson ? <p className="log-in-vitation">Please Select Below</p> : <p className="log-in-vitation">Your Partner&#39;s Login Is Not Saved</p>}</button>
             <select
             id="convo-select"

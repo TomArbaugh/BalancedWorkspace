@@ -39,7 +39,7 @@ export const getAllMacrosThunk = () => async (dispatch) => {
         dispatch(getAllMacros(macros))
         // console.log("customer")
     } else {
-        console.log("NO SUCH CUSTOMER")
+        console.log(" ")
     }
 }
 
@@ -61,7 +61,7 @@ export const createMacroThunk = (macro) => async (dispatch) => {
     const macro = await response.json()
     dispatch(createMacro(macro))
   } else {
-    console.log("There was an error making your Customer")
+    console.log(" ")
   }
 }
 

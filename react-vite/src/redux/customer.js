@@ -54,7 +54,7 @@ export const getCustomerIdThunk = (requesterId) => async (dispatch) => {
         dispatch(getCustomerId(customer))
         
     } else {
-        console.log("NO SUCH CUSTOMER")
+        console.log(" ")
     }
 }
 
@@ -80,7 +80,7 @@ export const createCustomerThunk = (customer) => async (dispatch) => {
     const customer = await response.json()
     dispatch(createCustomer(customer))
   } else {
-    console.log("There was an error making your Customer")
+    console.log("")
   }
 }
 

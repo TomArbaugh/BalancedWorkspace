@@ -46,7 +46,7 @@ export const getAllTicketsThunk = () => async (dispatch) => {
     dispatch(getAllTickets(tickets))
     
   } else {
-    console.log("ALL TICKETS THUNK NOT OK")
+    console.log(" ")
   }
 }
 export const getTicketIdThunk = (ticket_id) => async (dispatch) => {
@@ -56,7 +56,7 @@ export const getTicketIdThunk = (ticket_id) => async (dispatch) => {
     const ticket = await response.json()
     dispatch(getTicketId(ticket))
   } else {
-    console.log("Ticket Not Found")
+    console.log(" ")
   }
 }
 export const postTicketThunk = (image, newTicket) => async (dispatch) => {
@@ -77,11 +77,11 @@ export const postTicketThunk = (image, newTicket) => async (dispatch) => {
       
       let ticket_id;
       if (ticketResponse.ok) {
-        console.log("TICKET SENT TO ROUTES")
+        // console.log(" ")
           const newTicket = await ticketResponse.json()
           ticket_id = newTicket.id
       } else {
-          console.log("There was an error making your ticketResponse!")
+          console.log(" ")
       }
 
       const imageResponse = await fetch(`/api/tickets/${ticket_id}/add-image`, {
@@ -91,13 +91,13 @@ export const postTicketThunk = (image, newTicket) => async (dispatch) => {
     
 
       if (imageResponse.ok) {
-        console.log("IMAGE SENT TO ROUTES")
+        // console.log("IMAGE SENT TO ROUTES")
         const ticketImage = await imageResponse.json();
          
         dispatch(postTicket(ticketImage, newTicket));
         
     } else {
-        console.log("There was an error making your ImageResponse!")
+        console.log(" ")
     }
   };
 
@@ -119,11 +119,11 @@ export const postTicketThunk = (image, newTicket) => async (dispatch) => {
         })
         
         if (ticketResponse.ok) {
-          console.log("TICKET SENT TO ROUTES")
+          // console.log("TICKET SENT TO ROUTES")
             const newTicket = await ticketResponse.json()
             dispatch(putTicket(newTicket));
         } else {
-            console.log("There was an error making your ticketResponse!")
+            console.log(" ")
         }
   
       
@@ -135,13 +135,13 @@ export const postTicketThunk = (image, newTicket) => async (dispatch) => {
         
     
           if (imageResponse.ok) {
-            console.log("IMAGE SENT TO ROUTES")
+            // console.log("IMAGE SENT TO ROUTES")
             const ticketImage = await imageResponse.json();
              
             dispatch(putTicket(ticketImage, newTicket));
             
         } else {
-            console.log("There was an error making your ImageResponse!")
+            console.log(" ")
         }
       }
       

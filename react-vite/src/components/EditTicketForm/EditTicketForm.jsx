@@ -93,7 +93,7 @@ function EditTicketForm(){
         }
         if (!image) setImage('noImage')
         
-        console.log(apply_macro, "apply macro")
+        // console.log(apply_macro, "apply macro")
         // const formData = new FormData();
         // formData.append("image", image);
         // console.log(image, "formData jsx")

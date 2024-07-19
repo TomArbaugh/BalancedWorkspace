@@ -158,8 +158,8 @@ function MessageCenter() {
     if (!users) return null;
     if (!currentUser) return null;
     if (!convoArr) return null;
-    console.log(convoArr)
-    console.log(otherPerson)
+    // console.log(convoArr)
+    // console.log(otherPerson)
     return (
         <div id="message-center">
             <h2 id="message-header">Message Center</h2>

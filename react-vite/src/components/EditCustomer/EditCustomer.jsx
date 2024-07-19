@@ -57,7 +57,7 @@ function EditCustomer({customerId}){
                 closeModal()
             }
         } catch (e) {
-            console.log(e, "this is it")
+            console.log(" ")
         }
     }
 

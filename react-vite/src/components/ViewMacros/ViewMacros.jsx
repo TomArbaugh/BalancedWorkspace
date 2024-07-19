@@ -28,7 +28,7 @@ function ViewMacros(){
 
     }, [macros])
 
-  console.log("NEWMAC", newMac)
+//   console.log("NEWMAC", newMac)
        
     
     if (Object.keys(macros).length === 0) return null 

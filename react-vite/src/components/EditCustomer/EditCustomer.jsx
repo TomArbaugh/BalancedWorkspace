@@ -53,7 +53,7 @@ function EditCustomer({customerId}){
             if (response.ok) {
                 setError({"unique": "Customer Already Exists"})
             } else {
-                await dispatch(createCustomerThunk(customer))
+                await dispatch(editCustomerThunk(newCustomer))
                 closeModal()
             }
         } catch (e) {

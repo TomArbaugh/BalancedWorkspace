@@ -107,6 +107,7 @@ function MessageCenter() {
 
        const handleDelete = (messageId) => {
         dispatch(deleteMessageThunk(messageId))
+        setEdit(false)
        }
         
        const logIn = async (e) => {

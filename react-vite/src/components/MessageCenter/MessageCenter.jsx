@@ -154,6 +154,7 @@ function MessageCenter() {
         }
         
         dispatch(createMessageThunk(otherPerson, newMessage))
+        setMessage('')
     }
     
    
@@ -189,7 +190,7 @@ function MessageCenter() {
                     <div key={convo.id} className="message-card">
                     {convo.sender_id === currentUser.id ? <p>Me:</p> : <p>Sender Id: {convo.sender_id}</p>}
 
-                    {edit && messId === convo.id? <input value={message} onChange={((e) => setMessage(e.target.value))}/>: <p id="convo-message">{convo.message}</p>}
+                    {edit && !yesOrNo && messId === convo.id? <input value={message} onChange={((e) => setMessage(e.target.value))}/>: <p id="convo-message">{convo.message}</p>}
                     <div className="message-button-container">
                 <div className={convo.sender_id === currentUser.id ?"message-buttons" : "hide"}>
 

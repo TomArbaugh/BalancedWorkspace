@@ -46,16 +46,22 @@ function EditMacro({macroId}){
             name,
             description
         }
-
+        if (macroId !== 1 && macroId !== '1') {
         await dispatch(editMacroThunk(newMacro, macro.id))
 
         closeModal()
+    } else {
+        // console.log(macroId, "IN ERRORS")
+        setError({"noMac": "This Option Is Permanent"})
+        return
+    }
     }
 
     if (!macro) return null;
     return (
         <div>
             <h1 id="create-macro-header">Edit Macro</h1>
+            <p className="error-message">{error.noMac ? error.noMac : null}</p>
         <form
         className="create-macro-form"
         onSubmit={onSubmit}

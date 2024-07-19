@@ -39,4 +39,6 @@
 
 .error-message {
     color: red;
+    max-height: 5px;
+    min-height: 5px;
 }

@@ -99,3 +99,12 @@
     padding-left: 10px;
     font-weight: 300;
 }
+
+#convo-message {
+    overflow: scroll;
+    overflow-wrap: break-word;
+}
+
+.hide {
+    display: none;
+}

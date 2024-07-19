@@ -19,7 +19,7 @@ def get_customer_Id(id):
 @customer_routes.route('/')
 @login_required
 def get_customer():
-    customers = Customer.query.filter_by(user_id=current_user.id).order_by(Customer.id.desc()).all()
+    customers = Customer.query.order_by(Customer.id.desc()).all()
 
     if customers is None:
               return {"error": "Customer Not Found" }

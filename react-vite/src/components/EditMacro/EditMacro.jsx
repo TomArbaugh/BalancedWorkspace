@@ -29,7 +29,7 @@ function EditMacro({macroId}){
     const validations = () => {
         const newError = {}
         if (name.length < 2 || name.length > 50) newError.name = "Name must be between 2 and 50 characters."
-        if (description.length < 3 || description.length > 2000) newError.description = "Description must be between 3 and 2000 characters."
+        if (description.length < 1 || description.length > 2000) newError.description = "Description must be between 1 and 2000 characters."
         return newError
     }
 

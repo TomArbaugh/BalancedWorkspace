@@ -73,7 +73,7 @@ function ViewMacros(){
                 <h4 className="macro-element">{macro.id}</h4>
                 <h4 className="macro-element">{macro.user_id}</h4>
                      <h4 className="macro-element">{macro.name}</h4>
-                     <h4 className="macro-element">{macro.description}</h4>
+                     <div id="macro-description" className="macro-element">{macro.description}</div>
                      </Link>
                      </div>
                      </div>

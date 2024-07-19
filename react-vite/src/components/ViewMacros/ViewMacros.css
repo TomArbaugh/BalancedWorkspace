@@ -43,3 +43,14 @@
   padding: 20px;
   border-bottom: solid black 1px;
 }
+
+#macro-description {
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+    overflow-wrap: break-word;
+    height: 50px;
+    width: 1111px;
+    margin-right: 10px;
+   
+}

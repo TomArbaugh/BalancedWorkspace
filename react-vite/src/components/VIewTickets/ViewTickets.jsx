@@ -56,13 +56,13 @@ if (!ticket) return null
 if (!user) return null
 if (!macros) return  null
 
-let chosenMacro;
-if (ticket.apply_macro) {
+// let chosenMacro;
+// if (ticket.apply_macro) {
    
-    macros ? chosenMacro = macros.macros.find((macro) => macro.id === ticket.apply_macro) : null
-} else {
-    chosenMacro = "No Macro Chosen"
-}
+//     macros ? chosenMacro = macros.macros.find((macro) => macro.id === ticket.apply_macro) : null
+// } else {
+//     chosenMacro = "No Macro Chosen"
+// }
 
 return (
     <div id="view-ticket-form">
@@ -148,9 +148,9 @@ value={ticket.description}
         <select
         id="view-macros-input"
         disabled={true}
-        value={chosenMacro.description}
+        value={ticket.apply_macro}
         >
-            <option>{chosenMacro.description}</option>
+            <option>{ticket.apply_macro}</option>
         </select>
     </lable>
     <div className="view-delete-edit-buttons">

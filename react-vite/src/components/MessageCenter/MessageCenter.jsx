@@ -99,9 +99,10 @@ function MessageCenter() {
         
        }
        
-       const makeDelete = () => {
+       const makeDelete = (messageId) => {
         setYesOrNo(true)
         setEdit(true)
+        setMesId(messageId)
        }
 
        const handleDelete = (messageId) => {
@@ -199,7 +200,7 @@ function MessageCenter() {
                     itemText="Delete"
                      modalComponent={<DeleteMessage messageId={convo.id}/>}
                     /> */}
-                    <button className={edit ? "hide" : "edit-button"} disabled={edit} onClick={makeDelete}>Delete</button>
+                    <button className={edit ? "hide" : "edit-button"} disabled={edit} onClick={() => makeDelete(convo.id)}>Delete</button>
                     <button id="yes-delete" className={yesOrNo && messId === convo.id? "delete-confirmation" : "hide"} onClick={() => handleDelete(convo.id)}>Yes Delete?</button>
                     <button id="cancel-button" className={yesOrNo && messId === convo.id? "delete-confirmation" : "hide"} onClick={() => {setYesOrNo(false); setEdit(false)}}>NO! Cancel!</button>
                 

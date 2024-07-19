@@ -30,8 +30,14 @@
     list-style-type: none;
     text-align: center;
     font-size: large;
+    cursor: pointer;
 }
 
+.macro-buttons:hover {
+    background-color: rgb(187, 213, 247);
+    color: black;
+    box-shadow: 2px 2px 3px 2px rgb(72, 41, 63);
+}
 
 .view-macro-preview {
     text-decoration: none;

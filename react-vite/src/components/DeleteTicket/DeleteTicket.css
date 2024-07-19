@@ -10,7 +10,7 @@
     margin-top: 10px;
     height: 40px;
     border-radius: 20px;
-    background-color: red;
+    background-color: rgb(220, 5, 5);
     color: white;
     font-size: x-large;
     font-weight: 900;
@@ -18,11 +18,14 @@
 }
 
 .delete-modal-buttons:hover {
-    box-shadow: 2px 2px 3px 2px gray;
+    background-color: rgb(255, 30, 30);
+    box-shadow: 2px 2px 3px 2px rgb(84, 1, 1);
 }
 
 .dont-delete-modal-buttons:hover {
-    box-shadow: 2px 2px 3px 2px gray;
+    background-color: rgb(187, 213, 247);
+    color: black;
+    box-shadow: 2px 2px 3px 2px rgb(41, 51, 72);
 }
 
 .dont-delete-modal-buttons {

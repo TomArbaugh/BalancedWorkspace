@@ -195,8 +195,8 @@ function MessageCenter() {
                      modalComponent={<DeleteMessage messageId={convo.id}/>}
                     /> */}
                     <button className={edit ? "hide" : "edit-button"} disabled={edit} onClick={makeDelete}>Delete</button>
-                    <button className={yesOrNo ? "delete-confirmation" : "hide"} onClick={() => handleDelete(convo.id)}>Yes Delete?</button>
-                    <button className={yesOrNo ? "delete-confirmation" : "hide"} onClick={() => {setYesOrNo(false); setEdit(false)}}>NO! Cancel!</button>
+                    <button id="yes-delete" className={yesOrNo ? "delete-confirmation" : "hide"} onClick={() => handleDelete(convo.id)}>Yes Delete?</button>
+                    <button id="cancel-button" className={yesOrNo ? "delete-confirmation" : "hide"} onClick={() => {setYesOrNo(false); setEdit(false)}}>NO! Cancel!</button>
                 
 
                     <div className={convo.sender_id === currentUser.id ?"message-buttons" : "hide"}>

@@ -54,11 +54,13 @@ function Navigation() {
           {/* <Link 
           className={user ? "nav-link" : "hide"}
           to="macro/create">Create Macro</Link> */}
+          <div className="nav-link">
            <OpenModalMenuItem
         
         itemText="Message Center"
         modalComponent={<MessageCenter />}
         /> 
+        </div>
           </div>
       </li>
       <li className="li-landing-two">

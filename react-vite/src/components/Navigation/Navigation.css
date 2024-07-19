@@ -8,6 +8,7 @@
 .menu-links {
   color: white;
   text-decoration: none;
+  
 }
 
 .menu-links:hover {
@@ -32,6 +33,7 @@
   color: rgb(226, 255, 245);
   text-decoration: none;
   justify-content: space-between;
+  cursor: pointer;
 }
 
 
@@ -46,6 +48,7 @@
   background-color: white;
   border-radius: 20px;
   box-shadow: 1px 1px 1.5px 1px black;
+  cursor: pointer;
   
 }
 
@@ -123,6 +126,7 @@
   height: 30px;
   width: 90px;
   font-weight: 300;
+  cursor: pointer;
 }
 
 #log-out-button:hover {

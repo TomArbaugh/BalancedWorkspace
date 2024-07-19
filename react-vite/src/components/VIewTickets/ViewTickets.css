@@ -95,6 +95,7 @@
     border-radius: 20px;
     background-color: #1b3c59;
     color: white;
+    cursor: pointer;
 }
 
 .ticket-delete-button {
@@ -107,6 +108,7 @@
     font-size: smaller;
     padding: 1px;
     border: solid 2px black;
+    cursor: pointer;
 }
 
 .ticket-delete-button:hover {
@@ -152,6 +154,7 @@
 .view-delete-edit-buttons {
     display: flex;
     align-items: flex-end;
+    
     
 }
 

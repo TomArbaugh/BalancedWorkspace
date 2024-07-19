@@ -8,6 +8,7 @@
 .edit-ticket-requester {
     width: 175px;
     height: 40px;
+    cursor: pointer;
 }
 
 .edit-ticket-assignee {
@@ -18,11 +19,13 @@
 .edit-ticket-type {
     width: 85px;
     height: 40px;
+    cursor: pointer;
 }
 
 .edit-ticket-priority {
     width: 85px;
     height: 40px;
+    cursor: pointer;
 }
 
 #type-priority {
@@ -83,12 +86,20 @@
     border-radius: 20px;
     background-color: #1b3c59;
     color: white;
+    cursor: pointer;
+}
+
+.edit-ticket-button:hover {
+    background-color: white;
+    color: black;
+  
 }
 
 #macros-input {
     height: 90px;
     width: 100%;
     text-wrap: wrap;
+    cursor: pointer;
 }
 
 #edit-ticket-image {

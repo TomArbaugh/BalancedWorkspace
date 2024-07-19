@@ -70,7 +70,7 @@ function TicketForm(){
         // formData.append("image", image);
         // console.log(image, "formData jsx")
 
-        // console.log(apply_macro)
+        console.log("Created Mac", apply_macro)
       
         const newTicket = {
             title,

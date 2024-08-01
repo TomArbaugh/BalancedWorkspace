@@ -1,7 +1,9 @@
 import "./LandingPage.css"
 import { thunkLogin } from "../../redux/session";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { FaLinkedin } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
 
 
 function LandingPage() {
@@ -50,7 +52,12 @@ function LandingPage() {
             </div>
            
             <div className="landing-bottom">
+                <Link to="https://www.linkedin.com/in/tomarbaugh/"><FaLinkedin className="about-links"/></Link>
+                
                 <h2>Balanced Workspace</h2>
+
+                <Link to="https://github.com/TomArbaugh/"><FaGithub className="about-links"/></Link>
+                
             </div>
         </div>
         )

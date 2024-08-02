@@ -29,14 +29,14 @@
 }
 
 .about-links {
-font-size:larger;
-color: blue;
+font-size: xxx-large;
+color: #014858;
 }
 
 .about-links:hover {
-    color: white;
-    background-color: blue;
-    box-shadow: 1px 1px 2px blue;
+    color: #4170a9;
+   
+    
 }
 
 .landing-h2 {

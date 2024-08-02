@@ -37,7 +37,7 @@ function LandingPage() {
                     <h1 className="landing-h1">Balance Your Work</h1>
                 </div>
                 <div className="landing-h2">
-                    <h2>Join us today and keep your job right side up, your business grinding the rail, and you rest easy knowing you have a balanced workspace</h2>
+                    <h2>Join us today and keep your job right side up, your business grinding the rail, and you will rest easy knowing you have a balanced workspace.</h2>
                 </div>
                 <div className="landing-button-container">
                     <button 

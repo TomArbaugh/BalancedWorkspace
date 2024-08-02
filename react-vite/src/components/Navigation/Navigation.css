@@ -56,8 +56,8 @@
 
 .profile-buttons:hover {
   background-color: rgb(187, 213, 247);
-  color: black;
-  box-shadow: 2px 2px 3px 2px rgb(0, 0, 0);
+  color: rgb(18, 4, 92);
+
 }
 
 .text-dec-none {
@@ -135,10 +135,34 @@
 #log-out-button:hover {
   background-color: rgb(187, 213, 247);
   color: black;
-  box-shadow: 2px 2px 3px 2px rgb(0, 0, 0);
+
 }
 
 .modal-profile-links:hover {
   text-decoration: underline;
-  color: rgb(187, 213, 247);
+  color: #a4eeff;
+}
+
+#create-ticket-link {
+  color:#a4eeff;
+}
+
+#create-customer-link {
+  color:#a4eeff;
+}
+
+#create-macro-link {
+  color:#a4eeff;  
+}
+
+#create-ticket-link:hover {
+  color:#c1f0fa;
+}
+
+#create-customer-link:hover {
+  color:#c1f0fa;
+}
+
+#create-macro-link:hover {
+  color:#c1f0fa;  
 }

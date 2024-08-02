@@ -23,9 +23,10 @@ function Navigation() {
           <div className={user ? "nav-links" : "hide"}>
           <Link 
           className={user ? "nav-link" : "hide"}
+          id="create-ticket-link"
           to="/create/ticket">Create Ticket</Link>
 
-          <div className="nav-link">
+          <div className="nav-link" id="create-customer-link">
           <OpenModalMenuItem
         
         itemText="Create Customer"
@@ -37,7 +38,7 @@ function Navigation() {
           className={user ? "nav-link" : "hide"}
           to="customer/create">Create Customer</Link> */}
 
-          <div className="nav-link">
+          <div className="nav-link" id="create-macro-link">
           <OpenModalMenuItem 
         
         itemText="Create Macro"

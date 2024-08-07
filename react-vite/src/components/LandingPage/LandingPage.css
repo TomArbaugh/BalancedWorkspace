@@ -83,3 +83,34 @@ color: #014858;
     width: 45%;
     text-align: center;
 }
+
+@media (max-width: 807px) {
+    .landing-top {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+    .landing-h1 {
+        width: 600px;
+        text-align: center;
+    }
+
+    .landing-left {
+        width: 100%
+    }
+    .landing-left > h2 {
+        width: 600px;
+    }
+
+    .landing-image {
+        width: 100%;
+    }
+
+    .landing-top {
+        padding: 10px;
+    }
+
+    .landing-bottom > h2 {
+        font-size: large;
+    }
+}

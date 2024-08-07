@@ -6,10 +6,12 @@ import OpenModalMenuItem from "./OpenModalMenuItem";
 import CreateCustomer from "../CreateCustomer/CreateCustomer"
 import CreateMacro from "../CreateMacro/CreateMacro"
 import MessageCenter from "../MessageCenter/MessageCenter";
+import { useState } from "react";
 
 
 function Navigation() {
 
+  const [moble] = useState(window.innerWidth < 1310)
   const user = useSelector((state) => state.session.user)
 
 
@@ -20,7 +22,7 @@ function Navigation() {
           <h1 id="landing-h1">B<GiTightrope />LANCED</h1>
           <h2 id="landing-h2">workspace</h2>
           </NavLink>
-          <div className={user ? "nav-links" : "hide"}>
+          <div className={user && !moble ? "nav-links" : "hide"}>
           <Link 
           className={user ? "nav-link" : "hide"}
           id="create-ticket-link"

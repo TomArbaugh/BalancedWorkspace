@@ -166,3 +166,50 @@
 #create-macro-link:hover {
   color:#c1f0fa;  
 }
+
+@media (max-width: 1310px) {
+  #landing-h1 {
+    font-size: large;
+  }
+  #landing-h2 {
+    font-size: medium;
+  }
+
+  #landing-ul {
+    padding: 10px;
+  }
+
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    
+  }
+  .nav-link {
+    font-weight: bolder;
+    color: black;
+    padding-bottom: 15px;
+  }
+
+  #create-ticket-link {
+    color: black;
+    font-weight: bolder;
+  }
+
+  #create-customer-link {
+    color: black;
+    font-weight: bolder;
+  }
+
+  #create-macro-link {
+    color: black;
+    font-weight: bolder;
+  }
+
+  #landing-ul {
+    height: 180px;
+  }
+
+  .profile-dropdown {
+    padding-left: 0px;
+  }
+}

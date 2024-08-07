@@ -7,7 +7,18 @@ https://www.balancedworkspace.org
 
 # Tech Stack
 
-
+![image](https://github.com/TomArbaugh/BalancedWorkspace/blob/main/docs/logos/AWS.png)
+![image](https://github.com/TomArbaugh/BalancedWorkspace/blob/main/docs/logos/python.png)
+![image](https://github.com/TomArbaugh/BalancedWorkspace/blob/main/docs/logos/react.png)
+![image](https://github.com/TomArbaugh/BalancedWorkspace/blob/main/docs/logos/docker.png)
+![image](https://github.com/TomArbaugh/BalancedWorkspace/blob/main/docs/logos/flask.png)
+![image](https://github.com/TomArbaugh/BalancedWorkspace/blob/main/docs/logos/git.png)
+![image](https://github.com/TomArbaugh/BalancedWorkspace/blob/main/docs/logos/postgressql.png)
+![image](https://github.com/TomArbaugh/BalancedWorkspace/blob/main/docs/logos/redux.png)
+![image](https://github.com/TomArbaugh/BalancedWorkspace/blob/main/docs/logos/sqal.png)
+![image](https://github.com/TomArbaugh/BalancedWorkspace/blob/main/docs/logos/HTML.png)
+![image](https://github.com/TomArbaugh/BalancedWorkspace/blob/main/docs/logos/CSS.png)
+![image](https://github.com/TomArbaugh/BalancedWorkspace/blob/main/docs/logos/Alembic.png)
 
 
 ## Getting started
@@ -96,7 +107,7 @@ DELETE: Logged-in user can delete their message triggers.
 
  # Schema
 
- ![image]()
+ ![image](https://github.com/TomArbaugh/BalancedWorkspace/blob/main/docs/images/publishSchema.png)
 
 Table users { //employee
   id integer [primary key]

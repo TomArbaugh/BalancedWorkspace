@@ -52,5 +52,47 @@
     padding-right: 10px;
    
 }
+#hide {
+    display: none;
+}
+@media (max-width: 1310px) {
+    .view-ticket-preview {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        border: none;
+    }
+    .ticket-preview-element {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 90%;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    
 
-@media (width)
+    #view-ticket-card {
+        width: 53%;
+        border-bottom: solid 1px black;
+    }
+
+    #whole-thing {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .dashboard-header {
+        text-align: center;
+        width: 50%;
+    }
+    #subject {
+       padding-right: 20px;
+    }
+    
+    .ticket-preview-image {
+        margin: auto;
+        height: auto;
+        width: 100%;
+    }
+}

@@ -120,3 +120,81 @@
     min-height: 5px;
     max-height: 5px;
 }
+
+@media (max-width: 1116px) {
+  
+    #create-ticket-top {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 50%;
+       
+    }
+    #create-ticket-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    #create-ticket-middle-panel {
+        width: 100%;
+        padding: 0px;
+    }
+    #create-ticket-left-panel {
+        width: 100%;
+        padding: 0px;
+    }
+    .create-ticket-macro {
+        width: 50%;
+    }
+    #create-ticket-bottom {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    #create-type-priority {
+        width: 100%;
+   
+    }
+    .create-ticket-button {
+        align-self: center;
+        margin-top: 15px;
+    }
+    #type {
+        width: 50%;
+        padding-right: 6px;
+    }
+    #priority-label {
+        width: 50%;
+        padding-left: 6px;
+    }
+    .create-ticket-type {
+        width: 100%;
+    }
+    .create-ticket-priority {
+        width: 98%;
+    }
+    
+    #img-label {
+        text-align: center;
+        margin-bottom: 0px;
+    }
+    #create-macros-input {
+        margin-bottom: 15px;
+    }
+    #create-ticket-image {
+        padding-top: 10px;
+        width: 90%;
+
+    }
+    #create-ticket-right {
+        width: 100%;
+        text-align: center;
+    }
+    .create-ticket-requester {
+        width: 100%;
+    }
+    .create-ticket-assignee {
+        width: 100%;
+    }
+}

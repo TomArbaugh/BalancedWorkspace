@@ -130,7 +130,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        width: 50%;
+        width: 95%;
        
     }
     #ticket-form {
@@ -147,7 +147,7 @@
         padding: 0px;
     }
     .edit-ticket-macro {
-        width: 50%;
+        width: 95%;
     }
     #ticket-bottom {
         display: flex;
@@ -200,3 +200,4 @@
         width: 100%;
     }
 }
+

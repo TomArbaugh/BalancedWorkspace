@@ -172,3 +172,10 @@
 .hide {
     display: none;
 }
+
+@media (max-width: 501px) {
+    #message-center {
+        max-width: 320px;
+        min-width: 320px;
+    }
+}

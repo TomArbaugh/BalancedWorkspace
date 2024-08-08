@@ -60,7 +60,7 @@ function ViewMacros(){
                     </div>
                 <div id="macro-card-and-headers">
                     
-                       <div id="view-macro-headers">
+                    <div id="view-macro-headers">
                        <h3 className="macro-labels">Id #</h3>
                        <h3 className="macro-labels">Assignee #</h3>
                        <h3 className="macro-labels">Name</h3>

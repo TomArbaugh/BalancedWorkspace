@@ -167,6 +167,12 @@
   color:#c1f0fa;  
 }
 
+.nav-div {
+  width: 100px;
+  display: flex;
+  justify-content: flex-end;
+}
+
 @media (max-width: 1310px) {
   #landing-h1 {
     font-size: large;
@@ -209,6 +215,10 @@
     height: 180px;
   }
 
+  .profile-buttons {
+    width: 50px;
+    border-radius: 10px;
+  }
   .profile-dropdown {
     padding-left: 0px;
     background-color: white;
@@ -217,4 +227,10 @@
     margin: 5px;
     padding: 5px;
   }
+  .nav-div {
+    width: 100px;
+    display: flex;
+    justify-content: flex-end;
+  }
+
 }

@@ -8,6 +8,7 @@
 
 .macro-labels {
     border-bottom: solid black 1px;
+    width: 100%;
 }
 
 #view-macro-headers {
@@ -40,11 +41,13 @@
 }
 
 .view-macro-preview {
+    width: 100%;
     text-decoration: none;
     color: black;
 }
 
 #macro-card-and-headers {
+  width: 100%;
   display: flex;
   padding: 20px;
   border-bottom: solid black 1px;
@@ -56,7 +59,36 @@
     overflow: scroll;
     overflow-wrap: break-word;
     height: 50px;
-    width: 1111px;
+    width: 90%;
     margin-right: 10px;
+    overflow: auto;
    
+}
+#button-container {
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width: 1310px) {
+    #view-macro-top-head {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .macro-header {
+        text-align: center;
+    }
+    #button-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    #macro-card-and-headers {
+        display: flex;
+        justify-content: center;
+    }
+    #macro-description {
+        width: 150px;
+    }
+
 }

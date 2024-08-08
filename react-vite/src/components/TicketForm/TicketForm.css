@@ -127,7 +127,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        width: 50%;
+        width: 95%;
        
     }
     #create-ticket-form {
@@ -144,7 +144,7 @@
         padding: 0px;
     }
     .create-ticket-macro {
-        width: 50%;
+        width: 95%;
     }
     #create-ticket-bottom {
         display: flex;

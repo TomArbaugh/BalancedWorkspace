@@ -167,3 +167,76 @@
 .view-ticket-macro {
     width: 85%;
 }
+
+@media (max-width: 1116px) {
+  
+    #view-ticket-top {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 50%;
+       
+    }
+    #view-ticket-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    #view-ticket-middle {
+        width: 100%;
+        padding: 0px;
+    }
+    #view-ticket-left {
+        width: 100%;
+        padding: 0px;
+    }
+    .view-ticket-macro {
+        width: 50%;
+    }
+    #view-ticket-bottom {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    #view-type-priority {
+        width: 100%;
+   
+    }
+    #type-label {
+        width: 50%;
+        padding-right: 6px;
+    }
+    #priority-label {
+        width: 50%;
+        padding-left: 6px;
+    }
+    .view-ticket-type {
+        width: 100%;
+    }
+    .view-ticket-priority {
+        width: 98%;
+    }
+    #img-label {
+        text-align: center;
+        margin-bottom: 0px;
+    }
+    #view-macros-input {
+        margin-bottom: 15px;
+    }
+    #view-ticket-image {
+        padding-top: 10px;
+        width: 90%;
+
+    }
+    #view-ticket-right {
+        width: 100%;
+        text-align: center;
+    }
+    .view-ticket-requester {
+        width: 100%;
+    }
+    .view-ticket-assignee {
+        width: 100%;
+    }
+}

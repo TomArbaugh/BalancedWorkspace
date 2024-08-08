@@ -98,12 +98,12 @@ READ: Logged-in user can view a list of their canned responses.
 UPDATE: Logged-in user can edit their canned responses as their services, resources, or processes change.
 DELETE: Logged-in user can delete canned responses when they are no longer needed.
 
-4. Message Triggers
+4. Messages
 
-CREATE: Logged-in user can create a message trigger.
-READ: Logged-in user can view their existing message triggers, and messages that have been sent by message triggers.
-UPDATE: Logged-in user can update their message triggers.  
-DELETE: Logged-in user can delete their message triggers.
+CREATE: Logged-in user can create a messages.
+READ: Logged-in user can view their existing messages, and message other users.
+UPDATE: Logged-in user can update their messages.  
+DELETE: Logged-in user can delete their messages.
 
  # Schema
 
@@ -146,7 +146,7 @@ Table macros {
    actions select [not null]
 }
 
-Table messages { //shown in sent-box when ticket closed or customer deleted
+Table messages { 
   id integer [primary key]
   sender_id integer [ref: > users.id]
   receiver_id integer [ref: > users.id]

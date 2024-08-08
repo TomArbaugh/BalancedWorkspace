@@ -107,7 +107,7 @@ DELETE: Logged-in user can delete their messages.
 
  # Schema
 
- ![image](https://github.com/TomArbaugh/BalancedWorkspace/blob/main/docs/images/publishSchema.png)
+ ![image](https://github.com/TomArbaugh/BalancedWorkspace/blob/main/docs/images/schema.png)
 
 Table users { //employee
   id integer [primary key]

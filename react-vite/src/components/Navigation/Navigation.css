@@ -211,5 +211,10 @@
 
   .profile-dropdown {
     padding-left: 0px;
+    background-color: white;
+    border: black solid 1px;
+    color: black;
+    margin: 5px;
+    padding: 5px;
   }
 }

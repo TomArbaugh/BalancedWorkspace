@@ -366,7 +366,13 @@ As a logged in user, I want to be able to delete my customers by clicking a Dele
    {"message": "No Such Ticket"}
 
 ```
-
+* Error Response: HTTP Status Code 403
+```python
+{'errors': {
+   'message': 'You are not authorized'
+   }
+}
+```
 
 ### Add image to ticket
 ##
@@ -384,6 +390,14 @@ As a logged in user, I want to be able to delete my customers by clicking a Dele
 * Error Response: HTTP Status Code 400
 ```python
 {'errors': upload['errors']}
+```
+
+* Error Response: HTTP Status Code 403
+```python
+{'errors': {
+   'message': 'You are not authorized'
+   }
+}
 ```
 
 ### Create Ticket
@@ -483,6 +497,14 @@ As a logged in user, I want to be able to delete my customers by clicking a Dele
 * Error Response: HTTP Status Code 400
 ```python
 {'errors': form.errors}
+```
+
+* Error Response: HTTP Status Code 403
+```python
+{'errors': {
+   'message': 'You are not authorized'
+   }
+}
 ```
 
 ### Delete Ticket

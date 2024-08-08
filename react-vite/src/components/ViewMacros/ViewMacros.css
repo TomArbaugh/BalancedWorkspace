@@ -47,7 +47,7 @@
 }
 
 #macro-card-and-headers {
-  width: 100%;
+  width: 95%;
   display: flex;
   padding: 20px;
   border-bottom: solid black 1px;
@@ -74,6 +74,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+      
     }
     .macro-header {
         text-align: center;
@@ -86,9 +87,17 @@
     #macro-card-and-headers {
         display: flex;
         justify-content: center;
+        
     }
     #macro-description {
         width: 150px;
     }
 
+    #view-macro-headers {
+        margin-right: 45px;
+    }
+    .macro-card {
+        width: 45%;
+        margin-right: 10px;
+    }
 }

@@ -73,6 +73,7 @@
     .view-customer-preview {
         display: flex;
         flex-direction: column;
+        align-items: center;
         width: 40%;
     }
     .customer-element {
@@ -82,6 +83,7 @@
         width: 90%;
         padding-left: 10px;
         padding-right: 10px;
+        overflow: scroll;
     }
     #whole-customers {
         width: 80%;
@@ -90,25 +92,41 @@
     }
     #button-container {
         display: flex;
-        justify-content: center;
         width: 100%;
+     
     }
     .customer-buttons {
-        margin: auto;
+       margin: 0px;
+       width: 100%;
+       margin-bottom: 10px;
     }
+
     .pad-label {
         padding-right: 60px;
     }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
     #whole-customers {
-        width: 100%;
+        width: 95%;
     }
     .customer-card {
-        width: 90%;
+        width: 99%;
     }
     .view-customer-preview {
         width: 100%;
     }
+    .pad-label {
+        padding-right: 60px;
+     
+    }
+    .customer-element {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 90%;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
 }

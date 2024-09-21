@@ -1,7 +1,7 @@
 .profile-dropdown {
   padding-top: 5px;
   position: absolute;
-  color:rgb(222, 238, 253);
+  color:rgb(251, 251, 251);
   list-style-type: none;
 }
 
@@ -44,10 +44,10 @@
   height: 30px;
   border: none;
   font-size: large;
-  color: #00201b;
+  color: rgb(41, 63, 93);
   background-color: white;
   border-radius: 20px;
-  box-shadow: 1px 1px 1.5px 1px black;
+  box-shadow: .5px .5px .5px rgb(41, 63, 93);
   cursor: pointer;
   
 }
@@ -55,8 +55,10 @@
 
 
 .profile-buttons:hover {
-  background-color: rgb(187, 213, 247);
-  color: rgb(18, 4, 92);
+  background-color: rgb(255, 255, 255);
+  color: rgb(41, 63, 93);
+  font-size: larger;
+  box-shadow: 1px 1px 1px rgb(41, 63, 93);
 
 }
 
@@ -103,7 +105,7 @@
   margin-bottom: 0px;
   padding-bottom: 10px;
   border-top: 0px;
-  background-color: #003c4a;
+  background-color: #08c1eb;
   height: 200px;
 }
 
@@ -120,7 +122,7 @@
 
 .nav-link:hover {
   text-decoration: underline;
-  color: rgb(187, 213, 247);
+  color: rgb(41, 63, 93);
 }
 
 #log-out-button {
@@ -144,27 +146,33 @@
 }
 
 #create-ticket-link {
-  color:#a4eeff;
+  color:#ffffff;
+  text-shadow: 1px 1px 1px #00201b;
 }
 
 #create-customer-link {
-  color:#a4eeff;
+  color:#ffffff;
+  text-shadow: 1px 1px 1px #00201b;
 }
 
 #create-macro-link {
-  color:#a4eeff;  
+  color:#ffffff;
+  text-shadow: 1px 1px 1px #00201b; 
 }
 
 #create-ticket-link:hover {
-  color:#c1f0fa;
+  color: rgb(41, 63, 93);
+  text-shadow: none; 
 }
 
 #create-customer-link:hover {
-  color:#c1f0fa;
+  color: rgb(41, 63, 93);
+  text-shadow: none;
 }
 
 #create-macro-link:hover {
-  color:#c1f0fa;  
+  color: rgb(41, 63, 93);
+  text-shadow: none;
 }
 
 .nav-div {

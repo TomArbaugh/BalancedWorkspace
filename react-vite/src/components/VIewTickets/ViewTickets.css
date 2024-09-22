@@ -9,12 +9,14 @@
     width: 175px;
     height: 40px;
     font-weight: bolder;
+    border-radius: 30px;
 }
 
 .view-ticket-assignee {
     width: 175px;
     height: 40px;
     font-weight: bolder;
+    border-radius: 30px;
 }
 
 .view-ticket-type {
@@ -22,12 +24,14 @@
     height: 40px;
     font-weight: bolder;
     margin-right: 5px;
+    border-radius: 30px;
 }
 
 .view-ticket-priority {
     width: 80px;
     height: 40px;
     font-weight: bolder;
+    border-radius: 30px;
 }
 
 #view-type-priority {
@@ -55,6 +59,7 @@
     height: 40px;
     box-sizing: border-box;
     font-weight: bolder;
+    border-radius: 30px;
 }
 
 #view-ticket-description {
@@ -69,6 +74,7 @@
     height: 150px;
     box-sizing: border-box;
     font-weight: bolder;
+    border-radius: 30px;
 }
 
 #view-ticket-middle {
@@ -142,6 +148,7 @@
     text-wrap: wrap;
     color: black;
     font-weight: bolder;
+    border-radius: 30px;
 }
 
 #view-ticket-image {

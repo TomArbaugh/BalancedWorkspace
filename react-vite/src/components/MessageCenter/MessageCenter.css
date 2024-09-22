@@ -3,17 +3,22 @@
     flex-direction: column;
     min-width: 500px;
     max-width: 500px;
-    height: 690px;
+    height: 700px;
     text-align: center;
     margin: auto;
     margin-top: 10px;
+    border-radius: 30px;
    
 }
 
+#modal-content {
+    border-radius: 30px;
+    border-radius: 30px;
+}
 #message-header {
     padding-bottom: 5px;
     color: #1b3c59;
-    
+    border-radius: 30px;
 }
 
 #input {
@@ -24,7 +29,7 @@
     border: #1b3c59 solid 2px;
     margin: 10px;
     overflow: scroll;
-    
+    border-radius: 30px;
 }
 
 #convo-select {
@@ -33,6 +38,7 @@
     margin: 10px;
     border: #1b3c59 solid 1px;
     color: #1b3c59;
+    border-radius: 30px;
 }
 
 .message-card {
@@ -43,6 +49,12 @@
     padding: 10px;
     margin: 10px;
     color: #1b3c59;
+    border-radius: 30px;
+    
+}
+
+.message-card > input {
+    border-radius: 30px;
 }
 
 #message-input {
@@ -50,7 +62,9 @@
     min-height: 100px;
     max-height: 100px;
     margin: 10px;
-    width: 95%;
+    width: 90%;
+    border-radius: 30px;
+    padding: 10px;
 }
 
 #message-submit {
@@ -147,6 +161,7 @@
 .message-button-container {
     display: flex;
     justify-content: flex-end;
+    border-radius: 30px;
 }
 
 #input-label {
@@ -154,11 +169,13 @@
     text-align: left;
     padding-left: 10px;
     font-weight: 300;
+    border-radius: 30px;
 }
 
 #convo-message {
     overflow: scroll;
     overflow-wrap: break-word;
+    border-radius: 30px;
 }
 
 .hide {

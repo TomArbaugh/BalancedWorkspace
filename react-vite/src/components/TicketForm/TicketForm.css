@@ -9,23 +9,27 @@
     width: 175px;
     height: 40px;
     cursor: pointer;
+    border-radius: 30px;
 }
 
 .create-ticket-assignee {
     width: 175px;
     height: 40px;
+    border-radius: 30px;
 }
 
 .create-ticket-type {
     width: 85px;
     height: 40px;
     cursor: pointer;
+    border-radius: 30px;
 }
 
 .create-ticket-priority {
     width: 85px;
     height: 40px;
     cursor: pointer;
+    border-radius: 30px;
 }
 
 #create-type-priority {
@@ -41,6 +45,7 @@
 #ticket-description {
     border: solid, 1px, black;
     height: 300px;
+    
 }
 
 #create-ticket-top {
@@ -51,18 +56,22 @@
     width: 100%;
     height: 40px;
     box-sizing: border-box;
+    border-radius: 30px;
 }
 
 #create-ticket-description {
     width: 100%;
     padding: 10px;
     box-sizing: border-box;
+   
 }
 
 #create-ticket-description-input {
     width: 100%;
     height: 150px;
     box-sizing: border-box;
+    border-radius: 30px;
+    padding: 10px;
 }
 
 #create-ticket-middle-panel {
@@ -99,6 +108,7 @@
     width: 100%;
     text-wrap: wrap;
     cursor: pointer;
+    border-radius: 30px;
 }
 
 #create-ticket-image {

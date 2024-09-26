@@ -176,6 +176,7 @@
     overflow: scroll;
     overflow-wrap: break-word;
     border-radius: 30px;
+    padding: 10px;
 }
 
 .hide {

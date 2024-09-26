@@ -3,6 +3,9 @@ import { useDispatch, useSelector } from "react-redux"
 import { createMessageThunk, getMessagesThunk, editMessageThunk, deleteMessageThunk } from "../../redux/message"
 import { thunkLogin} from "../../redux/session"
 import { getUsersThunk } from "../../redux/session"
+import { io } from 'socket.io-client';
+
+const socket = io('http://localhost:5000');
 // import DeleteMessage from "../DeleteMessage/DeleteMessage"
 // import EditMessage from "../EditMessage/EditMessage"
 // import OpenModalMenuItem from "../Navigation/OpenModalMenuItem"
@@ -11,6 +14,7 @@ import "./MessageCenter.css"
 
 function MessageCenter() {
     const [message, setMessage] = useState()
+    const [response, setResponse] = useState('');
     const [otherPerson, setOtherPerson] = useState()
     const [convoArr, setConvoArr] = useState()
     const [user, setUser] = useState()
@@ -20,6 +24,12 @@ function MessageCenter() {
     const [yesOrNo, setYesOrNo] = useState(false)
     const [pause, setPause] = useState(false)
     const dispatch = useDispatch()
+
+    useEffect(() => {
+        socket.on('response', (data) => {
+            setResponse(data);
+        });
+    }, []);
 
 
  
@@ -149,19 +159,28 @@ function MessageCenter() {
           setPause(false)
     }
 
-    
-    
-    const sendMessage = (e) => {
-        e.preventDefault()
-        
-        
-        const newMessage = {
+    const sendMessage = () => {
+        socket.emit('message', message);
+            const newMessage = {
             message: message
         }
         
         dispatch(createMessageThunk(otherPerson, newMessage))
         setMessage('')
-    }
+        setMessage('');
+    };
+    
+    // const sendtheMessage = (e) => {
+    //     e.preventDefault()
+        
+        
+    //     const newMessage = {
+    //         message: message
+    //     }
+        
+    //     dispatch(createMessageThunk(otherPerson, newMessage))
+    //     setMessage('')
+    // }
     
    
     if (!messages) return null;
@@ -197,6 +216,7 @@ function MessageCenter() {
                     {convo.sender_id === currentUser.id ? <p>Me:</p> : <p>Sender Id: {convo.sender_id}</p>}
 
                     {edit && !yesOrNo && messId === convo.id? <input value={message} onChange={((e) => setMessage(e.target.value))}/>: <p id="convo-message">{convo.message}</p>}
+                    <p>{response}</p>
                     <div className="message-button-container">
                 <div className={convo.sender_id === currentUser.id ?"message-buttons" : "hide"}>
 

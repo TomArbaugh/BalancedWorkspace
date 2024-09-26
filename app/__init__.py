@@ -13,8 +13,10 @@ from .api.apply_macro_routes import apply_macro_routes
 from .api.message_routes import message_routes
 from .seeds import seed_commands
 from .config import Config
+from flask_socketio import SocketIO, emit
 
 app = Flask(__name__, static_folder='../react-vite/dist', static_url_path='/')
+socketio = SocketIO(app)
 
 # Setup login manager
 login = LoginManager(app)
@@ -97,3 +99,11 @@ def react_root(path):
 @app.errorhandler(404)
 def not_found(e):
     return app.send_static_file('index.html')
+
+@socketio.on('message')
+def handle_message(data):
+    print('Recieved message: ' + data)
+    emit('response', 'Message Recieved!')
+
+if __name__ == '__main__':
+    socketio.run(app)

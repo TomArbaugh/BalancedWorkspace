@@ -82,7 +82,7 @@
 }
 
 #message-submit:hover {
-    background-color: #08c1eb;
+    background-color: #208196;
   
 }
 
@@ -121,18 +121,18 @@
     border-radius: 20px;
 }
 .edit-button:hover {
-    background-color: #08c1eb;
+    background-color: #208196;
   
 }
 
 #cancel-button:hover {
-    background-color: #08c1eb;
+    background-color: #208196;
   
 }
 
 #yes-delete:hover {
     background-color: rgb(255, 30, 30);
-    box-shadow: 2px 2px 3px rgb(84, 1, 1);
+    /* box-shadow: 2px 2px 3px rgb(84, 1, 1); */
   
 }
 #new-log-in {
@@ -154,7 +154,7 @@
 
 
 #new-log-in:hover {
-    background-color: #08c1eb;
+    background-color: #208196;
   
 }
 

@@ -37,6 +37,10 @@
     padding-bottom: 10px;
 }
 
+.view-customer-preview:hover {
+    color: #208196;
+}
+
 .customer-element {
     width: 10%;
 }
@@ -55,7 +59,7 @@
 }
 
 .customer-buttons:hover {
-    background-color: #08c1eb;
+    background-color: #208196;
    
 }
 

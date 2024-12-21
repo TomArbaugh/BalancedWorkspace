@@ -16,6 +16,10 @@
     padding-bottom: 10px;
 }
 
+.view-ticket-preview:hover {
+    color: #208196;
+}
+
 .dashboard-header {
     display: flex;
     flex-direction: column;

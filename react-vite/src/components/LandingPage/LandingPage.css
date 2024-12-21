@@ -4,7 +4,7 @@
     padding-top: 1%;
     justify-content: space-around;
     font-size: xx-large;
-    background-color: white;
+    background-color: rgb(252, 252, 252);
     padding-bottom: 100px;
     
 }
@@ -34,7 +34,7 @@ color: #014858;
 }
 
 .about-links:hover {
-    color: #08c1eb;
+    color: #208196;
    
     
 }
@@ -45,8 +45,8 @@ color: #014858;
 }
 
 .landing-buttons:hover {
-    background-color: #47dcfd;
-    box-shadow: 3px 3px 3px rgb(72, 41, 63);
+    background-color: #208196;
+   
 }
 
 .landing-buttons {
@@ -57,7 +57,7 @@ color: #014858;
     font-size: x-large;
     color: white;
     text-shadow: 1px 1px 1px black;
-    background-color: #08c1eb;
+    background-color: #014858;
     border-radius: 20px;
     box-shadow: .5px 1px 1px 1px black;
     

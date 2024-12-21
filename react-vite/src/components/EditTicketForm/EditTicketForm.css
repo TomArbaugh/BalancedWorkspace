@@ -5,6 +5,9 @@
     width:15%;
 }
 
+#ticket-form {
+    background-color: rgb(252, 252, 252);
+}
 .edit-ticket-requester {
     width: 175px;
     height: 40px;
@@ -99,8 +102,7 @@
 }
 
 .edit-ticket-button:hover {
-    background-color: #08c1eb;
-  
+    background-color: #208196;
 }
 
 #macros-input {

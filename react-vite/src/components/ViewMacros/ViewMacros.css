@@ -1,5 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+* {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+}
+
+#view-macro-top-head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f5f7fa;
+    border-radius: 12px;
+  
+}
+.macro-header {
+    text-align: center;
+}
+#macro-button-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 1860px;
+    background-color: #ffffff;
+    margin-bottom: 4px;
+    border-radius: 12px;
+}
+#macro-card-and-headers {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    
+}
+
 #button-inner-container {
     display: flex;
+    flex-direction: column;
 }
 
 .macro-header {
@@ -24,7 +59,9 @@
     height: 25px;
     width: 80px;
     border-radius: 20px;
-    background-color: #1b3c59;
+    background: linear-gradient(135deg, #3f51b5, #2196f3);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6px);
     color: white;
     font-weight: bolder;
     font-size: large;
@@ -35,7 +72,7 @@
 }
 
 .macro-buttons:hover {
-    background-color: #208196;
+    background: #2196f3;
 }
 
 .view-macro-preview {
@@ -47,55 +84,61 @@
 #macro-card-and-headers {
   width: 95%;
   display: flex;
+  justify-content: flex-start;
   padding: 20px;
-  border-bottom: solid black 1px;
 }
 
 #macro-description {
     display: flex;
     flex-direction: column;
-    overflow: scroll;
-    overflow-wrap: break-word;
-    height: 50px;
+    height: auto;
     width: 90%;
     margin-right: 10px;
-    overflow: auto;
    
 }
-#button-container {
+#macro-button-container {
     display: flex;
-    flex-direction: column;
+    padding-right: 8px;
 }
 
-@media (max-width: 1310px) {
-    #view-macro-top-head {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      
+.macro-element {
+    width: 90%;
+}
+
+.macro-card {
+    width: 100%;
+}
+
+@media (max-width: 1900px) {
+    #macro-button-container {
+        width: 860px;
     }
-    .macro-header {
-        text-align: center;
-    }
-    #button-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    #macro-card-and-headers {
-        display: flex;
-        justify-content: center;
-        
-    }
+}
+@media (max-width: 1010px) {
     #macro-description {
-        width: 150px;
+        width: 100%;
     }
 
     #view-macro-headers {
         margin-right: 45px;
     }
     .macro-card {
-        width: 45%;
         margin-right: 10px;
+    }
+
+    #macro-button-container {
+        width: 720px;
+    }
+}
+
+@media (max-width: 803px) {
+    #macro-button-container {
+        width: 320px;
+        flex-direction: column;
+    }
+
+    #button-inner-container {
+        flex-direction: row;
+        padding-bottom: 4px;
     }
 }

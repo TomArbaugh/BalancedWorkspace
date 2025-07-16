@@ -1,10 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+* {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+}
+
 .landing-bottom {
     display: flex;
     align-items: center;
     padding-top: 1%;
     justify-content: space-around;
     font-size: xx-large;
-    background-color: rgb(252, 252, 252);
+    background-color: #f5f7fa;
     padding-bottom: 100px;
     
 }
@@ -12,14 +19,13 @@
 .landing-bottom > h2 {
     margin: 0px;
     padding: 15px;
-    color: #003c4a;
-    text-shadow: .5px .5px 1px black;
+    color:  #2196f3;
 }
 .landing-top {
     display: flex;
     justify-content: space-around;
     padding: 100px;
-    background-color: rgb(252, 252, 252);
+    background-color: #f5f7fa;
     color: #1b3c59;
 }
 
@@ -30,11 +36,12 @@
 
 .about-links {
 font-size: xxx-large;
-color: #014858;
+color: linear-gradient(135deg, #3f51b5, #2196f3);
+backdrop-filter: blur(6px);
 }
 
 .about-links:hover {
-    color: #208196;
+    color: #2196f3;
    
     
 }
@@ -42,10 +49,11 @@ color: #014858;
 .landing-h2 {
     width: 70%;
     text-align: center;
+    
 }
 
 .landing-buttons:hover {
-    background-color: #208196;
+    background: #2196f3;
    
 }
 
@@ -57,9 +65,10 @@ color: #014858;
     font-size: x-large;
     color: white;
     text-shadow: 1px 1px 1px black;
-    background-color: #014858;
     border-radius: 20px;
-    box-shadow: .5px 1px 1px 1px black;
+    background: linear-gradient(135deg, #3f51b5, #2196f3);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6px);
     
 }
 
@@ -84,7 +93,7 @@ color: #014858;
     text-align: center;
 }
 
-@media (max-width: 807px) {
+@media (max-width: 1060px) {
     .landing-top {
         display: flex;
         flex-direction: column-reverse;

@@ -67,7 +67,7 @@ function ProfileButton() {
               <li>
                 <button id="log-out-button" onClick={logout}>Log Out</button>
               </li>
-              <div className={user && moble ? "nav-links" : "hide"}>
+              <div className={user && moble ? "profile-nav-links" : "hide"}>
           <Link 
           className={user && moble ? "nav-link" : "hide"}
           id="create-ticket-link"

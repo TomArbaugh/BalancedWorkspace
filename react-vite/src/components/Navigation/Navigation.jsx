@@ -11,7 +11,7 @@ import { useState } from "react";
 
 function Navigation() {
 
-  const [moble] = useState(window.innerWidth < 1310)
+  const [moble] = useState(window.innerWidth < 1400)
   const user = useSelector((state) => state.session.user)
 
 

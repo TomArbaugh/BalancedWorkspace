@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
+.profile-nav-links {
+  display: none;
+}
 * {
   font-family: 'Inter', sans-serif;
   font-weight: 400;
@@ -192,7 +195,12 @@
   justify-content: flex-end;
 }
 
-@media (max-width: 1310px) {
+@media (max-width: 1350px) {
+
+  .profile-nav-links {
+    display: block;
+   
+  }
   #landing-h1 {
     font-size: large;
   }
@@ -207,6 +215,7 @@
   .nav-links {
     display: flex;
     flex-direction: column;
+    display: none;
     
   }
   .nav-link {

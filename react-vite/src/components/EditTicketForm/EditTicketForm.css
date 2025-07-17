@@ -108,6 +108,7 @@
     border-radius: 20px;
     cursor: pointer;
     font-weight: 400;
+    border: none;
 }
 
 .edit-ticket-button:hover {

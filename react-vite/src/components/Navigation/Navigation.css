@@ -73,14 +73,14 @@
   border: none;
   font-size: large;
 
-  background: #00bcd4; /* bright cyan */
-  color: white;
-  /* padding: 12px 26px; */
+  background-color: #40c4ff; /* vivid sky blue */
+  color: #ffffff;
   border: none;
   border-radius: 12px;
   font-weight: bold;
-  box-shadow: 0 4px 12px rgba(0, 188, 212, 0.4);
   cursor: pointer;
+  box-shadow: 0 4px 12px rgba(64, 196, 255, 0.4);
+  
   /* transition: 0.3s ease, transform 0.2s ease; */
   /* color: rgb(41, 63, 93);
   background: linear-gradient(135deg, white, #f5f7fa);
@@ -93,9 +93,8 @@
 
 
 .profile-buttons:hover {
-  background: #1976d2;
-  box-shadow: 0 0 14px rgba(33, 150, 243, 0.8),
-              0 0 28px rgba(33, 150, 243, 0.5) inset;
+  background-color: #00b0ff;
+  transform: translateY(-2px);
 
 }
 
@@ -162,7 +161,7 @@
 
 .nav-link:hover {
   text-decoration: underline;
-  color: #00bcd4;
+  color: #00b0ff;
   display: flex;
   flex-direction: column;
 }
@@ -174,26 +173,24 @@
   height: 30px;
   width: 90px;
   cursor: pointer;
-  background: #00bcd4; /* bright cyan */
-  color: white;
-  /* padding: 12px 26px; */
+  background-color: #40c4ff; /* vivid sky blue */
+  color: #ffffff;
   border: none;
   border-radius: 12px;
   font-weight: bold;
-  cursor: pointer;
+ 
  
 }
 
 #log-out-button:hover {
-  background: #1976d2;
-  box-shadow: 0 0 14px rgba(33, 150, 243, 0.8),
-              0 0 28px rgba(33, 150, 243, 0.5) inset;
+  background-color: #00b0ff;
+  transform: translateY(-2px);
   
 }
 
 .modal-profile-links:hover {
   text-decoration: underline;
-  color: #a4eeff;
+  color: #00b0ff;
 }
 
 #create-ticket-link {
@@ -212,17 +209,17 @@
 }
 
 #create-ticket-link:hover {
-  color:#00bcd4;
+  color: #00b0ff;
   text-shadow: none; 
 }
 
 #create-customer-link:hover {
-  color: #00bcd4;
+  color: #00b0ff;
   text-shadow: none;
 }
 
 #create-macro-link:hover {
-  color: #00bcd4;
+  color: #00b0ff;
   text-shadow: none;
 }
 

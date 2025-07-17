@@ -55,14 +55,15 @@ function DashBoard() {
                     <Link
                         to={`/view/ticket/${ticket.id}`}
                         className="view-ticket-preview">
+                            {ticket.tickets_images.length ? <img
+                            className="ticket-preview-image"
+                            src={ticket.tickets_images[0].image} /> : <MdOutlineImageNotSupported />}
                         <h4 className="ticket-preview-element">{moble ? <h3>ID:</h3> : null} {ticket.id}</h4>
                         <h4 className="ticket-preview-element">{moble ? <h3 id="subject">Subject:</h3> : null}{ticket.title}</h4>
                         <h4 className="ticket-preview-element">{moble ? <h3>Requester:</h3> : null}{ticket.requester}</h4>
                         <h4 className="ticket-preview-element">{moble ? <h3>Type:</h3> : null}{ticket.type}</h4>
                         <h4 className="ticket-preview-element">{moble ? <h3>Priority:</h3> : null}{ticket.priority}</h4>
-                        {ticket.tickets_images.length ? <img
-                            className="ticket-preview-image"
-                            src={ticket.tickets_images[0].image} /> : <MdOutlineImageNotSupported />}
+                        
                         {/* {/* <h3>{}</h3> */}
                     </Link>
                 </div>

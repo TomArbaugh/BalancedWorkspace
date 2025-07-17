@@ -148,11 +148,16 @@
         height: 351px;
         width: 100%;
     }
+
+    #view-tickets-header {
+        display: none;
+    }
 }
 
 @media (max-width: 600px) {
     #view-ticket-card {
         width: 320px;
+        padding: 0px;
     }
 
     .ticket-preview-image {

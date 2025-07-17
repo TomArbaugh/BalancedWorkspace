@@ -53,7 +53,7 @@ function ProfileButton() {
     <>
       <div className="nav-div">
       <button className="profile-buttons" onClick={toggleMenu}>
-       {!user && !moble ? "Sign In" : user && !moble ? "Menu" : <RxHamburgerMenu />}
+       {!user && !moble ?<div className="not-burger">Sign In</div>: user && !moble ? <div className="not-burger">Menu</div>: <div className="burger"><RxHamburgerMenu /></div>}
       </button>
       </div>
  

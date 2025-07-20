@@ -6,6 +6,7 @@ import { getAllMacrosThunk } from "../../redux/macro";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "./EditTicketForm.css"
+import NavCom from "../NavComp/NavComp";
 
 function EditTicketForm(){
 
@@ -131,6 +132,8 @@ function EditTicketForm(){
     if (!customer.allCustomers) return null
     if (!macros) return  null
 return (
+    <div className="whole-edit-ticket">
+        <NavCom />
     <form 
     onSubmit={handleSubmit}
     encType="multipart/form-data"
@@ -258,6 +261,7 @@ return (
     {(imageLoading)&& <p>Loading...</p>}
     </div>
 </form>
+</div>
 )
 }
 

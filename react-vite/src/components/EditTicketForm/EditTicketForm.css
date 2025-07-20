@@ -111,6 +111,10 @@
     border: none;
 }
 
+.whole-edit-ticket {
+    display: flex;
+}
+
 .edit-ticket-button:hover {
     background: #2196f3;
 }

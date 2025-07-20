@@ -8,7 +8,7 @@
 .customer-card {
     display: flex;
     justify-content: center;
-    width: 1890px;
+    width: 2190px;
     border:rgb(229, 238, 238) 1px;
     background-color: #ffffff;
     border-radius: 12px;
@@ -98,8 +98,15 @@
     width: 100%;
     align-items: center;
     justify-content: center;
-    background-color: #f5f7fa
+    background-color: #f5f7fa;
+    
 }
+
+.very-outside-customer {
+    display: flex;
+  
+}
+
 
 #the-outer-div {
     display: flex;
@@ -108,11 +115,14 @@
     align-items: center;
     justify-content: center;
     background-color: #f5f7fa;
+    padding: 5px;
 }
 
-@media (max-width: 1910px) {
+@media (max-width: 2210px) {
+
+
     .customer-card {
-        width: 990px;
+        width: 1590px;
     }
 
     .customer-header {
@@ -128,7 +138,7 @@
     }
 }
 
-@media (max-width: 1210px) {
+@media (max-width: 1510px) {
 
     .customer-header {
         text-align: center;

@@ -22,7 +22,7 @@ function Navigation() {
           <h1 id="landing-h1">B<GiTightrope />LANCED</h1>
           <h2 id="landing-h2">workspace</h2>
           </NavLink>
-          <div className={user && !moble ? "nav-links" : "hide"}>
+          <div className={user && !moble ? "hide" : "hide"}>
           <Link 
           className={user ? "nav-link" : "hide"}
           id="create-ticket-link"

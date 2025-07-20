@@ -98,6 +98,10 @@
     padding: 50px;
 }
 
+.whole-view-ticket {
+    display: flex;
+}
+
 .view-ticket-button {
    padding-right: 10px;
    width: 100px;

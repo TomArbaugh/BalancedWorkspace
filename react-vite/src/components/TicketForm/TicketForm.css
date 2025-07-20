@@ -104,6 +104,10 @@
     border: none;
 }
 
+.outside-ticket-form {
+    display: flex;
+}
+
 .create-ticket-button:hover {
     background: #2196f3;
    

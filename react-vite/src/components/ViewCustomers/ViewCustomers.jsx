@@ -6,6 +6,7 @@ import DeleteCustomer from "../DeleteCustomer/DeleteCustomer"
 import EditCustomer from "../EditCustomer/EditCustomer"
 import { useState } from "react"
 import "./ViewCustomers.css"
+import NavCom from "../NavComp/NavComp"
 
 
 function ViewCustomers() {
@@ -31,7 +32,11 @@ function ViewCustomers() {
 
     if (!customer.allCustomers) return null;
     return (
+        <div className="very-outside-customer">
+            <NavCom />
+        
         <div id="whole-customers">
+            
             <div id="the-outer-div">
                 <div className="customer-header">
                     <h1>Customers</h1>
@@ -79,6 +84,7 @@ function ViewCustomers() {
                 ))}
 
             </div>
+        </div>
         </div>
     )
 }

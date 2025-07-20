@@ -5,6 +5,7 @@ import { Link } from "react-router-dom"
 import { MdOutlineImageNotSupported } from "react-icons/md";
 import { useState } from "react";
 import "./DashBoard.css"
+import NavCom from "../NavComp/NavComp";
 
 function DashBoard() {
 
@@ -31,7 +32,10 @@ function DashBoard() {
     if (!tickets || Object.keys(ticketState) < 1) return null
 
     return (
+        <div className="new-outer-dash">
+            <NavCom />
         <div id="whole-thing">
+            
             <div id="the-outside-div">
             <div className="dashboard-header">
                 <h1>Dashboard</h1>
@@ -68,6 +72,7 @@ function DashBoard() {
                     </Link>
                 </div>
             ))}
+        </div>
         </div>
         </div>
     )

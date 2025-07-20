@@ -5,8 +5,9 @@ import "./TicketForm.css"
 import { getAllCustomersThunk } from "../../redux/customer";
 import { getAllMacrosThunk } from "../../redux/macro";
 import { useNavigate } from "react-router-dom";
+import NavCom from "../NavComp/NavComp";
 
-function TicketForm(){
+function TicketForm() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const user = useSelector((state) => state.session.user)
@@ -25,7 +26,7 @@ function TicketForm(){
         dispatch(getAllMacrosThunk())
     }, [dispatch, newMac, editedMac])
 
-    
+
 
     useEffect(() => {
 
@@ -40,7 +41,7 @@ function TicketForm(){
         return newErrors
     }
 
-  
+
     // console.log(user.username)
 
     // console.log("CUSTOMERS", customers)
@@ -56,8 +57,8 @@ function TicketForm(){
     const [requester, setRequester] = useState()
     const [errors, setErrors] = useState({})
 
-   
-        
+
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -71,7 +72,7 @@ function TicketForm(){
         // console.log(image, "formData jsx")
 
         // console.log("Created Mac", apply_macro)
-      
+
         const newTicket = {
             title,
             assignee,
@@ -93,130 +94,133 @@ function TicketForm(){
     if (!customers.allCustomers) return null;
     if (Object.keys(customers).length === 0) return null;
     if (!user) return null;
-    if (!macros) return  null;
+    if (!macros) return null;
     if (!macros.macros) return null;
-return (
-    <form 
-    onSubmit={handleSubmit}
-    encType="multipart/form-data"
-    id="create-ticket-form"
->
-    <div id="create-ticket-top">
-    <div id="create-ticket-left-panel">
-<label >
-    <h4>Requester</h4>
-        
-    <select
-    className="create-ticket-requester"
-    value={requester}
-    onChange={((e) => setRequester(e.target.value))}
-    >
-        <option>No Requester Selected</option>
-        {customers ? customers.allCustomers.map((customer) => (
-            <option key={customer.id} value={(customer.id)}>{customer.name}</option>
-        )) : null}
-        
-    </select>
-    </label>
-    <p className="error-message">{errors.requester ? errors.requester : null}</p>
-    <label >
-        <h4>Assignee</h4>
-       
-    <input
-    className="create-ticket-assignee"
-    value={user.username}
-    disabled={true}
-    />
- 
-    </label>
-    <div id="create-type-priority">
-    <label id="type">
-        <h4>Type</h4>
-        
-    <select
-    className="create-ticket-type"
-    value={type}
-    onChange={((e) => setType(e.target.value))}
-    >
-        <option>Question</option>
-        <option>Incident</option>
-        <option>Problem</option>
-        <option>Task</option>
-    </select>
-    </label>
-    <lable id="priority-label">
-        <h4>Priority</h4>
-         
-        <select
-        className="create-ticket-priority"
-        value={priority}
-        onChange={((e) => setPriority(e.target.value))}
-        >
-            <option>Low</option>
-            <option>Medium</option>
-            <option>High</option>
-            <option>Urgent</option>
-        </select>
-    </lable>
-    </div>
-    </div>
-    <div id="create-ticket-middle-panel">
-    <label className="edit-ticket-title">
-        <h4>Title</h4>
-        
-        <input 
-        value={title}
-        onChange={((e) => setTitle(e.target.value))}
-        id="create-ticket-title-input"
-        />
-    </label>
-    <label>
-    </label>
-    <p className="error-message">{errors.title ? errors.title : null}</p>
-    <label className="create-ticket-description">
-        <h4>Description</h4>
-        
-        <textarea 
-        value={description}
-        onChange={((e) => setDescription(e.target.value))}
-        id="create-ticket-description-input"
-        ></textarea>
-    </label>
-    <p className="error-message">{errors.description ? errors.description : null}</p>
-    </div>
-    <div id="create-ticket-right">
-    <lable className="create-ticket-image">
-        <h4>Image Upload</h4>
-        
-        <input
-        type="file"
-        accept="image/*"
-        onChange={(e) => setImage(e.target.files[0])}
-    />
-    </lable>
-    <p className="error-message">{errors.image ? errors.image : null}</p>
-    </div>
-    </div>
-    <div id="create-ticket-bottom">
-    <lable className="create-ticket-macro">
-        <h4>Apply Macro</h4>
-       
-        <select
-        value={apply_macro}
-        onChange={((e) => setApplyMacro(e.target.value))}
-        id="create-macros-input"
-        >
-            
-      {macros ?macros.macros.map((macro) => (
-            <option key={macro.id} value={macro.id}>{macro.description}</option>
-           )) : null}
-        </select>
-    </lable>
-    <button className="create-ticket-button" type="submit">Submit Ticket</button>
-    {(imageLoading)&& <p>Loading...</p>}
-    </div>
-</form>
-)
+    return (
+        <div className="outside-ticket-form">
+            <NavCom />
+            <form
+                onSubmit={handleSubmit}
+                encType="multipart/form-data"
+                id="create-ticket-form"
+            >
+                <div id="create-ticket-top">
+                    <div id="create-ticket-left-panel">
+                        <label >
+                            <h4>Requester</h4>
+
+                            <select
+                                className="create-ticket-requester"
+                                value={requester}
+                                onChange={((e) => setRequester(e.target.value))}
+                            >
+                                <option>No Requester Selected</option>
+                                {customers ? customers.allCustomers.map((customer) => (
+                                    <option key={customer.id} value={(customer.id)}>{customer.name}</option>
+                                )) : null}
+
+                            </select>
+                        </label>
+                        <p className="error-message">{errors.requester ? errors.requester : null}</p>
+                        <label >
+                            <h4>Assignee</h4>
+
+                            <input
+                                className="create-ticket-assignee"
+                                value={user.username}
+                                disabled={true}
+                            />
+
+                        </label>
+                        <div id="create-type-priority">
+                            <label id="type">
+                                <h4>Type</h4>
+
+                                <select
+                                    className="create-ticket-type"
+                                    value={type}
+                                    onChange={((e) => setType(e.target.value))}
+                                >
+                                    <option>Question</option>
+                                    <option>Incident</option>
+                                    <option>Problem</option>
+                                    <option>Task</option>
+                                </select>
+                            </label>
+                            <lable id="priority-label">
+                                <h4>Priority</h4>
+
+                                <select
+                                    className="create-ticket-priority"
+                                    value={priority}
+                                    onChange={((e) => setPriority(e.target.value))}
+                                >
+                                    <option>Low</option>
+                                    <option>Medium</option>
+                                    <option>High</option>
+                                    <option>Urgent</option>
+                                </select>
+                            </lable>
+                        </div>
+                    </div>
+                    <div id="create-ticket-middle-panel">
+                        <label className="edit-ticket-title">
+                            <h4>Title</h4>
+
+                            <input
+                                value={title}
+                                onChange={((e) => setTitle(e.target.value))}
+                                id="create-ticket-title-input"
+                            />
+                        </label>
+                        <label>
+                        </label>
+                        <p className="error-message">{errors.title ? errors.title : null}</p>
+                        <label className="create-ticket-description">
+                            <h4>Description</h4>
+
+                            <textarea
+                                value={description}
+                                onChange={((e) => setDescription(e.target.value))}
+                                id="create-ticket-description-input"
+                            ></textarea>
+                        </label>
+                        <p className="error-message">{errors.description ? errors.description : null}</p>
+                    </div>
+                    <div id="create-ticket-right">
+                        <lable className="create-ticket-image">
+                            <h4>Image Upload</h4>
+
+                            <input
+                                type="file"
+                                accept="image/*"
+                                onChange={(e) => setImage(e.target.files[0])}
+                            />
+                        </lable>
+                        <p className="error-message">{errors.image ? errors.image : null}</p>
+                    </div>
+                </div>
+                <div id="create-ticket-bottom">
+                    <lable className="create-ticket-macro">
+                        <h4>Apply Macro</h4>
+
+                        <select
+                            value={apply_macro}
+                            onChange={((e) => setApplyMacro(e.target.value))}
+                            id="create-macros-input"
+                        >
+
+                            {macros ? macros.macros.map((macro) => (
+                                <option key={macro.id} value={macro.id}>{macro.description}</option>
+                            )) : null}
+                        </select>
+                    </lable>
+                    <button className="create-ticket-button" type="submit">Submit Ticket</button>
+                    {(imageLoading) && <p>Loading...</p>}
+                </div>
+            </form>
+        </div>
+    )
 }
 
 

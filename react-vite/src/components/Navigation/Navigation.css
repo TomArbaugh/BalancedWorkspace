@@ -229,7 +229,33 @@
   justify-content: flex-end;
 }
 
+.navigation-links {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border: solid rgb(229, 238, 238) 1px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+  height: 600px;
+  margin-right: 100px;
+  padding: 5px;
+  
+}
+
+.customer-link {
+  color: purple;
+}
+
+
+
 @media (max-width: 1350px) {
+
+  .navigation-links {
+    display: none;
+  }
 
   .burger {
     display: block;

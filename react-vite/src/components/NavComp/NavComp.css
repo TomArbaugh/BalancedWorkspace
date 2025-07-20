@@ -1,0 +1,19 @@
+.navigation-link {
+    text-decoration: none;
+    list-style: none;
+    color: #3f51b5;
+    width: 81px;
+    
+  }
+
+  .navigation-links {
+    box-shadow: 1px 1px 1px #f5f7fa;
+  }
+  
+  .navigation-link:hover {
+    color: #00b0ff;
+  }
+  
+  #macro-link {
+    color: "#3f51b5";
+  }

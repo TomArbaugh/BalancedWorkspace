@@ -6,6 +6,7 @@ import OpenModalMenuItem from "../Navigation/OpenModalMenuItem"
 import EditMacro from "../EditMacro/EditMacro"
 import DeleteMacro from "../DeleteMacro/DeleteMacro"
 import "./ViewMacros.css"
+import NavCom from "../NavComp/NavComp"
 
 
 function ViewMacros() {
@@ -34,6 +35,8 @@ function ViewMacros() {
     if (Object.keys(macros).length === 0) return null
 
     return (
+        <div className="whole-view-macro">
+            <NavCom />
         <div id="view-macro-top-head">
             <div className="macro-header">
                 <h1>Macros</h1>
@@ -82,7 +85,7 @@ function ViewMacros() {
             ))}
 
         </div>
-
+        </div>
     )
 }
 

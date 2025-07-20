@@ -7,6 +7,7 @@ import { getAllMacrosThunk } from "../../redux/macro";
 import { Link } from "react-router-dom";
 import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
 import DeleteTicket from "../DeleteTicket/DeleteTicket";
+import NavCom from "../NavComp/NavComp";
 import "./ViewTickets.css"
 
 
@@ -66,7 +67,10 @@ function ViewTickets() {
     }
     // console.log("CHOSEN MAC", chosenMacro)
     return (
+        <div className="whole-view-ticket">
+            <NavCom />
         <div id="view-ticket-form">
+            
             <div id="view-ticket-top">
                 <div id="view-ticket-left">
                     <label>
@@ -167,7 +171,7 @@ function ViewTickets() {
                 </div>
 
             </div>
-
+            </div>
         </div>
     )
 }

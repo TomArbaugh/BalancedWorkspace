@@ -56,6 +56,7 @@ function EditCustomer({customerId}){
 
     return (
         <div id="create-customer-div">
+       
         <h1 id="create-customer-header">Edit Customer</h1>
         <p id="unique" className="create-customer-error">{error.unique ? error.unique : null}</p>
        <form

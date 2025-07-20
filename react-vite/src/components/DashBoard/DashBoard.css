@@ -5,6 +5,10 @@
   font-weight: 400;
 }
 
+.new-outer-dash {
+    display: flex;
+}
+
 .view-ticket-preview {
     width: 1890px;
     display: flex;
@@ -77,21 +81,24 @@
 
 #whole-thing {
     display: flex;
-    flex-direction: column;
+    
+    /* flex-direction: column; */
     width: 100%;
     align-items: center;
     justify-content: center;
-    background-color: #f5f7fa;
+    
 }
 
 #the-outside-div {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: #f5f7fa;
+    padding: 5px;
 
 }
 
-@media (max-width: 1910px) {
+@media (max-width: 2110px) {
     #view-ticket-card {
         width: 890px;
     }

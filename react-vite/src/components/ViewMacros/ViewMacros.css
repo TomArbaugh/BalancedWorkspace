@@ -156,6 +156,10 @@
 }
 
 @media (max-width: 1353px) {
+    #view-macro-top-head {
+        margin-left: 0px;
+    }
+
     #macro-button-container {
         width: 680px;
     }
@@ -165,7 +169,7 @@
 
 }
 
-@media (max-width: 690px) {
+@media (max-width: 700px) {
     #macro-button-container {
         width: 320px;
         padding: 0px;

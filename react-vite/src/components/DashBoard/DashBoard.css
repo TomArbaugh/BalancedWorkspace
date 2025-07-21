@@ -116,6 +116,10 @@
 }
 
 @media (max-width: 1210px) {
+    #the-outside-div {
+        margin: 0px;
+    }
+    
     .view-ticket-preview {
         display: flex;
         flex-direction: column;

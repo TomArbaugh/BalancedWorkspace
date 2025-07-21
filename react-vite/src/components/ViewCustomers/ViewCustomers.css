@@ -8,7 +8,7 @@
 .customer-card {
     display: flex;
     justify-content: center;
-    width: 2190px;
+    width: 2090px;
     border:rgb(229, 238, 238) 1px;
     background-color: #ffffff;
     border-radius: 12px;
@@ -116,13 +116,14 @@
     justify-content: center;
     background-color: #f5f7fa;
     padding: 5px;
+    align-self: center;
 }
 
-@media (max-width: 2210px) {
+@media (max-width: 2310px) {
 
 
     .customer-card {
-        width: 1590px;
+        width: 1790px;
     }
 
     .customer-header {
@@ -138,7 +139,12 @@
     }
 }
 
-@media (max-width: 1510px) {
+@media (max-width: 2000px) {
+    .customer-card {
+        width: 1400px;
+    }
+}
+@media (max-width: 1600px) {
 
     .customer-header {
         text-align: center;
@@ -185,13 +191,17 @@
     }
 
     .customer-card {
-        width: 520px;
+        width: 920px;
     }
 }
 
+@media (max-width: 1215px) {
+    .customer-card {
+        width: 680px
+    }
+}
 
-
-@media (max-width: 856px) {
+@media (max-width: 690px) {
     #whole-customers {
         width: 95%;
     }

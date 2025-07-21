@@ -27,7 +27,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 2160px;
+    width: 2190px;
     background-color: #ffffff;
     margin-bottom: 4px;
     border-radius: 12px;
@@ -142,11 +142,16 @@
     #macro-button-container {
         width: 920px;
         flex-direction: column;
+        
     }
 
     #button-inner-container {
         flex-direction: row;
         padding-bottom: 4px;
+    }
+
+    #view-macro-top-head {
+        margin-left: 100px;
     }
 }
 
@@ -163,6 +168,14 @@
 @media (max-width: 690px) {
     #macro-button-container {
         width: 320px;
+        padding: 0px;
+       
+    }
+    #view-macro-top-head {
+        padding: 0px;
+    }
+    #macro-card-and-headers {
+        padding: 0px;
     }
 
 

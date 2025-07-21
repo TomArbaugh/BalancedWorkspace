@@ -36,6 +36,7 @@
     color: #2e2e2e;;
 
 }
+
 .ticket-preview-image {
     width: 100px;
     height: 100px;
@@ -95,6 +96,7 @@
     align-items: center;
     background-color: #f5f7fa;
     padding: 5px;
+    margin-right: 100px;
 
 }
 

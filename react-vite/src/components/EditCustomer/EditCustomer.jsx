@@ -4,9 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { editCustomerThunk, getCustomerIdThunk } from "../../redux/customer";
 import "./EditCustomer.css"
 
-function EditCustomer({customerId}){
+function EditCustomer({ customerId }) {
     const dispatch = useDispatch()
-    const { closeModal } = useModal() 
+    const { closeModal } = useModal()
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [error, setError] = useState({})
@@ -16,7 +16,7 @@ function EditCustomer({customerId}){
     }, [dispatch, customerId])
 
     const customer = useSelector((state) => state.customer.customer)
-    
+
 
     useEffect(() => {
         if (customer) {
@@ -36,7 +36,7 @@ function EditCustomer({customerId}){
         e.preventDefault()
 
         const newError = validations()
-        if (Object.keys(newError).length > 0){
+        if (Object.keys(newError).length > 0) {
             setError(newError)
             return;
         }
@@ -46,48 +46,48 @@ function EditCustomer({customerId}){
             email
         }
 
-       
-       
-                await dispatch(editCustomerThunk(customerId, newCustomer))
-                closeModal()
+
+
+        await dispatch(editCustomerThunk(customerId, newCustomer))
+        closeModal()
     }
-      
+
 
 
     return (
         <div id="create-customer-div">
-       
-        <h1 id="create-customer-header">Edit Customer</h1>
-        <p id="unique" className="create-customer-error">{error.unique ? error.unique : null}</p>
-       <form
-       className="create-customer-form"
-       onSubmit={onSubmit}
-       >
-        <label>
-            <h4 className="create-customer-label">Name</h4>
-            <input 
-        className="create-customer-input"
-        value={name}
-        onChange={((e) => setName(e.target.value))}
-        />
-        </label>
-        <p className="create-customer-error">{error.name ? error.name : null}</p>
-    <label>
-        <h4 className="create-customer-label">Email</h4>
-        <input 
-        className="create-customer-input"
-        value={email}
-        onChange={((e) => setEmail(e.target.value))}
-        />
-    </label>
-    <p className="create-customer-error">{error.email ? error.email : null}</p>
-        <p id={(!email || !name) ? "create-customer-error-message" : "invisi-text"}>Please provide name and email.</p>
-        <button 
-        id={email && name ? "create-customer-button" : "disabled"}
-        type="submit">Edit Customer</button>
-        
-       </form>
-       </div>
+
+            <h1 id="create-customer-header">Edit Customer</h1>
+            <p id="unique" className="create-customer-error">{error.unique ? error.unique : null}</p>
+            <form
+                className="create-customer-form"
+                onSubmit={onSubmit}
+            >
+                <label>
+                    <h4 className="create-customer-label">Name</h4>
+                    <input
+                        className="create-customer-input"
+                        value={name}
+                        onChange={((e) => setName(e.target.value))}
+                    />
+                </label>
+                <p className="create-customer-error">{error.name ? error.name : null}</p>
+                <label>
+                    <h4 className="create-customer-label">Email</h4>
+                    <input
+                        className="create-customer-input"
+                        value={email}
+                        onChange={((e) => setEmail(e.target.value))}
+                    />
+                </label>
+                <p className="create-customer-error">{error.email ? error.email : null}</p>
+                <p id={(!email || !name) ? "create-customer-error-message" : "invisi-text"}>Please provide name and email.</p>
+                <button
+                    id={email && name ? "create-customer-button" : "disabled"}
+                    type="submit">Edit Customer</button>
+
+            </form>
+        </div>
     )
 }
 

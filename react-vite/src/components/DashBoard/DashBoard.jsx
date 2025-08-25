@@ -7,18 +7,21 @@ import { useState } from "react";
 import "./DashBoard.css"
 import NavCom from "../NavComp/NavComp";
 
+/**
+ * DashBoard component displays a list of all open tickets for the current user.
+ * Shows ticket information including ID, subject, requester, type, priority, and images.
+ * Responsive design that adapts to mobile screens.
+ * 
+ * @returns {JSX.Element} The dashboard component with ticket list
+ */
 function DashBoard() {
 
     const dispatch = useDispatch()
-    const [moble] = useState(window.innerWidth < 1310)
+    const [isMobile] = useState(window.innerWidth < 1310)
     const ticketState = useSelector((state) => state.ticket)
-    let tickets;
-    ticketState ? tickets = ticketState.tickets : null
-    let deltedTicket;
-    ticketState ? deltedTicket = ticketState.DeletedTicket : null
-    let editedTicket;
-    ticketState ? editedTicket = ticketState.EditedTicket : null
-    // console.log(tickets.tickets[0].tickets_images[0].image)
+    const tickets = ticketState?.tickets || null
+    const deletedTicket = ticketState?.DeletedTicket || null
+    const editedTicket = ticketState?.EditedTicket || null
 
     useEffect(() => {
 
@@ -26,7 +29,7 @@ function DashBoard() {
 
     useEffect(() => {
         dispatch(getAllTicketsThunk())
-    }, [dispatch, deltedTicket, editedTicket])
+    }, [dispatch, deletedTicket, editedTicket])
 
 
     if (!tickets || Object.keys(ticketState) < 1) return null
@@ -34,46 +37,44 @@ function DashBoard() {
     return (
         <div className="new-outer-dash">
             <NavCom />
-        <div id="whole-thing">
-            
-            <div id="the-outside-div">
-            <div className="dashboard-header">
-                <h1>Dashboard</h1>
-                <h4>({tickets.length}) Open Tickets</h4>
-            </div>
+            <div id="whole-thing">
 
-            <div id={!moble ? "view-tickets-header" : 'hide'}>
-                <h3 className="ticket-headers">Id</h3>
-                <h3 className="ticket-headers">Subject</h3>
-                <h3 className="ticket-headers">Requester</h3>
+                <div id="the-outside-div">
+                    <div className="dashboard-header">
+                        <h1>Dashboard</h1>
+                        <h4>({tickets.length}) Open Tickets</h4>
+                    </div>
 
-                <h3 className="ticket-headers">Type</h3>
-                <h3 className="ticket-headers"> Priority</h3>
-                <h3 className="ticket-headers">Image</h3>
-            </div>
+                    <div id={!isMobile ? "view-tickets-header" : 'hide'}>
+                        <h3 className="ticket-headers">Id</h3>
+                        <h3 className="ticket-headers">Subject</h3>
+                        <h3 className="ticket-headers">Requester</h3>
 
-            {tickets.map((ticket) => (
-                <div key={ticket.id}
-                    id="view-ticket-card"
-                >
-                    <Link
-                        to={`/view/ticket/${ticket.id}`}
-                        className="view-ticket-preview">
-                            {ticket.tickets_images.length ? <img
-                            className="ticket-preview-image"
-                            src={ticket.tickets_images[0].image} /> : <MdOutlineImageNotSupported />}
-                        <h4 className="ticket-preview-element">{moble ? <h3>ID:</h3> : null} {ticket.id}</h4>
-                        <h4 className="ticket-preview-element">{moble ? <h3 id="subject">Subject:</h3> : null}{ticket.title}</h4>
-                        <h4 className="ticket-preview-element">{moble ? <h3>Requester:</h3> : null}{ticket.requester}</h4>
-                        <h4 className="ticket-preview-element">{moble ? <h3>Type:</h3> : null}{ticket.type}</h4>
-                        <h4 className="ticket-preview-element">{moble ? <h3>Priority:</h3> : null}{ticket.priority}</h4>
-                        
-                        {/* {/* <h3>{}</h3> */}
-                    </Link>
+                        <h3 className="ticket-headers">Type</h3>
+                        <h3 className="ticket-headers"> Priority</h3>
+                        <h3 className="ticket-headers">Image</h3>
+                    </div>
+
+                    {tickets.map((ticket) => (
+                        <div key={ticket.id}
+                            id="view-ticket-card"
+                        >
+                            <Link
+                                to={`/view/ticket/${ticket.id}`}
+                                className="view-ticket-preview">
+                                {ticket.tickets_images.length ? <img
+                                    className="ticket-preview-image"
+                                    src={ticket.tickets_images[0].image} /> : <MdOutlineImageNotSupported />}
+                                <h4 className="ticket-preview-element">{isMobile ? <h3>ID:</h3> : null} {ticket.id}</h4>
+                                <h4 className="ticket-preview-element">{isMobile ? <h3 id="subject">Subject:</h3> : null}{ticket.title}</h4>
+                                <h4 className="ticket-preview-element">{isMobile ? <h3>Requester:</h3> : null}{ticket.requester}</h4>
+                                <h4 className="ticket-preview-element">{isMobile ? <h3>Type:</h3> : null}{ticket.type}</h4>
+                                <h4 className="ticket-preview-element">{isMobile ? <h3>Priority:</h3> : null}{ticket.priority}</h4>
+                            </Link>
+                        </div>
+                    ))}
                 </div>
-            ))}
-        </div>
-        </div>
+            </div>
         </div>
     )
 }

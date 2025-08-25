@@ -46,16 +46,14 @@ export const editCustomerThunk = (customerId, newCustomer) => async (dispatch) =
 
 export const getCustomerIdThunk = (requesterId) => async (dispatch) => {
     const response = await fetch(`/api/customers/${requesterId}`)
-    // console.log("CUSTOMER OK", requesterId)
+
     if (response.ok) {
-      // console.log("customer")
+
         const customer = await response.json()
         
         dispatch(getCustomerId(customer))
         
-    } else {
-        console.log(" ")
-    }
+    } 
 }
 
 export const getAllCustomersThunk =  () => async (dispatch) => {
@@ -65,7 +63,7 @@ export const getAllCustomersThunk =  () => async (dispatch) => {
     const customers = await response.json()
     
     dispatch(getAllCustomers(customers))
-    // console.log("IM OK", customers)
+
   }
 }
 
@@ -79,9 +77,7 @@ export const createCustomerThunk = (customer) => async (dispatch) => {
   if (response.ok) {
     const customer = await response.json()
     dispatch(createCustomer(customer))
-  } else {
-    console.log("")
-  }
+  } 
 }
 
 export const deleteCustomerThunk = (customerId) => async (dispatch) => {

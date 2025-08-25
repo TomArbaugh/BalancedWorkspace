@@ -1,17 +1,24 @@
 import { NavLink, Link } from "react-router-dom";
 import ProfileButton from "./ProfileButton";
 import { GiTightrope } from "react-icons/gi";
-import {useSelector} from "react-redux";
+import { useSelector } from "react-redux";
 import OpenModalMenuItem from "./OpenModalMenuItem";
 import CreateCustomer from "../CreateCustomer/CreateCustomer"
 import CreateMacro from "../CreateMacro/CreateMacro"
 import MessageCenter from "../MessageCenter/MessageCenter";
 import { useState } from "react";
 
-
+/**
+ * Navigation component provides the main navigation bar for the application.
+ * Displays different navigation options based on user authentication status.
+ * Includes modals for creating customers, macros, and accessing message center.
+ * Responsive design that adapts to mobile screens.
+ * 
+ * @returns {JSX.Element} The main navigation component
+ */
 function Navigation() {
 
-  const [moble] = useState(window.innerWidth < 1400)
+  const [isMobile] = useState(window.innerWidth < 1400)
   const user = useSelector((state) => state.session.user)
 
 
@@ -21,50 +28,43 @@ function Navigation() {
         <NavLink className="text-dec-none" to={!user ? "/" : '/view/tickets/all'}>
           <h1 id="landing-h1">B<GiTightrope />LANCED</h1>
           <h2 id="landing-h2">workspace</h2>
-          </NavLink>
-          <div className={user && !moble ? "hide" : "hide"}>
-          <Link 
-          className={user ? "nav-link" : "hide"}
-          id="create-ticket-link"
-          to="/create/ticket">Create Ticket</Link>
+        </NavLink>
+        <div className={user && !isMobile ? "hide" : "hide"}>
+          <Link
+            className={user ? "nav-link" : "hide"}
+            id="create-ticket-link"
+            to="/create/ticket">Create Ticket</Link>
 
           <div className="nav-link" id="create-customer-link">
-          <OpenModalMenuItem
-        
-        itemText="Create Customer"
-        modalComponent={<CreateCustomer />}
-        />
+            <OpenModalMenuItem
+
+              itemText="Create Customer"
+              modalComponent={<CreateCustomer />}
+            />
           </div>
-       
-          {/* <Link 
-          className={user ? "nav-link" : "hide"}
-          to="customer/create">Create Customer</Link> */}
 
           <div className="nav-link" id="create-macro-link">
-          <OpenModalMenuItem 
-        
-        itemText="Create Macro"
-        modalComponent={<CreateMacro />}
-        />
-        
+            <OpenModalMenuItem
+
+              itemText="Create Macro"
+              modalComponent={<CreateMacro />}
+            />
+
           </div>
-          <Link 
-          className={user ? "nav-link" : "hide"}
-          to="/view/customers">Customers</Link>
-           <Link 
-          className={user ? "nav-link" : "hide"}
-          to="/view/macros">Macros</Link>
-          {/* <Link 
-          className={user ? "nav-link" : "hide"}
-          to="macro/create">Create Macro</Link> */}
+          <Link
+            className={user ? "nav-link" : "hide"}
+            to="/view/customers">Customers</Link>
+          <Link
+            className={user ? "nav-link" : "hide"}
+            to="/view/macros">Macros</Link>
           <div className="nav-link">
-           <OpenModalMenuItem
-        
-        itemText="Message Center"
-        modalComponent={<MessageCenter />}
-        /> 
-        </div>
+            <OpenModalMenuItem
+
+              itemText="Message Center"
+              modalComponent={<MessageCenter />}
+            />
           </div>
+        </div>
       </li>
       <li className="li-landing-two">
         <ProfileButton />

@@ -5,16 +5,22 @@ import { useParams } from "react-router-dom";
 import { getCustomerIdThunk } from "../../redux/customer";
 import { getAllMacrosThunk } from "../../redux/macro";
 import { Link } from "react-router-dom";
-import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
+import { useModal } from "../../context/Modal";
 import DeleteTicket from "../DeleteTicket/DeleteTicket";
 import NavCom from "../NavComp/NavComp";
 import "./ViewTickets.css"
 
-
-
+/**
+ * ViewTickets component displays detailed information about a specific ticket.
+ * Shows ticket details, customer information, assigned macro, and image.
+ * Provides functionality to edit or delete the ticket.
+ * 
+ * @returns {JSX.Element} The detailed ticket view with edit/delete actions
+ */
 function ViewTickets() {
     const { ticket_id } = useParams()
     const dispatch = useDispatch()
+    const { setModalContent } = useModal()
 
 
     useEffect(() => {
@@ -22,8 +28,7 @@ function ViewTickets() {
         dispatch(getTicketIdThunk(ticket_id))
 
     }, [dispatch, ticket_id])
-    // console.log(ticket_id)
-    // console.log(ticket.title)
+
     useEffect(() => {
         dispatch(getAllMacrosThunk())
     }, [dispatch])
@@ -57,7 +62,6 @@ function ViewTickets() {
     if (!user) return null
     if (!macros) return null
 
-    // console.log("MACRO", macros)
     let chosenMacro;
     if (ticket.apply_macro) {
 
@@ -65,112 +69,111 @@ function ViewTickets() {
     } else {
         chosenMacro = "No Macro Chosen"
     }
-    // console.log("CHOSEN MAC", chosenMacro)
+
+    const handleDeleteClick = () => {
+        setModalContent(<DeleteTicket />);
+    };
     return (
         <div className="whole-view-ticket">
             <NavCom />
-        <div id="view-ticket-form">
-            
-            <div id="view-ticket-top">
-                <div id="view-ticket-left">
-                    <label>
-                        <h4>Requester</h4>
+            <div id="view-ticket-form">
 
-                        <input
-                            className="view-ticket-requester"
-                            disabled={true}
-                            value={customer.customer ? customer.customer.name : null}
-                        />
-                    </label>
-                    <p className="error-message"></p>
-                    <label>
-                        <h4> Assignee</h4>
-
-                        <input
-                            className="view-ticket-assignee"
-                            disabled={true}
-                            value={user.username}
-                        />
-                    </label>
-                    <div id="view-type-priority">
-                        <label id="type-label">
-                            <h4>Type</h4>
+                <div id="view-ticket-top">
+                    <div id="view-ticket-left">
+                        <label>
+                            <h4>Requester</h4>
 
                             <input
-                                className="view-ticket-type"
+                                className="view-ticket-requester"
                                 disabled={true}
-                                value={ticket.type}
+                                value={customer.customer ? customer.customer.name : null}
                             />
                         </label>
-                        <lable id="priority-label">
-                            <h4>Priority</h4>
+                        <p className="error-message"></p>
+                        <label>
+                            <h4> Assignee</h4>
 
                             <input
-                                className="view-ticket-priority"
+                                className="view-ticket-assignee"
                                 disabled={true}
-                                value={ticket.priority}
+                                value={user.username}
                             />
-                        </lable>
+                        </label>
+                        <div id="view-type-priority">
+                            <label id="type-label">
+                                <h4>Type</h4>
+
+                                <input
+                                    className="view-ticket-type"
+                                    disabled={true}
+                                    value={ticket.type}
+                                />
+                            </label>
+                            <lable id="priority-label">
+                                <h4>Priority</h4>
+
+                                <input
+                                    className="view-ticket-priority"
+                                    disabled={true}
+                                    value={ticket.priority}
+                                />
+                            </lable>
+                        </div>
+                    </div>
+                    <div id="view-ticket-middle">
+                        <label>
+                            <h4>Title</h4>
+
+                            <input
+                                id="view-ticket-title-input"
+                                value={ticket.title}
+                                disabled={true}
+                            />
+                        </label>
+                        <p className="error-message"> </p>
+                        <lable> </lable>
+                        <label>
+
+                            <h4>Description</h4>
+                            <input
+                                id="view-ticket-description-input"
+                                disabled={true}
+                                value={ticket.description}
+                            />
+                        </label>
+                        <p className="error-message"> </p>
+                    </div>
+                    <div id="view-ticket-right">
+                        <label>
+                            <h4 id="img-label">Image</h4>
+
+                            <img
+                                id="view-ticket-image"
+                                src={ticket.tickets_images[0] ? ticket.tickets_images[0].image : null} />
+                        </label>
                     </div>
                 </div>
-                <div id="view-ticket-middle">
-                    <label>
-                        <h4>Title</h4>
+                <div id="view-ticket-bottom">
+                    <lable className="view-ticket-macro">
+                        <h4>Apply Macro</h4>
 
-                        <input
-                            id="view-ticket-title-input"
-                            value={ticket.title}
+                        <select
+                            id="view-macros-input"
                             disabled={true}
-                        />
-                    </label>
-                    <p className="error-message"> </p>
-                    <lable> </lable>
-                    <label>
-
-                        <h4>Description</h4>
-                        <input
-                            id="view-ticket-description-input"
-                            disabled={true}
-                            value={ticket.description}
-                        />
-                    </label>
-                    <p className="error-message"> </p>
-                </div>
-                <div id="view-ticket-right">
-                    <label>
-                        <h4 id="img-label">Image</h4>
-
-                        <img
-                            id="view-ticket-image"
-                            src={ticket.tickets_images[0] ? ticket.tickets_images[0].image : null} />
-                    </label>
-                </div>
-            </div>
-            <div id="view-ticket-bottom">
-                <lable className="view-ticket-macro">
-                    <h4>Apply Macro</h4>
-
-                    <select
-                        id="view-macros-input"
-                        disabled={true}
-                        value={chosenMacro ? chosenMacro.id : null}
-                    >
-                        <option>{chosenMacro ? chosenMacro.description : null}</option>
-                    </select>
-                </lable>
-                <div className="view-delete-edit-buttons">
-                    <Link to={`/edit/ticket/${ticket.id}`}
-                        className="view-ticket-button"><button id="inner-button">Edit</button></Link>
-                    <div className="ticket-delete-button">
-                        <OpenModalMenuItem
-
-                            itemText="Delete"
-                            modalComponent={<DeleteTicket />}
-                        />
+                            value={chosenMacro ? chosenMacro.id : null}
+                        >
+                            <option>{chosenMacro ? chosenMacro.description : null}</option>
+                        </select>
+                    </lable>
+                    <div className="view-delete-edit-buttons">
+                        <Link to={`/edit/ticket/${ticket.id}`}
+                            className="view-ticket-button"><button id="inner-button">Edit</button></Link>
+                        <div className="ticket-delete-button" onClick={handleDeleteClick}>
+                            Delete
+                        </div>
                     </div>
-                </div>
 
-            </div>
+                </div>
             </div>
         </div>
     )

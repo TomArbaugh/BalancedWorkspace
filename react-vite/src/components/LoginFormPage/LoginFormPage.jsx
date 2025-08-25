@@ -4,6 +4,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { Navigate, useNavigate } from "react-router-dom";
 import "./LoginForm.css";
 
+/**
+ * LoginFormPage component provides a form for user authentication.
+ * Handles user login with email and password validation.
+ * Redirects authenticated users to the main application.
+ * 
+ * @returns {JSX.Element} The login form page or redirect for authenticated users
+ */
 function LoginFormPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();

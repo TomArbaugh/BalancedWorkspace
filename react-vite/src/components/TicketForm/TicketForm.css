@@ -6,6 +6,7 @@
 }
 #create-ticket-form {
     background-color: rgb(252, 252, 252);
+    width: 100%;
 }
 .create-ticket-requester {
     width: 175px;

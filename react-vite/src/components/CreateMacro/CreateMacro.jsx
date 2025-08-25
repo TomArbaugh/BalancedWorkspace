@@ -5,9 +5,9 @@ import { createMacroThunk } from "../../redux/macro";
 import "./CreateMacro.css"
 
 
-function CreateMacro(){
+function CreateMacro() {
     const dispatch = useDispatch()
-    const { closeModal } = useModal() 
+    const { closeModal } = useModal()
     const [name, setName] = useState()
     const [description, setDescription] = useState()
     const [error, setError] = useState({})
@@ -23,7 +23,7 @@ function CreateMacro(){
         e.preventDefault()
 
         const newError = validations()
-        if (Object.keys(newError).length > 0){
+        if (Object.keys(newError).length > 0) {
             setError(newError)
             return;
         }
@@ -41,38 +41,38 @@ function CreateMacro(){
     return (
         <div>
             <h1 id="create-macro-header">Create Macro</h1>
-        <form
-        className="create-macro-form"
-        onSubmit={onSubmit}
-        >
-         
-         <label>
-             <h4 className="create-macro-label">Name</h4>
-             <input 
-        className="create-macro-input"
-         value={name}
-         onChange={((e) => setName(e.target.value))}
-         />
-         </label>
-         <p className="create-macro-error">{error.name ? error.name : null}</p>
-     <label>
-         <h4 className="create-macro-label">Description</h4>
-         <input 
-         className="create-macro-input"
-         value={description}
-         onChange={((e) => setDescription(e.target.value))}
-         />
-     </label>
-     <p className="create-macro-error">{error.description ? error.description : null}</p>
-     <p id={(!description || !name) ? "create-macro-error-message" : "invisi-text"}>Please provide name and description.</p>
-         <button 
+            <form
+                className="create-macro-form"
+                onSubmit={onSubmit}
+            >
 
-         id={description && name ? "create-macro-button" : "disabled"}
-         type="submit">Create Macro</button>
-        </form>
+                <label>
+                    <h4 className="create-macro-label">Name</h4>
+                    <input
+                        className="create-macro-input"
+                        value={name}
+                        onChange={((e) => setName(e.target.value))}
+                    />
+                </label>
+                <p className="create-macro-error">{error.name ? error.name : null}</p>
+                <label>
+                    <h4 className="create-macro-label">Description</h4>
+                    <input
+                        className="create-macro-input"
+                        value={description}
+                        onChange={((e) => setDescription(e.target.value))}
+                    />
+                </label>
+                <p className="create-macro-error">{error.description ? error.description : null}</p>
+                <p id={(!description || !name) ? "create-macro-error-message" : "invisi-text"}>Please provide name and description.</p>
+                <button
+
+                    id={description && name ? "create-macro-button" : "disabled"}
+                    type="submit">Create Macro</button>
+            </form>
         </div>
     )
-    
+
 }
 
 export default CreateMacro

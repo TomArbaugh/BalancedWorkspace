@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import {useSelector} from "react-redux";
+import { useSelector } from "react-redux";
 import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
 import CreateCustomer from "../CreateCustomer/CreateCustomer"
 import CreateMacro from "../CreateMacro/CreateMacro"
@@ -28,9 +28,9 @@ export default function NavCom() {
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
                     fontSize: '100px', // size it up to see gradient clearly
-                  }}/> <FaPlusCircle /></Link>
+                }} /> <FaPlusCircle /></Link>
 
-            <div className="navigation-link"                        id="customer-link">
+            <div className="navigation-link" id="customer-link">
                 <OpenModalMenuItem
                     itemText={<FaUserPlus size={60} />}
                     modalComponent={<CreateCustomer />}
@@ -44,27 +44,27 @@ export default function NavCom() {
             <div className="navigation-link" >
                 <OpenModalMenuItem
                     id="macro-link"
-                    itemText={<span><FaCog size={50}  /> <FaPlus /></span>}
+                    itemText={<span><FaCog size={50} /> <FaPlus /></span>}
                     modalComponent={<CreateMacro />}
                 />
 
             </div>
             <Link
                 className={user ? "navigation-link" : "hide"}
-                to="/view/customers"><FaUser size={60}       style={{
+                to="/view/customers"><FaUser size={60} style={{
                     background: 'linear-gradient(135deg, #3f51b5, #2196f3)',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
                     fontSize: '100px', // size it up to see gradient clearly
-                  }}/></Link>
+                }} /></Link>
             <Link
                 className={user ? "navigation-link" : "hide"}
-                to="/view/macros"><MdAutoAwesome size={60}       style={{
+                to="/view/macros"><MdAutoAwesome size={60} style={{
                     background: 'linear-gradient(135deg, #3f51b5, #2196f3)',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
                     fontSize: '100px', // size it up to see gradient clearly
-                  }}/></Link>
+                }} /></Link>
             {/* <Link 
         className={user ? "nav-link" : "hide"}
         to="macro/create">Create Macro</Link> */}
@@ -75,6 +75,6 @@ export default function NavCom() {
                     modalComponent={<MessageCenter />}
                 />
             </div>
-            </div>
-            )
+        </div>
+    )
 }

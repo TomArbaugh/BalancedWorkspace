@@ -5,9 +5,9 @@ import { editMacroThunk, getMacroByIdThunk } from "../../redux/macro";
 import "./EditMacro.css"
 
 
-function EditMacro({macroId}){
+function EditMacro({ macroId }) {
     const dispatch = useDispatch()
-    const { closeModal } = useModal() 
+    const { closeModal } = useModal()
     const [name, setName] = useState()
     const [description, setDescription] = useState()
     const [error, setError] = useState({})
@@ -25,7 +25,7 @@ function EditMacro({macroId}){
         }
     }, [macro])
 
-    
+
     const validations = () => {
         const newError = {}
         if (name.length < 2 || name.length > 50) newError.name = "Name must be between 2 and 50 characters."
@@ -37,7 +37,7 @@ function EditMacro({macroId}){
         e.preventDefault()
 
         const newError = validations()
-        if (Object.keys(newError).length > 0){
+        if (Object.keys(newError).length > 0) {
             setError(newError)
             return;
         }
@@ -47,14 +47,14 @@ function EditMacro({macroId}){
             description
         }
         if (macroId !== 1 && macroId !== '1') {
-        await dispatch(editMacroThunk(newMacro, macro.id))
+            await dispatch(editMacroThunk(newMacro, macro.id))
 
-        closeModal()
-    } else {
-        // console.log(macroId, "IN ERRORS")
-        setError({"noMac": "This Option Is Permanent"})
-        return
-    }
+            closeModal()
+        } else {
+
+            setError({ "noMac": "This Option Is Permanent" })
+            return
+        }
     }
 
     if (!macro) return null;
@@ -62,38 +62,38 @@ function EditMacro({macroId}){
         <div>
             <h1 id="create-macro-header">Edit Macro</h1>
             <p className="error-message">{error.noMac ? error.noMac : null}</p>
-        <form
-        className="create-macro-form"
-        onSubmit={onSubmit}
-        >
-         
-         <label>
-             <h4 className="create-macro-label">Name</h4>
-             <input 
-        className="create-macro-input"
-         value={name}
-         onChange={((e) => setName(e.target.value))}
-         />
-         </label>
-         <p className="create-customer-error">{error.name ? error.name : null}</p>
-     <label>
-         <h4 className="create-macro-label">Description</h4>
-         <input 
-         className="create-macro-input"
-         value={description}
-         onChange={((e) => setDescription(e.target.value))}
-         />
-     </label>
-     <p className="create-customer-error">{error.description ? error.description : null}</p>
-     <p id={(!description || !name) ? "create-macro-error-message" : "invisi-text"}>Please provide name and description.</p>
-         <button 
+            <form
+                className="create-macro-form"
+                onSubmit={onSubmit}
+            >
 
-         id={description && name ? "create-macro-button" : "disabled"}
-         type="submit">Edit Macro</button>
-        </form>
+                <label>
+                    <h4 className="create-macro-label">Name</h4>
+                    <input
+                        className="create-macro-input"
+                        value={name}
+                        onChange={((e) => setName(e.target.value))}
+                    />
+                </label>
+                <p className="create-customer-error">{error.name ? error.name : null}</p>
+                <label>
+                    <h4 className="create-macro-label">Description</h4>
+                    <input
+                        className="create-macro-input"
+                        value={description}
+                        onChange={((e) => setDescription(e.target.value))}
+                    />
+                </label>
+                <p className="create-customer-error">{error.description ? error.description : null}</p>
+                <p id={(!description || !name) ? "create-macro-error-message" : "invisi-text"}>Please provide name and description.</p>
+                <button
+
+                    id={description && name ? "create-macro-button" : "disabled"}
+                    type="submit">Edit Macro</button>
+            </form>
         </div>
     )
-    
+
 }
 
 export default EditMacro

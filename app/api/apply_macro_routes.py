@@ -1,5 +1,5 @@
 from app.models import db, Macro
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, current_app as app
 from flask_login import current_user, login_required
 from app.forms.create_macro import CreateMacroForm
 
@@ -18,7 +18,7 @@ def get_all_macros():
 
 @apply_macro_routes.route('/<int:id>')
 @login_required
-def get_macro_Id(id):
+def get_macro_by_id(id):
     macro = Macro.query.get(id)
 
     if macro is None:
@@ -44,7 +44,7 @@ def create_macro():
         return new_macro.to_dict()
 
     if form.errors:
-        print(form.errors)
+        app.logger.error(f"Macro creation form validation errors: {form.errors}")
         return {"errors": form.errors}, 400
     return
 
@@ -68,7 +68,7 @@ def edit_macro(macroId):
         return macro.to_dict()
 
     if form.errors:
-        print(form.errors)
+        app.logger.error(f"Macro edit form validation errors: {form.errors}")
         return {"errors": form.errors}, 400
     return
 

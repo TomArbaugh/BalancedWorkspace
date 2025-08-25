@@ -31,16 +31,14 @@ const deleteMacro = (deletedMacro) => ({
 })
 export const getAllMacrosThunk = () => async (dispatch) => {
     const response = await fetch(`/api/macro/`)
-    // console.log("macros OK", response)
+
     if (response.ok) {
         
         const macros = await response.json()
         
         dispatch(getAllMacros(macros))
-        // console.log("customer")
-    } else {
-        console.log(" ")
-    }
+
+    } 
 }
 
 export const getMacroByIdThunk = (macroId) => async (dispatch) => {
@@ -60,9 +58,7 @@ export const createMacroThunk = (macro) => async (dispatch) => {
   if (response.ok) {
     const macro = await response.json()
     dispatch(createMacro(macro))
-  } else {
-    console.log(" ")
-  }
+  } 
 }
 
 export const editMacroThunk = (newMacro, macroId) => async (dispatch) => {

@@ -1,5 +1,5 @@
 from app.models import Message, db
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, current_app as app
 from flask_login import current_user, login_required
 from app.forms.create_message import CreateMessage
 
@@ -32,7 +32,7 @@ def create_message(otherPerson):
     
     
     form = CreateMessage()
-    print("OtherPerson-----------------------------------", otherPerson)
+    app.logger.info(f"Creating message for other person: {otherPerson}")
     form['csrf_token'].data = request.cookies['csrf_token']
     
     if form.validate_on_submit():
@@ -41,13 +41,13 @@ def create_message(otherPerson):
             receiver_id = otherPerson,
             message = form.data["message"]
         )
-        print("MESAGE---------------------------", new_message)
+        app.logger.info(f"New message created with ID: {new_message.id}")
         db.session.add(new_message)
         db.session.commit()
         return new_message.to_dict()
 
     if form.errors:
-        print(form.errors)
+        app.logger.error(f"Message creation form validation errors: {form.errors}")
         return {"errors": form.errors}, 400
     return
 
@@ -74,7 +74,7 @@ def edit_message(id):
         return message.to_dict()
 
     if form.errors:
-        print(form.errors)
+        app.logger.error(f"Message edit form validation errors: {form.errors}")
         return {"errors": form.errors}, 400
     return
 

@@ -1,14 +1,19 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { createMessageThunk, getMessagesThunk, editMessageThunk, deleteMessageThunk } from "../../redux/message"
-import { thunkLogin} from "../../redux/session"
+import { thunkLogin } from "../../redux/session"
 import { getUsersThunk } from "../../redux/session"
-// import DeleteMessage from "../DeleteMessage/DeleteMessage"
-// import EditMessage from "../EditMessage/EditMessage"
-// import OpenModalMenuItem from "../Navigation/OpenModalMenuItem"
+
 
 import "./MessageCenter.css"
 
+/**
+ * MessageCenter component provides a messaging interface for user communication.
+ * Displays conversation threads, allows message creation, editing, and deletion.
+ * Supports real-time messaging between users in the system.
+ * 
+ * @returns {JSX.Element} The message center interface
+ */
 function MessageCenter() {
     const [message, setMessage] = useState()
     const [otherPerson, setOtherPerson] = useState()
@@ -22,7 +27,7 @@ function MessageCenter() {
     const dispatch = useDispatch()
 
 
- 
+
 
     useEffect(() => {
         dispatch(getUsersThunk())
@@ -34,11 +39,10 @@ function MessageCenter() {
     const messages = messageState.Messages
     const newMessage = messageState.newMessage
     const deletedMessage = messageState.deletedMessage
-    // console.log(users, "USERS")
-    // console.log(messages, "MESSAGES")
+
     const validations = () => {
         const newError = {}
-        if (message.length < 1 ||  message.length > 2000) newError.message = "Message must be between 1 and 2000 characters."
+        if (message.length < 1 || message.length > 2000) newError.message = "Message must be between 1 and 2000 characters."
         return newError
     }
 
@@ -52,37 +56,37 @@ function MessageCenter() {
 
     useEffect(() => {
         let tempArr;
-        // console.log("HELO FROM OTHERPERSONFUNK")
+
         tempArr = []
-        
+
         otherPerson ? messages.forEach((message) => {
-            
-            // console.log(otherPerson)
+
+
             if (message.sender_id.toString() === otherPerson || message.receiver_id.toString() === otherPerson || message.sender_id === otherPerson || message.receiver_id === otherPerson) {
-                // console.log(message)
-                
+
+
                 tempArr.push(message)
-                
+
             }
             return
         }) : null
 
-       
+
         setConvoArr(tempArr)
-       }, [otherPerson, messages, user])
+    }, [otherPerson, messages, user])
 
 
-       const makeEdit = (messageId, message) => {
+    const makeEdit = (messageId, message) => {
         setEdit(true)
         setMesId(messageId)
         setMessage(message)
         setUser('0')
-       }
+    }
 
-       const saveChange = async (messageId) => {
-        
+    const saveChange = async (messageId) => {
+
         const newError = validations()
-        if (Object.keys(newError).length > 0){
+        if (Object.keys(newError).length > 0) {
             setError(newError)
             return;
         }
@@ -90,31 +94,31 @@ function MessageCenter() {
         const newMessage = {
             message
         }
-        // console.log("THIS IS THE MESSAGE ID",messageId)
+
         await dispatch(editMessageThunk(messageId, newMessage))
 
         setEdit(false)
         setMessage()
         setUser(currentUser.id)
-        
-       }
-       
-       const makeDelete = (messageId) => {
+
+    }
+
+    const makeDelete = (messageId) => {
         setYesOrNo(true)
         setEdit(true)
         setMesId(messageId)
-       }
+    }
 
-       const handleDelete = (messageId) => {
+    const handleDelete = (messageId) => {
         dispatch(deleteMessageThunk(messageId))
         setEdit(false)
-       }
-        
-       const logIn = async (e) => {
+    }
+
+    const logIn = async (e) => {
         e.preventDefault()
         setPause(true)
-            let email;
-            let password;
+        let email;
+        let password;
         if (otherPerson === '1' || otherPerson === 1) {
             email = "demo@aa.io"
             password = "LhO&FBO$zz"
@@ -132,56 +136,53 @@ function MessageCenter() {
             setOtherPerson()
             return null;
         }
-      
-        
 
-       
+
 
         await dispatch(
             thunkLogin({
-              email,
-              password,
+                email,
+                password,
             })
-          );
+        );
 
-          setUser(currentUser.id)
-          setConvoArr()
-          setPause(false)
+        setUser(currentUser.id)
+        setConvoArr()
+        setPause(false)
     }
 
-    
-    
+
+
     const sendMessage = (e) => {
         e.preventDefault()
-        
-        
+
+
         const newMessage = {
             message: message
         }
-        
+
         dispatch(createMessageThunk(otherPerson, newMessage))
         setMessage('')
     }
-    
-   
+
+
     if (!messages) return null;
     if (!users) return null;
     if (!currentUser) return null;
     if (!convoArr) return null;
-    // console.log(convoArr)
-    // console.log(otherPerson)
+
     return (
         <div id="message-center">
             <h2 id="message-header">Message Center</h2>
             <button
-            id={otherPerson !== '1' && otherPerson !== '2' && otherPerson !== '3' && otherPerson !== 1 && otherPerson !== 2 && otherPerson !== 3 ? "" : "new-log-in"}
-            onClick={logIn}
-            disabled={(otherPerson !== '1' && otherPerson !== '2' && otherPerson !== '3' && otherPerson !== 1 && otherPerson !== 2 && otherPerson !== 3) ||  pause}
+                id={otherPerson !== '1' && otherPerson !== '2' && otherPerson !== '3' && otherPerson !== 1 && otherPerson !== 2 && otherPerson !== 3 ? "" : "new-log-in"}
+                onClick={logIn}
+                disabled={(otherPerson !== '1' && otherPerson !== '2' && otherPerson !== '3' && otherPerson !== 1 && otherPerson !== 2 && otherPerson !== 3) || pause}
             >{otherPerson === '1' || otherPerson === 1 ? <p className="log-in-vitation">Login As Demo</p> : otherPerson === '2' || otherPerson === 2 ? <p className="log-in-vitation">Login As Marnie</p> : otherPerson === '3' || otherPerson === 3 ? <p className="log-in-vitation">Login As Bobbie</p> : !otherPerson ? <p className="log-in-vitation">Please Select Below</p> : <p className="log-in-vitation">Your Partner&#39;s Login Is Not Saved</p>}</button>
             <select
-            id="convo-select"
-            value={otherPerson}
-            onChange={((e) => setOtherPerson(e.target.value))}
+                id="convo-select"
+                value={otherPerson}
+                onChange={((e) => setOtherPerson(e.target.value))}
             >
                 <option>Chose Conversation</option>
                 {users ? users.map((user) => (
@@ -189,60 +190,60 @@ function MessageCenter() {
                 )) : null}
             </select>
             <div
-            id="input"
-           
+                id="input"
+
             >
                 {convoArr ? convoArr.map((convo) => (
                     <div key={convo.id} className="message-card">
-                    {convo.sender_id === currentUser.id ? <p>Me:</p> : <p>Sender Id: {convo.sender_id}</p>}
+                        {convo.sender_id === currentUser.id ? <p>Me:</p> : <p>Sender Id: {convo.sender_id}</p>}
 
-                    {edit && !yesOrNo && messId === convo.id? <input value={message} onChange={((e) => setMessage(e.target.value))}/>: <p id="convo-message">{convo.message}</p>}
-                    <div className="message-button-container">
-                <div className={convo.sender_id === currentUser.id ?"message-buttons" : "hide"}>
+                        {edit && !yesOrNo && messId === convo.id ? <input value={message} onChange={((e) => setMessage(e.target.value))} /> : <p id="convo-message">{convo.message}</p>}
+                        <div className="message-button-container">
+                            <div className={convo.sender_id === currentUser.id ? "message-buttons" : "hide"}>
 
-                    {/* <OpenModalMenuItem 
+                                {/* <OpenModalMenuItem 
                     
                     itemText="Delete"
                      modalComponent={<DeleteMessage messageId={convo.id}/>}
                     /> */}
-                    <button className={edit ? "hide" : "edit-button"} disabled={edit} onClick={() => makeDelete(convo.id)}>Delete</button>
-                    <button id="yes-delete" className={yesOrNo && messId === convo.id? "delete-confirmation" : "hide"} onClick={() => handleDelete(convo.id)}>Yes Delete?</button>
-                    <button id="cancel-button" className={yesOrNo && messId === convo.id? "delete-confirmation" : "hide"} onClick={() => {setYesOrNo(false); setEdit(false)}}>NO! Cancel!</button>
-                
+                                <button className={edit ? "hide" : "edit-button"} disabled={edit} onClick={() => makeDelete(convo.id)}>Delete</button>
+                                <button id="yes-delete" className={yesOrNo && messId === convo.id ? "delete-confirmation" : "hide"} onClick={() => handleDelete(convo.id)}>Yes Delete?</button>
+                                <button id="cancel-button" className={yesOrNo && messId === convo.id ? "delete-confirmation" : "hide"} onClick={() => { setYesOrNo(false); setEdit(false) }}>NO! Cancel!</button>
 
-                    <div className={convo.sender_id === currentUser.id ?"message-buttons" : "hide"}>
 
-                        <button className={edit ? "hide" : "edit-button"} disabled={edit} onClick={() => makeEdit(convo.id, convo.message)}>Edit</button>
+                                <div className={convo.sender_id === currentUser.id ? "message-buttons" : "hide"}>
 
-                        <button className={!edit || yesOrNo || messId !== convo.id ? "hide" : "edit-button"} disabled={!edit} onClick={() => saveChange(convo.id)}>Save</button>
-                        <p className="edit-message-errors">{error.message? error.message : null}</p>
-                          {/* <OpenModalMenuItem 
+                                    <button className={edit ? "hide" : "edit-button"} disabled={edit} onClick={() => makeEdit(convo.id, convo.message)}>Edit</button>
+
+                                    <button className={!edit || yesOrNo || messId !== convo.id ? "hide" : "edit-button"} disabled={!edit} onClick={() => saveChange(convo.id)}>Save</button>
+                                    <p className="edit-message-errors">{error.message ? error.message : null}</p>
+                                    {/* <OpenModalMenuItem 
                     
                     itemText="Edit"
                      modalComponent={<EditMessage messageId={convo.id}/>}
                     /> */}
-                    </div>
-                </div>
-                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 )) : null}
-    
+
             </div>
             <form
-            onSubmit={sendMessage}
+                onSubmit={sendMessage}
             >
                 <h4 id="input-label">Message:</h4>
-            <textarea
-            id="message-input"
-            disabled={edit}
-            value={edit ? '' : message}
-            onChange={((e) => setMessage(e.target.value))}
-            ></textarea>
-            <button
-             id="message-submit"
-            type="submit">Send</button>
+                <textarea
+                    id="message-input"
+                    disabled={edit}
+                    value={edit ? '' : message}
+                    onChange={((e) => setMessage(e.target.value))}
+                ></textarea>
+                <button
+                    id="message-submit"
+                    type="submit">Send</button>
             </form>
-     
+
         </div>
     )
 }

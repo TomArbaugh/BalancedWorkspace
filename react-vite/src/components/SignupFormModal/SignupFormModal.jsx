@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { thunkSignup } from "../../redux/session";
-import {useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import "./SignupForm.css";
 
 function SignupFormModal() {
@@ -30,8 +30,8 @@ function SignupFormModal() {
 
     const errorsFound = validations()
     if (Object.keys(errorsFound).length > 0) {
-        setErrors(errorsFound);
-        return;
+      setErrors(errorsFound);
+      return;
     }
 
     const serverResponse = await dispatch(
@@ -54,26 +54,26 @@ function SignupFormModal() {
     <div >
       <h1 id="sign-up-header">Sign Up</h1>
       <p>{errors.server ? errors.server : null}</p>
-      <form 
-      id="sign-up-modal"
-      onSubmit={handleSubmit}>
+      <form
+        id="sign-up-modal"
+        onSubmit={handleSubmit}>
         <label>
           <h4 className="sign-up-label">Email</h4>
-          
+
           <input
-          className="sign-up-input"
+            className="sign-up-input"
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
         </label>
-       <p className="sign-up-errors">{errors.email ? errors.email : null}</p>
+        <p className="sign-up-errors">{errors.email ? errors.email : null}</p>
         <label>
           <h4 className="sign-up-label">Username</h4>
-          
+
           <input
-          className="sign-up-input"
+            className="sign-up-input"
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
@@ -83,9 +83,9 @@ function SignupFormModal() {
         <p className="sign-up-errors">{errors.username ? errors.username : null}</p>
         <label>
           <h4 className="sign-up-label">Password</h4>
-          
+
           <input
-          className="sign-up-input"
+            className="sign-up-input"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -95,9 +95,9 @@ function SignupFormModal() {
         <p className="sign-up-errors">{errors.password ? errors.password : null}</p>
         <label>
           <h4 className="sign-up-label">Confirm Password</h4>
-          
+
           <input
-          className="sign-up-input"
+            className="sign-up-input"
             type="password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { thunkLogin } from "../../redux/session";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
-import {useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import "./LoginForm.css";
 
 function LoginFormModal() {
@@ -44,14 +44,14 @@ function LoginFormModal() {
   return (
     <>
       <h1 id="log-header">Log In</h1>
-      <form 
-      id="log-in-form"
-      onSubmit={handleSubmit}>
+      <form
+        id="log-in-form"
+        onSubmit={handleSubmit}>
         <label>
           <h4 className="log-labels">Email</h4>
-          
+
           <input
-          className="log-inputs"
+            className="log-inputs"
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -61,9 +61,9 @@ function LoginFormModal() {
         <p className="log-errors">{errors.email ? errors.email : null}</p>
         <label>
           <h4 className="log-labels">Password</h4>
-          
+
           <input
-          className="log-inputs"
+            className="log-inputs"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -77,9 +77,9 @@ function LoginFormModal() {
         >
           Log in as Demo User
         </button>
-        <button 
-        id="log-in-button"
-        type="submit">Log In</button>
+        <button
+          id="log-in-button"
+          type="submit">Log In</button>
 
       </form>
     </>

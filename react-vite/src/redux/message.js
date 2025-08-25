@@ -38,9 +38,7 @@ export const getMessagesThunk = () => async (dispatch) => {
 }
 
 export const createMessageThunk = (otherPerson, newMessage) => async (dispatch) => {
-    // console.log("OTHERPERSON-TYPE", typeof otherPerson)
-    // console.log("OTHERPERSON", otherPerson)
-    // console.log("NEWMESSAGE", newMessage)
+
     const response = await fetch(`/api/messages/create/too/${otherPerson}`, {
         method: "POST",
         headers: {
@@ -49,9 +47,9 @@ export const createMessageThunk = (otherPerson, newMessage) => async (dispatch) 
         body: JSON.stringify(newMessage)
     })
     if (response.ok) {
-        // console.log("IM OK!!!!!")
+
         const message = await response.json()
-        // console.log("MESSAGE", message)
+
         dispatch(createMessage(message))
     }
 }
@@ -98,7 +96,7 @@ function messageReducer(state = initialState, action) {
         case DELETE_MESSAGE:
             return {...state, deletedMessage: action.payload}
         case EDIT_MESSAGE:
-            return {...state, editedMesssage: action.payload}
+            return {...state, editedMessage: action.payload}
       default:
         return state;
     }

@@ -42,27 +42,22 @@ export const getAllTicketsThunk = () => async (dispatch) => {
   if (response.ok) {
     
     const tickets = await response.json()
-    // console.log("TICKETS", tickets)
     dispatch(getAllTickets(tickets))
     
   } else {
-    console.log(" ")
+    console.error('Failed to fetch tickets:', response.status)
   }
 }
 export const getTicketIdThunk = (ticket_id) => async (dispatch) => {
-  // console.log(ticket_id, "ticketID in thunk")
   const response = await fetch(`/api/tickets/${ticket_id}`)
   if (response.ok) {
     const ticket = await response.json()
     dispatch(getTicketId(ticket))
   } else {
-    console.log(" ")
+    console.error('Failed to fetch ticket by ID:', response.status)
   }
 }
 export const postTicketThunk = (image, newTicket) => async (dispatch) => {
-  // console.log("FORM DATA", image)
-  // console.log("newTicket", newTicket)
-
   const formData = new FormData();
   formData.append('image', image);
 
@@ -77,11 +72,10 @@ export const postTicketThunk = (image, newTicket) => async (dispatch) => {
       
       let ticket_id;
       if (ticketResponse.ok) {
-        // console.log(" ")
           const newTicket = await ticketResponse.json()
           ticket_id = newTicket.id
       } else {
-          console.log(" ")
+          console.error('Failed to create ticket:', ticketResponse.status)
       }
 
       const imageResponse = await fetch(`/api/tickets/${ticket_id}/add-image`, {
@@ -91,21 +85,16 @@ export const postTicketThunk = (image, newTicket) => async (dispatch) => {
     
 
       if (imageResponse.ok) {
-        // console.log("IMAGE SENT TO ROUTES")
         const ticketImage = await imageResponse.json();
          
         dispatch(postTicket(ticketImage, newTicket));
         
     } else {
-        console.log(" ")
+        console.error('Failed to upload ticket image:', imageResponse.status)
     }
   };
 
   export const putTicketThunk = (image, newTicket, ticket_id) => async (dispatch) => {
-    // console.log("FORM DATA", image)
-    // console.log("newTicket", newTicket)
-    // console.log(ticket_id, "here in putTicketThunk")
-    // console.log(image, "image in thunk")
       const formData = new FormData();
       formData.append('image', image);
      
@@ -119,11 +108,10 @@ export const postTicketThunk = (image, newTicket) => async (dispatch) => {
         })
         
         if (ticketResponse.ok) {
-          // console.log("TICKET SENT TO ROUTES")
             const newTicket = await ticketResponse.json()
             dispatch(putTicket(newTicket));
         } else {
-            console.log(" ")
+            console.error('Failed to update ticket:', ticketResponse.status)
         }
   
       
@@ -135,13 +123,12 @@ export const postTicketThunk = (image, newTicket) => async (dispatch) => {
         
     
           if (imageResponse.ok) {
-            // console.log("IMAGE SENT TO ROUTES")
             const ticketImage = await imageResponse.json();
              
             dispatch(putTicket(ticketImage, newTicket));
             
         } else {
-            console.log(" ")
+            console.error('Failed to update ticket image:', imageResponse.status)
         }
       }
       

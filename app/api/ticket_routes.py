@@ -5,6 +5,7 @@ from app.forms.ticket_form import TicketForm
 from app.forms.ticket_image_form import TicketImageForm
 from app.api.aws import (
     upload_file_to_s3, get_unique_filename)
+from flask import current_app as app
 
 
 ticket_routes = Blueprint('tickets', __name__)
@@ -34,22 +35,17 @@ def get_ticket(id):
 @ticket_routes.route("/<int:ticket_id>/add-image", methods=["POST"])
 @login_required
 def upload_image(ticket_id):
-    # print("-----------------------------------------------------", ticket_id)
     form = TicketImageForm()
 
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
-        # print("-----------------------------------------", "form Validated") 
         image = form.data["image"]
         image.filename = get_unique_filename(image.filename)
         upload = upload_file_to_s3(image)
-        print(upload)
+        app.logger.info(f"S3 upload result: {upload}")
 
         if "url" not in upload:
-        # if the dictionary doesn't have a url key
-        # it means that there was an error when you tried to upload
-        # so you send back that error message (and you printed it above)
             return {'errors': upload['errors']}, 400
 
         url = upload["url"]
@@ -66,7 +62,6 @@ def upload_image(ticket_id):
 @ticket_routes.route("/create", methods=["POST"])
 @login_required
 def create_ticket():
-    # print("IM HERE------------------------------------")
     form = TicketForm()
 
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -83,13 +78,12 @@ def create_ticket():
             requester = form.data["requester"],
             description = form.data["description"]
         )
-        # print("NEW TICKET-----------------------------", new_ticket)
         db.session.add(new_ticket)
         db.session.commit()
         return new_ticket.to_dict()
 
     if form.errors:
-        print(form.errors)
+        app.logger.error(f"Ticket creation form validation errors: {form.errors}")
         return {'errors': form.errors}, 400
 
     return 
@@ -122,7 +116,7 @@ def edit_ticket(ticket_id):
         return ticket.to_dict()
 
     if form.errors:
-        print(form.errors)
+        app.logger.error(f"Ticket edit form validation errors: {form.errors}")
         return {'errors': form.errors}, 400
 
         
@@ -130,23 +124,18 @@ def edit_ticket(ticket_id):
 @ticket_routes.route("/<int:ticket_id>/edit-image", methods=["PUT"])
 @login_required
 def edit_image(ticket_id):
-#     # print("-----------------------------------------------------", ticket_id)
     ticket = Ticket.query.get(ticket_id)
     form = TicketImageForm()
 
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
-#         print("-----------------------------------------", "form Validated") 
         image = form.data["image"]
         image.filename = get_unique_filename(image.filename)
         upload = upload_file_to_s3(image)
-        print(upload)
+        app.logger.info(f"S3 upload result: {upload}")
 
         if "url" not in upload:
-        # if the dictionary doesn't have a url key
-        # it means that there was an error when you tried to upload
-        # so you send back that error message (and you printed it above)
             return {'errors': upload['errors']}, 400
 
         url = upload["url"]

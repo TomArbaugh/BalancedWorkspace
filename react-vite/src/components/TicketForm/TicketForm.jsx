@@ -7,6 +7,13 @@ import { getAllMacrosThunk } from "../../redux/macro";
 import { useNavigate } from "react-router-dom";
 import NavCom from "../NavComp/NavComp";
 
+/**
+ * TicketForm component provides a form for creating new support tickets.
+ * Includes fields for title, type, priority, requester, description, and image upload.
+ * Validates form data and handles image upload to AWS S3.
+ * 
+ * @returns {JSX.Element} The ticket creation form
+ */
 function TicketForm() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -41,11 +48,6 @@ function TicketForm() {
         return newErrors
     }
 
-
-    // console.log(user.username)
-
-    // console.log("CUSTOMERS", customers)
-
     const [image, setImage] = useState(null);
     const [imageLoading, setImageLoading] = useState(false);
     const [title, setTitle] = useState()
@@ -67,11 +69,7 @@ function TicketForm() {
             setErrors(newErrors);
             return;
         }
-        // const formData = new FormData();
-        // formData.append("image", image);
-        // console.log(image, "formData jsx")
 
-        // console.log("Created Mac", apply_macro)
 
         const newTicket = {
             title,
@@ -82,15 +80,13 @@ function TicketForm() {
             requester,
             description
         }
-        // console.log("newTicket", newTicket)
-        // aws uploads can be a bit slow—displaying
-        // some sort of loading message is a good idea
+
         setImageLoading(true);
         await dispatch(postTicketThunk(image, newTicket));
-        // history.push("/images");
+
         navigate('/view/tickets/all')
     }
-    // ...
+
     if (!customers.allCustomers) return null;
     if (Object.keys(customers).length === 0) return null;
     if (!user) return null;
@@ -209,10 +205,10 @@ function TicketForm() {
                             onChange={((e) => setApplyMacro(e.target.value))}
                             id="create-macros-input"
                         >
-
+                            <option value={1}>No Macro</option>
                             {macros ? macros.macros.map((macro) => (
                                 <option key={macro.id} value={macro.id}>{macro.description}</option>
-                            )) : null}
+                            )) : "1"}
                         </select>
                     </lable>
                     <button className="create-ticket-button" type="submit">Submit Ticket</button>

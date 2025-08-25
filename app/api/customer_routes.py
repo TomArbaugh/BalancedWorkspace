@@ -1,5 +1,5 @@
 from app.models import Ticket, db, Image, Customer
-from flask import Blueprint, request, jsonify, abort
+from flask import Blueprint, request, jsonify, abort, current_app as app
 from flask_login import current_user, login_required
 from app.forms.create_customer import CreateCustomerForm
 
@@ -10,10 +10,17 @@ customer_routes = Blueprint('customers', __name__)
 @customer_routes.route('/validate/<email>/<name>')
 @login_required
 def validate_customer(email, name):
-    # print("EMAIL--------------------------------------------", email)
-    # print("name--------------------------------------------", name)
+    """
+    Validates that a customer with the given email or name doesn't already exist.
+    
+    Args:
+        email (str): Customer email to validate
+        name (str): Customer name to validate
+        
+    Returns:
+        dict: Success message if validation passes, error if customer exists
+    """
     customer = Customer.query.filter((Customer.email == email) | (Customer.name == name)).all()
-    # print("CUSTOMER--------------------------------------------", customer)
     if customer:
         return abort(400, description="Customer Already Exists")
 
@@ -23,7 +30,16 @@ def validate_customer(email, name):
 
 @customer_routes.route('/<int:id>')
 @login_required
-def get_customer_Id(id):
+def get_customer_by_id(id):
+    """
+    Retrieves a customer by their ID.
+    
+    Args:
+        id (int): The customer ID
+        
+    Returns:
+        dict: Customer data or error message if not found
+    """
     customer = Customer.query.get(id)
     if customer is None:
         return {"error": "Customer Not Found" }
@@ -43,6 +59,12 @@ def get_customer():
 @customer_routes.route('/create', methods=["POST"])
 @login_required
 def create_customer():
+    """
+    Creates a new customer for the current user.
+    
+    Returns:
+        dict: Created customer data or validation errors
+    """
     form = CreateCustomerForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
@@ -57,7 +79,7 @@ def create_customer():
         return new_customer.to_dict()
 
     if form.errors:
-        print(form.errors)
+        app.logger.error(f"Customer creation form validation errors: {form.errors}")
         return {"errors": form.errors}, 400
     return
 
@@ -81,7 +103,7 @@ def edit_customer(id):
         return customer.to_dict()
 
     if form.errors:
-        print(form.errors)
+        app.logger.error(f"Customer edit form validation errors: {form.errors}")
         return {"errors": form.errors}, 400
     return
 

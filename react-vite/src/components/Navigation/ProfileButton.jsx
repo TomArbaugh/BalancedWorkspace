@@ -52,11 +52,11 @@ function ProfileButton() {
   return (
     <>
       <div className="nav-div">
-      <button className="profile-buttons" onClick={toggleMenu}>
-       {!user && !moble ?<div className="not-burger">Sign In</div>: user && !moble ? <div className="not-burger">Menu</div>: <div className="burger"><RxHamburgerMenu /></div>}
-      </button>
+        <button className="profile-buttons" onClick={toggleMenu}>
+          {!user && !moble ? <div className="not-burger">Sign In</div> : user && !moble ? <div className="not-burger">Menu</div> : <div className="burger"><RxHamburgerMenu /></div>}
+        </button>
       </div>
- 
+
       {showMenu && (
         <ul className={"profile-dropdown"} ref={ulRef}>
           {user ? (
@@ -68,68 +68,68 @@ function ProfileButton() {
                 <button id="log-out-button" onClick={logout}>Log Out</button>
               </li>
               <div className={user && moble ? "profile-nav-links" : "hide"}>
-          <Link 
-          className={user && moble ? "nav-link" : "hide"}
-          id="create-ticket-link"
-          to="/create/ticket">Create Ticket</Link>
+                <Link
+                  className={user && moble ? "nav-link" : "hide"}
+                  id="create-ticket-link"
+                  to="/create/ticket">Create Ticket</Link>
 
-          <div className="nav-link" id="create-customer-link">
-          <OpenModalMenuItem
-        
-        itemText="Create Customer"
-        modalComponent={<CreateCustomer />}
-        />
-          </div>
-       
-          {/* <Link 
+                <div className="nav-link" id="create-customer-link">
+                  <OpenModalMenuItem
+
+                    itemText="Create Customer"
+                    modalComponent={<CreateCustomer />}
+                  />
+                </div>
+
+                {/* <Link 
           className={user ? "nav-link" : "hide"}
           to="customer/create">Create Customer</Link> */}
 
-          <div className="nav-link" id="create-macro-link">
-          <OpenModalMenuItem 
-        
-        itemText="Create Macro"
-        modalComponent={<CreateMacro />}
-        />
-        
-          </div>
-          <Link 
-          className={user ? "nav-link" : "hide"}
-          to="/view/customers">Customers</Link>
-           <Link 
-          className={user ? "nav-link" : "hide"}
-          to="/view/macros">Macros</Link>
-          {/* <Link 
+                <div className="nav-link" id="create-macro-link">
+                  <OpenModalMenuItem
+
+                    itemText="Create Macro"
+                    modalComponent={<CreateMacro />}
+                  />
+
+                </div>
+                <Link
+                  className={user ? "nav-link" : "hide"}
+                  to="/view/customers">Customers</Link>
+                <Link
+                  className={user ? "nav-link" : "hide"}
+                  to="/view/macros">Macros</Link>
+                {/* <Link 
           className={user ? "nav-link" : "hide"}
           to="macro/create">Create Macro</Link> */}
-          <div className="nav-link">
-           <OpenModalMenuItem
-        
-        itemText="Message Center"
-        modalComponent={<MessageCenter />}
-        /> 
-        </div>
-          </div>
+                <div className="nav-link">
+                  <OpenModalMenuItem
+
+                    itemText="Message Center"
+                    modalComponent={<MessageCenter />}
+                  />
+                </div>
+              </div>
             </>
           ) : (
             <div>
               <div className="modal-profile-links">
-              <OpenModalMenuItem
-              
-              itemText="Log In"
-              onItemClick={closeMenu}
-              modalComponent={<LoginFormModal />}
-            />
+                <OpenModalMenuItem
+
+                  itemText="Log In"
+                  onItemClick={closeMenu}
+                  modalComponent={<LoginFormModal />}
+                />
               </div>
               <div className="modal-profile-links">
-              <OpenModalMenuItem
-              
-              itemText="Sign Up"
-              onItemClick={closeMenu}
-              modalComponent={<SignupFormModal />}
-            />
+                <OpenModalMenuItem
+
+                  itemText="Sign Up"
+                  onItemClick={closeMenu}
+                  modalComponent={<SignupFormModal />}
+                />
               </div>
-             
+
             </div>
           )}
         </ul>
